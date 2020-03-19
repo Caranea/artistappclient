@@ -1,0 +1,77 @@
+<div class="container-fluid d-flex justify-content-center align-items-center register-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex justify-content-center">
+        <div class="logo-image"></div>
+        <h2 class="mt-2 mb-2">
+            Zarejestruj się
+        </h2>
+        <p class="secondary">
+            Dołącz do knickknacks.pl.
+        </p>
+        <div class="form-group mb-0">
+            <label for="exampleInputEmail1">Adres e-mail</label>
+            <input type="email" id="email" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Podaj swój adres e-mail</div>
+            </div>
+        </div>
+        <div class="form-row mt-3">
+            <div class="col">
+                <label for="firstName">Imię</label>
+                <input id="firstName" type="text" formControlName="firstName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Podaj swoje imię</div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="lastName">Nazwisko</label>
+                <input id="lastName" type="text" formControlName="lastName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Podaj swoje nazwisko</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mt-3">
+            <div class="col">
+                <label for="password">Hasło</label>
+                <input id="password" type="password" formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Podaj hasło</div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="password2">Potwierdź hasło</label>
+                <input id="password2" type="password" formControlName="password2" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+                <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+                    <div *ngIf="f.password2.errors.required">Potwierdź hasło</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" formControlName="phone" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Podaj numer telefonu</div>
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" formControlName="termsAgreement"
+                [ngClass]="{ 'is-invalid': submitted && f.termsAgreement.errors }" /><label class="form-check-label"
+                for="termsAgreement">Rejestrując się, zgadzasz się z postanowieniami <a href="#">Regulaminu</a></label>
+            <div *ngIf="submitted && f.termsAgreement.errors" class="invalid-feedback">
+                <div *ngIf="f.termsAgreement.errors.required">Musisz wyrazić zgodę</div>
+            </div>
+
+        </div>
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Wyślij<fa-icon class="ml-2" [icon]="faLongArrowAltRight"></fa-icon>
+        </button>
+        <small class="form-check-label text-center mt-3">Masz już konto? <a href="#">Zaloguj się</a></small>
+    </form>
+</div>
