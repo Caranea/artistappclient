@@ -68,6 +68,7 @@ export class RegisterComponent implements OnInit {
         data => {
           this.alertService.success('Udało się zarejestrować. Możesz się zalogować.', true);
           this.router.navigate(['/login']);
+          this.loading = false;
         },
         error => {
           this.alertService.error(error);
