@@ -107,3 +107,14 @@ height: 70px !important;
         color: white;
     }
 }
+alert {
+position: fixed;
+right: 20px;
+top: 20px;
+z-index: 2;
+}
+.container-blue {
+    min-height: 100vh;
+   background-color: #EAF0F7;
+   padding:20px;
+}

@@ -1,0 +1,50 @@
+.nav-top {
+    background-color: #181823;
+    li a {
+        font-size: 14px;
+        -webkit-transition: all .1s ease;
+        transition: all .1s ease;
+        line-height: 22px;
+        padding-left: 15px;
+        color: #a9baca;
+        padding-top: 20px;
+        padding-bottom: 20px;
+       fa-icon {
+           font-size: 22px;
+       }
+    } 
+    li.active  a {
+            color: #fff;
+            fa-icon {
+                color:#4d79f6;
+            }
+            position: relative;
+            &:before {
+                content: "";
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 7.5px 15px 7.5px;
+                border-color: transparent transparent #fff transparent;
+                position: absolute;
+                z-index: 1;
+                bottom: -8.5px;
+                left: calc(50% - 15px);
+        }
+    }
+}
+
+.nav-bottom {
+    li a {
+        color: #4a4a71;
+        padding: 8px 25px;
+        clear: both;
+        white-space: nowrap;
+        font-size: 13px;
+        padding-left: 15px;
+    }
+    li.active a {
+        color: #4d79f6;
+    }
+}
+

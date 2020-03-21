@@ -1,0 +1,191 @@
+<section class="artwork-add container-blue">
+    <div class="container">
+        <h3>
+            Dodaj pracę
+        </h3>
+        <div [formGroup]="artworkForm" (ngSubmit)="onSubmit()">
+            <div class="section photos">
+                <div class="row">
+                    <div class="photos-tips col col-lg-3">
+                        <p class="d-block p-bold">Fotografie</p>
+                        <label for="photos" class="required">Dodaj zdjęcia</label>
+                        <p>Maksymalnie 5 zdjęć</p>
+                        <p>Wybierz zdjęcia z komputera, lub wklej link. </p>
+                        <ul>
+                            <li>Najlepiej rób zdjęcia w naturalnym świetle</li>
+                            <li>Nie używaj flasha</li>
+                            <li>Nie dodawaj zdjęć pod kątem, z góry, itp.</li>
+                            <li>Zadbaj o to, aby na zdjęciu nie było bałaganu i rozpraszających przedmiotów</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 justify-content-center  align-items-center d-flex">
+                        <input-file formControlName="photos" fileAccept="image/*" fileLimit="5" [linkEnabled]="true">
+                        </input-file>
+                    </div>
+                </div>
+            </div>
+            <div class="section info">
+                <p>Informacje</p>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="title">Tytuł</label>
+                    <input type="text" id="title" formControlName="title" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="height">Typ</label>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="malarstwo" value="malarstwo"  formControlName="type" 
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="malarstwo">Malarstwo</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="rysunek" value="rysunek" formControlName="type"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="rysunek">Rysunek</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="grafika" value="grafika" formControlName="type" 
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="grafika">Grafika</label>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="height">Wysokość (cm)</label>
+                    <input type="number" id="height" formControlName="height" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.height.errors }" />
+                    <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
+                        <div *ngIf="f.height.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="width">Szerokość (cm)</label>
+                    <input type="number" id="width" formControlName="width" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.width.errors }" />
+                    <div *ngIf="submitted && f.width.errors" class="invalid-feedback">
+                        <div *ngIf="f.width.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="material">Użyte materiały
+                        <span>Np. rodzaj farb i marka</span>
+                    </label>
+
+                    <input type="text" id="material" formControlName="material" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.material.errors }" />
+                    <div *ngIf="submitted && f.material.errors" class="invalid-feedback">
+                        <div *ngIf="f.material.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="surface">Podłoże</label>
+                    <input type="text" id="surface" formControlName="surface" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.surface.errors }" />
+                    <div *ngIf="submitted && f.surface.errors" class="invalid-feedback">
+                        <div *ngIf="f.surface.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label class="required" for="opis">Opis
+                        <span>Kilka słów o Twojej pracy. Napisz co przedstawia, co Cię zainspirowało do jej stworzenia,
+                            lub jaką technikę zastosowałeś/aś</span>
+                    </label>
+                    <textarea rows="5" type="text" id="opis" formControlName="opis" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.opis.errors }"></textarea>
+                    <div *ngIf="submitted && f.opis.errors" class="invalid-feedback">
+                        <div *ngIf="f.opis.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label for="style">Styl</label>
+                    <input type="text" id="style" formControlName="style" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.style.errors }" />
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label for="varnish">Werniks</label>
+                    <input type="checkbox" id="varnish" formControlName="varnish" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.varnish.errors }" />
+                    <div *ngIf="submitted && f.varnish.errors" class="invalid-feedback">
+                        <div *ngIf="f.varnish.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label for="year">Rok powstania</label>
+                    <input type="number" id="year" formControlName="year" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.year.errors }" />
+                    <div *ngIf="submitted && f.year.errors" class="invalid-feedback">
+                        <div *ngIf="f.year.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 d-flex align-items-center">
+                    <label for="forSale">Na sprzedaż</label>
+                    <input type="checkbox" id="forSale" formControlName="forSale" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.forSale.errors }" />
+                    <div *ngIf="submitted && f.forSale.errors" class="invalid-feedback">
+                        <div *ngIf="f.forSale.errors.required">Pole obowiązkowe</div>
+                    </div>
+                </div>
+                <div *ngIf="f.forSale.value">
+                    <div class="form-group mb-0 d-flex align-items-center">
+                        <label for="price">Cena (zł)</label>
+                        <input type="number" id="price" formControlName="price" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                            <div *ngIf="f.price.errors.required">Pole obowiązkowe</div>
+                        </div>
+                    </div>
+                    <p class="d-block p-bold">Gdzie chcesz promować swoje prace?</p>
+                    <div class="form-row mb-0 d-flex align-items-center">
+                        <div class="col d-flex">
+                            <label for="facebook">Facebook</label>
+                            <input type="checkbox" id="facebook" formControlName="facebook" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.facebook.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="Instagram">Instagram</label>
+                            <input type="checkbox" id="Instagram" formControlName="Instagram" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.Instagram.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="Pinterest">Pinterest</label>
+                            <input type="checkbox" id="Pinterest" formControlName="Pinterest" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.Pinterest.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="Etsy">Etsy</label>
+                            <input type="checkbox" id="Etsy" formControlName="Etsy" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.Etsy.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="artpal">Artpal.com</label>
+                            <input type="checkbox" id="artpal" formControlName="artpal" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.artpal.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="Amazon">Amazon</label>
+                            <input type="checkbox" id="Amazon" formControlName="Amazon" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.Amazon.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="Ebay">Ebay</label>
+                            <input type="checkbox" id="Ebay" formControlName="Ebay" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.Ebay.errors }" />
+                        </div>
+                        <div class="col d-flex">
+                            <label for="Allegro">Allegro</label>
+                            <input type="checkbox" id="Allegro" formControlName="Allegro" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.Allegro.errors }" />
+                        </div>
+                    </div>
+                </div>
+                <button (click)="onSubmit()" [disabled]="loading" class="btn-send btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Wyślij<fa-icon class="ml-2" [icon]="faLongArrowAltRight"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

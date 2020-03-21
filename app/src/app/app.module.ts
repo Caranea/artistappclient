@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { LoginComponent } from './login/login.component';
 import { NavbarTopComponent } from './navbar-top/navbar-top.component';
@@ -15,7 +15,8 @@ import { ArtworksComponent } from './artworks/artworks.component';
 import { ArtworkAddComponent } from './artworks/artwork-add/artwork-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputFileConfig, InputFileModule } from 'ngx-input-file';
- 
+import { CookieService } from 'ngx-cookie-service';
+
 const config: InputFileConfig = {};
 
 @NgModule({
@@ -28,7 +29,7 @@ const config: InputFileConfig = {};
     MainNavComponent,
     ArtworksComponent,
     ArtworkAddComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -36,14 +37,14 @@ const config: InputFileConfig = {};
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,        
     BrowserAnimationsModule,
-    InputFileModule.forRoot(config),
+    BrowserAnimationsModule,
+    InputFileModule.forRoot(config)
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

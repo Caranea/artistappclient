@@ -1,0 +1,38 @@
+<div class="container-blue">
+    <div class="container">
+        <div class="d-flex flex-col">
+            <div *ngFor="let artwork of artworks" class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img [src]="'http://localhost:5000/' + artwork.photosUrls[0].split('public/')[1]"
+                            class="card-img" style="max-height: 25vh; width: auto;" alt="Artwork main photo">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{artwork.title}}</h5>
+                            <p *ngIf="artwork.price" class="card-text">{{artwork.price}} zł.</p>
+                            <p *ngIf="artwork.price" class="card-text">{{artwork.height}}x{{artwork.width}}cm.</p>
+                            <p *ngIf="!artwork.accepted" class="card-text text-muted">
+                                <fa-icon class="mr-2" [icon]="faHourglassHalf"></fa-icon>Oczekuje na zatwierdzenie
+                            </p>
+                            <div class="d-flex flex-row mt-3">
+                                <a href="#" class="btn btn-primary mr-2">Edytuj</a><a href="#"
+                                    class="btn btn-danger">Usuń</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Komentarze i oceny</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Status sprzedaży</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

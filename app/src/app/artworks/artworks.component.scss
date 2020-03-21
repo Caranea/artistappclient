@@ -1,0 +1,40 @@
+.flex-col {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
+}
+h5 {
+    font-size: 18px;
+    padding: 20px 0;
+    color:#181823;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    margin-top: 0;
+
+    line-height: 16px;
+    padding: 0;
+    text-overflow: ellipsis;
+    -webkit-text-stroke: 0px;
+    filter: alpha(opacity=40);
+    transition: opacity 0.3s ease;
+}
+
+p{
+    margin-bottom: 0px;
+    letter-spacing: 0.02em;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+    min-width: 150px;
+    color: 
+#50649c;
+text-shadow: 0 0 1px
+rgba(239, 242, 249, 0.1);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: #dc3545;
+    border-width: 2px;
+}

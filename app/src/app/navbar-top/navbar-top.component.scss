@@ -1,0 +1,29 @@
+fa-icon {
+    font-size: 22px;
+    vertical-align: middle;
+    color: #a4abc5;
+}
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-container{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #f1f5fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    fa-icon {
+        font-size: 28px;
+    }
+}
+
+p {
+    font-size: 13px;
+    color: #828db1;
+    line-height: 70px;
+}
