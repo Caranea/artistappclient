@@ -12,6 +12,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
+    //"types": ["stripe-v3","@types/stripe-checkout"],
     "typeRoots": [
       "node_modules/@types"
     ],

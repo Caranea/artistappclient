@@ -1,5 +1,8 @@
 <div class="container-blue">
     <div class="container">
+        <h3>
+            Zarządzaj dodanymi pracami
+        </h3>
         <div class="d-flex flex-col">
             <div *ngFor="let artwork of artworks" class="card mb-3">
                 <div class="row no-gutters">
@@ -7,28 +10,36 @@
                         <img [src]="'http://localhost:5000/' + artwork.photosUrls[0].split('public/')[1]"
                             class="card-img" style="max-height: 25vh; width: auto;" alt="Artwork main photo">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-text">
                         <div class="card-body">
-                            <h5 class="card-title">{{artwork.title}}</h5>
+                            <h5 class="card-title link" [routerLink]="artwork._id">
+                                <fa-icon class="mr-2" [icon]="faLink"></fa-icon>{{artwork.title}}
+                            </h5>
                             <p *ngIf="artwork.price" class="card-text">{{artwork.price}} zł.</p>
                             <p *ngIf="artwork.price" class="card-text">{{artwork.height}}x{{artwork.width}}cm.</p>
-                            <p *ngIf="!artwork.accepted" class="card-text text-muted">
-                                <fa-icon class="mr-2" [icon]="faHourglassHalf"></fa-icon>Oczekuje na zatwierdzenie
-                            </p>
+
                             <div class="d-flex flex-row mt-3">
-                                <a href="#" class="btn btn-primary mr-2">Edytuj</a><a href="#"
-                                    class="btn btn-danger">Usuń</a>
+                                <a [routerLink]="'edytuj/'+artwork._id" class="btn btn-primary mr-2">Edytuj</a><a
+                                    (click)="delete(artwork._id)" class="btn btn-danger">Usuń</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-text">
                         <div class="card-body">
                             <h5 class="card-title">Komentarze i oceny</h5>
+                            <p *ngIf="artwork.reviews.length">Średnia ocen: {{meanReview(artwork.reviews)}}</p>
+                            <p *ngIf="!artwork.reviews.length">Ta praca nie została jeszcze oceniona</p>
+                            <p *ngIf="artwork.comments">Liczba komentarzy: {{artwork.comments.length}}</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-text">
                         <div class="card-body">
-                            <h5 class="card-title">Status sprzedaży</h5>
+                            <h5 class="card-title">Status</h5>
+                            <p class="card-text">
+                                {{!artwork.forSale ? 'Nie na sprzedaż' : 'W sprzedaży'}} </p>
+                            <p *ngIf="!artwork.accepted" class="card-text text-muted">
+                                <fa-icon class="mr-2" [icon]="faHourglassHalf"></fa-icon>Oczekuje na zatwierdzenie
+                            </p>
                         </div>
                     </div>
                 </div>

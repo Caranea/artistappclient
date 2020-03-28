@@ -1,0 +1,123 @@
+<div class="container">
+    <p class="lead mt-4" *ngIf="!websiteBio">
+        Informacje poniżej zostały pobrane na podstane danych, które uzupełniłeś w sekcji <a
+            href="../profil/edytuj">profil</a>.
+    </p>
+    <div class="d-flex justify-content-center align-items-center flex-column" *ngIf="websiteBio">
+        <p class="lead mt-4">
+            Poniżej znajdują się prace obecnie przypisane do strony. Aktualizuj listę na podstawie danych z sekcji <a
+                href="../profil/edytuj">profil</a>.
+
+        </p><button (click)="getProfile()" class="btn-primary btn-small">
+            Pobierz prace
+        </button>
+    </div>
+    <div *ngIf="profile">
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th>Nazwa pola</th>
+                    <th>
+                        Wartość
+                    </th>
+                    <th>
+                        Umieść na stronie
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="profile.profilePhoto">
+                    <th scope="row">Zdjęcie profilowe</th>
+                    <td><img [src]="'http://localhost:5000/' + profile.profilePhoto.value.split('public/')[1]" alt="">
+                    </td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.profilePhoto.include"
+                            name="profilePhoto">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.coverPhoto">
+                    <th scope="row">Zdjęcie tła</th>
+                    <td><img [src]="'http://localhost:5000/' + profile.coverPhoto.value.split('public/')[1]" alt="">
+                    </td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.coverPhoto.include"
+                            name="coverPhoto">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.bio">
+                    <th scope="row">Kilka słów o sobie</th>
+                    <td><textarea type="text" name="bio" rows="6"  (change)="updateValue($event, 'bio', 'value')"  [value]="profile.bio.value"></textarea></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.bio.include"
+                            (change)="updateValue($event, 'bio', 'include')" name="bio">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.firstName">
+                    <th scope="row">Imię</th>
+                    <td><input type="text" name="firstName" [value]="profile.firstName.value" (change)="updateValue($event, 'firstName', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.firstName.include" name="firstName" (change)="updateValue($event, 'firstName', 'include')">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.lastName">
+                    <th scope="row">Nazwisko</th>
+                    <td><input type="text" name="lastName" [value]="profile.lastName.value" (change)="updateValue($event, 'lastName', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.lastName.include" (change)="updateValue($event, 'lastName', 'include')"name="lastName">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.email">
+                    <th scope="row">E-mail</th>
+                    <td><input type="text" name="email" [value]="profile.email.value" (change)="updateValue($event, 'email', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.email.include" (change)="updateValue($event, 'email', 'include')" name="email">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.phone">
+                    <th scope="row">Telefon</th>
+                    <td><input type="text" name="phone" [value]="profile.phone.value" (change)="updateValue($event, 'phone', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.phone.include" (change)="updateValue($event, 'phone', 'include')" name="phone">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.facebook">
+                    <th scope="row">Facebook</th>
+                    <td><input type="text" name="facebook" [value]="profile.facebook.value" (change)="updateValue($event, 'facebook', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.facebook.include" (change)="updateValue($event, 'facebook', 'include')" name="facebook" >
+                    </td>
+                </tr>
+                <tr *ngIf="profile.instagram">
+                    <th scope="row">Instagram</th>
+                    <td><input type="text" name="instagram" [value]="profile.instagram.value" (change)="updateValue($event, 'instagram', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.instagram.include" (change)="updateValue($event, 'instagram', 'include')" name="instagram">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.twitter">
+                    <th scope="row">Twitter</th>
+                    <td><input type="text" name="twitter" [value]="profile.twitter.value" (change)="updateValue($event, 'twitter', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.twitter.include" (change)="updateValue($event, 'twitter', 'include')" name="twitter">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.behance">
+                    <th scope="row">Behance</th>
+                    <td><input type="text" name="behance" [value]="profile.behance.value" (change)="updateValue($event, 'behance', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.behance.include"  (change)="updateValue($event, 'behance', 'include')" name="behance">
+                    </td>
+                </tr>
+                <tr *ngIf="profile.youtube">
+                    <th scope="row">Youtube</th>
+                    <td><input type="text" name="youtube" [value]="profile.youtube.value" (change)="updateValue($event, 'youtube', 'value')" ></td>
+                    <td>
+                        <input type="checkbox" [checked]="!website ? true : profile.youtube.include" (change)="updateValue($event, 'youtube', 'include')" name="youtube">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-primary" (click)="createAndSaveForm()">Zapisz</button>
+    </div>
+    
+</div>

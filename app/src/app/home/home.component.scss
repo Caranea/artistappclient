@@ -1,0 +1,144 @@
+.choose-tiles {
+  .tile {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #4b4b4b;
+    font-family: inter ui, -apple-system, BlinkMacSystemFont, segoe ui, roboto,
+      oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    align-items: center;
+    &.active {
+      background-color: #4d79f6;
+      color: #fff;
+    }
+  }
+  &.purple .tile.active {
+    background-color: #7252d3;
+  }
+}
+.artworks-main {
+  img {
+    max-height: 300px;
+  }
+}
+.home .container {
+  max-width: none;
+}
+.form-row {
+  margin-top: 20px;
+  .img-container {
+    max-width: 30%;
+    overflow: hidden;
+    min-width: 25%;
+    width: 20%;
+    min-width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 250px;
+    margin: 0 5px;
+    margin-bottom: 10px;
+    position: relative;
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      height: auto;
+      max-height: none;
+    }
+  }
+}
+.show {
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate-reverse;
+}
+@keyframes rotate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.btn-row {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+  .btn {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+.artists {
+  padding: 10px;
+  padding-right: 20px;
+  .artist {
+    height: 500px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    &:first-of-type {
+      padding-left: 0;
+    }
+    .overlay {
+      height: calc(100% - 20px);
+      top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+      .content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .img-container {
+        height: 60px;
+        width: 60px;
+        overflow: hidden;
+        border-radius: 50%;
+
+        img {
+          height: 100%;
+          transform: translateX(-15%);
+        }
+      }
+        h3 {
+          margin-top: 10px;
+          font-size: 16px;
+        }
+    }
+    img {
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+}

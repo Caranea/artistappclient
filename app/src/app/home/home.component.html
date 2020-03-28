@@ -1,0 +1,195 @@
+<div class="container-blue home" *ngIf="artworks">
+    <section class="container">
+        <div class="choose-tiles form-row">
+            <div class="tile col" [ngClass]="{ active: active === 'monthnew' }" (click)="getArtworks('month', 'new')">
+                Najnowsze
+            </div>
+            <div class="tile  col" [ngClass]="{ active: active === 'monthbest' }"
+                (click)="getArtworks('month', 'best')">
+                Najlepsze w tym miesiącu
+            </div>
+            <div class="tile active col" [ngClass]="{ active: active === 'allTimebest' }"
+                (click)="getArtworks('allTime', 'best')">
+                Najlepiej oceniane
+            </div>
+            <div class="tile  col" [ngClass]="{ active: active === 'todaybest' }"
+                (click)="getArtworks('today', 'best')">
+                Najlepsze dziś
+            </div>
+            <div class="tile  col" [ngClass]="{ active: active === 'monthundiscovered' }"
+                (click)="getArtworks('month', 'undiscovered')">
+                Nieodkryte
+            </div>
+        </div>
+        <div class="artworks-main mt-2" *ngIf="artworks && !showAll">
+            <carousel isAnimated="true" interval="false">
+                <slide>
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 0:4; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                        <div class="overlay">
+                            {{ item.title }}
+                        </div>
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 6">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 2:6; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 8">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 4:8; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 10">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 6:10; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 12">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 8:12; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 14">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 10:14; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 16">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 12:16; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 18">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 14:18; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+                <slide *ngIf="artworks.length > 20">
+                    <div class="img-container" [routerLink]="'../prace/' + item._id"
+                        *ngFor="let item of artworks | slice: 16:20; let i = index">
+                        <img [src]="
+                'http://localhost:5000/' +
+                item.photosUrls[0].split('public/')[1]
+              " alt="" />
+                    </div>
+                </slide>
+            </carousel>
+        </div>
+        <div class="artworks-main mt-2" *ngIf="artworks && showAll">
+            <div class="form-row" [ngClass]="{ show: showAll }">
+                <div class="col img-container" [routerLink]="'../prace/' + item._id" *ngFor="let item of artworks">
+                    <img [src]="
+              'http://localhost:5000/' + item.photosUrls[0].split('public/')[1]
+            " alt="" />
+                    <div class="overlay">
+                        {{ item.title }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary p-3" (click)="showAllFn()">
+                {{ showAll ? "Ukryj" : "Pokaż wszystkie w tej kategorii" }}
+            </button>
+        </div>
+    </section>
+    <section class="container mt-5" *ngIf="users">
+        <div class="choose-tiles purple form-row">
+            <!-- <div class="tile col" [ngClass]="{ active: activeArtist === 'fav' }" (click)="getArtists('fav')">
+                Mogą Ci się spodobać
+            </div> -->
+            <div class="tile active col" [ngClass]="{ active: activeArtist === 'best' }" (click)="getArtists('best')">
+                Najlepsi artyści
+            </div>
+            <!-- <div class="tile col" [ngClass]="{ active: activeArtist === 'new' }" (click)="getArtists('new')">
+                Ostatnio dołączyli
+            </div> -->
+        </div>
+        <div class="row artists">
+            <div class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
+                *ngFor="let item of users | slice: 0:3; let i = index">
+                <img [src]="
+            'http://localhost:5000/' + item.bestArtworkUrl.split('public/')[1]
+          " alt="" />
+                <div class="overlay">
+                    <div class="content">
+                        <div class="img-container">
+                            <img [src]="
+                  'http://localhost:5000/' +
+                  item.profilePhoto.split('public/')[1]
+                " alt="" />
+                        </div>
+                        <h3>{{ item.name }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 artist">
+                <img [src]="
+            'http://localhost:5000/' +
+            users[0].bestArtworkUrl.split('public/')[1]
+          " alt="" />
+            </div>
+        </div>
+    </section>
+    <section class="container mt-5">
+        <div class="choose-tiles purple form-row">
+            <div class="tile active col" [ngClass]="{ active: activeSection === 'grafika' }"
+                (click)="getSection('grafika')">
+                Grafika
+            </div>
+            <div class="tile col" [ngClass]="{ active: activeSection === 'malarstwo' }"
+                (click)="getSection('malarstwo')">
+                Malarstwo
+            </div>
+            <div class="tile col" [ngClass]="{ active: activeSection === 'rysunek' }" (click)="getSection('rysunek')">
+                Rysunek
+            </div>
+        </div>
+        <div *ngIf="sectionArtworks">
+            <div class="form-row" [ngClass]="{ show: showAll }">
+                <div class="col img-container" [routerLink]="'../prace/' + item._id" *ngFor="let item of sectionArtworks">
+                    <img [src]="
+              'http://localhost:5000/' + item.photosUrls[0].split('public/')[1]
+            " alt="" />
+                    <div class="overlay">
+                        {{ item.title }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

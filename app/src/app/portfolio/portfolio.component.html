@@ -1,0 +1,407 @@
+<div class="container-blue home" *ngIf="userProfile">
+  <section class="jumbotron page-cover">
+    <div class="head-content container">
+      <div class="d-flex justify-content-center align-items-center" *ngIf="!userProfile.plan">
+        <h1>Dzień dobry, {{ currentUser.firstName }}!</h1>
+        <p>
+          Jesteś kilka minut od stworzenia portfolio, które zobaczy cały świat
+        </p>
+
+        <p class="text-muted mt-2">
+          Prosimy o podanie w następnym kroku tego samego adresu e-mail, którego
+          użyli Państwo przy rejestracji. Zapewni to natychmiastowe
+          przetworzenie płatności.
+        </p>
+      </div>
+      <div class="d-flex justify-content-center align-items-center" *ngIf="userProfile.plan">
+        <h1>Dzień dobry, {{ currentUser.firstName }}.</h1>
+        <p>
+          Zacznijmy działać! Uzupełnij dane poniżej, na ich podstawie
+          wygenerujemy Twoje portfolio
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="form" *ngIf="userProfile.plan">
+      <div class="alert alert-light" role="alert">
+        <p class="lead mt-3" *ngIf="!websiteArtworks">
+          <fa-icon [icon]="faInfoCircle"></fa-icon>
+          Informacje potrzebne do stworzenia strony zostaną pobrane z sekcji <a href="../prace">prace</a> i <a
+            href="../profil/edytuj">profil</a>. Upewnij się, że zostały prawidłowo wypełnione.
+        </p>
+      </div>
+      <h3 class="mt-4">Informacje dla wyszukiwarek</h3>
+      <p class="lead mt-3">
+        Te informacje pomogą wyszukiwarkom odnaleźć Twoją stronę.
+      </p>
+      <div [formGroup]="seoForm" (ngSubmit)="onSubmit()"
+        class="d-flex flex-column justify-content-center align-items-end">
+        <table class="table table-light">
+          <thead>
+            <tr>
+              <th>Nazwa pola</th>
+              <th>
+                Opis
+              </th>
+              <th>
+                Wartość
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Tytuł strony</th>
+              <td>Główny tytuł twojej strony internetowej. To on będzie widniał w wynikach wyszukiwania
+                Upewnij się, że jest zwięzły i unikatowy dla Twojej strony. </td>
+              <td>
+                <input type="text" id="siteTitle" formControlName="siteTitle" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.siteTitle.errors }" />
+                <div *ngIf="submitted && f.siteTitle.errors" class="invalid-feedback">
+                  <div *ngIf="f.siteTitle.errors.required">Pole wymagane</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Tytuł strony głównej</th>
+              <td>Tytuł strony głownej twojej witryny internetowej. Będzie on widniał w wynikach wyszukiwania dla
+                tej podstrony
+                Upewnij się, że jest zwięzły i unikatowy dla Twojej strony. </td>
+              <td> <input type="text" id="homepageTitle" formControlName="homepageTitle" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.homepageTitle.errors }" />
+                <div *ngIf="submitted && f.homepageTitle.errors" class="invalid-feedback">
+                  <div *ngIf="f.homepageTitle.errors.required">Pole wymagane</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Opis strony</th>
+              <td>Opis twojej strony zawierający słowa kluczowe. Zalecamy, aby użyć mniej niż 160 znaków</td>
+              <td><textarea type="text" id="homepageDescription" formControlName="homepageDescription"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.homepageDescription.errors }"></textarea>
+                <div *ngIf="submitted && f.homepageDescription.errors" class="invalid-feedback">
+                  <div *ngIf="f.homepageDescription.errors.required">Pole wymagane</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Słowa kluczowe</th>
+              <td>Lista fraz, oddzielonych przecinkami, najlepiej opisująca treść strony.</td>
+              <td><input type="text" id="keywords" formControlName="keywords" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.keywords.errors }" />
+                <div *ngIf="submitted && f.keywords.errors" class="invalid-feedback">
+                  <div *ngIf="f.keywords.errors.required">Pole wymagane</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="w-100">
+          <h3 class="mt-4">Prace</h3>
+          <p class="lead mt-3" *ngIf="!websiteArtworks">
+            Wybierz prace, które mają znaleźć się w Twoim portfolio.
+          </p>
+          <p class="text-muted">
+            Dodaj kategorie dla Twoich prac (max. 3). Nazwa kategorii nie może zawierać spacji. </p>
+          <div class="category-input">
+            <input #categoriesInput type="text" name="designation" data-role="tagsinput" id="tags_id"
+              (keyup.enter)="updateCategories()">
+            <fa-icon class="add-icon" (click)="updateCategories()" [icon]="faPlusSquare"></fa-icon>
+          </div>
+          <div class="categories">
+            <span class="category-label" *ngFor="let category of categories">
+              <fa-icon [icon]="faTimes" (click)="removeCategory(category)"></fa-icon> {{ category }}
+            </span>
+          </div>
+          <table class="table table-light artworks">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Obraz</th>
+                <th scope="col">Tytuł</th>
+                <th scope="col">Kategoria</th>
+                <th scope="col">Atrybut ALT <fa-icon
+                    tooltip="Atrybut alt to tekst zastępczy wykorzystywany kiedy obraz nie może zostać wyświetlony, na przykład podczas używania syntezatora mowy. Ma on duże znaczenie przy pozycjonowaniu strony, więc polecamy wypełnienie pola. Wystarczy krótki opis, np.: 'Obraz olejny - martwa natura.'"
+                    [icon]="faQuestionCircle"></fa-icon>
+                </th>
+                <th scope="col">Umieść na stronie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let artwork of rows; let index = index">
+                <th scope="row">{{index + 1}}</th>
+                <td><img [src]="'http://localhost:5000/' + artwork.photoUrl.split('public/')[1]" alt=""></td>
+                <td><input type="text" [name]="'title'+index" [value]="artwork.title" data-field='title'
+                    (change)="updateValue($event, index)">
+                </td>
+                <td>
+                  <select id="categories" [disabled]="categories.length === 0" [name]="'alt'+index" [value]="artwork.category" data-field='category'
+                    (change)="updateValue($event, index)">
+                    <option value=""></option>
+                    <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                  </select>
+                </td>
+                <td><input type="text" [name]="'alt'+index" [value]="artwork.alt" data-field='alt'
+                    (change)="updateValue($event, index)">
+                </td>
+                <td>
+                  <input type="checkbox" [name]="'use'+ index" [checked]="!website ? true : artwork.include"
+                    data-field='include' (change)="updateValue($event, index)">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" (click)="onSubmit()" class="btn btn-primary"><span *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"></span>
+          Zobacz podgląd strony</button>
+      </div>
+    </div>
+    <div class="row" *ngIf="!userProfile.plan">
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">
+              Za darmo - dla pierwszych 50 osób
+            </h5>
+            <h6 class="card-price text-center">
+              0zł<span class="period">/miesiąc</span>
+            </h6>
+            <hr />
+            <ul class="fa-ul">
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>50 prac
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>3 galerie
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Dodatkowe podstrony
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Podstrona z danymi kontaktowymi
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Integracja z mediami społecznościowymi
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Wsparcie techniczne
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Darmowy okres próbny (14 dni)
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Referencje i opinie klientów
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>CV na stronie
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Cennik prac i usług
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Własna domena i konfiguracja kont e-mail
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Modyfikacje na stronie na zamówienie
+              </li>
+            </ul>
+            <button class="btn-primary w-100"
+              style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+              id="checkout-button-plan_GybwTOhupEPvny" role="link">
+              Wypróbuj za darmo
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Plus Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">
+              Wersja rozszerzona
+            </h5>
+            <h6 class="card-price text-center">
+              19zł<span class="period">/miesiąc</span>
+            </h6>
+            <hr />
+            <ul class="fa-ul">
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>200 prac
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>10 galerii
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>3 dodatkowe podstrony
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Formularz kontaktowy
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Integracja z mediami społecznościowymi
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Wsparcie techniczne
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Darmowy okres próbny (14 dni)
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Referencje i opinie klientów
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>CV na stronie
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Cennik prac i usług
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Własna domena i konfiguracja kont e-mail
+              </li>
+              <li class="text-muted">
+                <span class="fa-li">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>Modyfikacje na stronie na zamówienie
+              </li>
+            </ul>
+            <button class="btn-primary w-100"
+              style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+              id="checkout-button-plan_GygExNVJ3cXyjU" role="link">
+              Wypróbuj za darmo
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">
+              Pro
+            </h5>
+            <h6 class="card-price text-center">
+              49zł<span class="period">/miesiąc</span>
+            </h6>
+            <hr />
+            <ul class="fa-ul">
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>2000 prac
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>20 galerii
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>5 dodatkowych podstron
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Formularz kontaktowy
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Integracja z mediami społecznościowymi
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Wsparcie techniczne
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Darmowy okres próbny (14 dni)
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Referencje i opinie klientów
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>CV na stronie
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Cennik prac i usług
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Własna domena i konfiguracja kont e-mail
+              </li>
+              <li>
+                <span class="fa-li">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>Modyfikacje na stronie na zamówienie
+              </li>
+            </ul>
+            <button class="btn-primary w-100"
+              style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;"
+              id="checkout-button-plan_GygFUxHrx9S8LB" role="link">
+              Wypróbuj za darmo
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="error-message"></div>
+    </div>
+  </div>
+</div>

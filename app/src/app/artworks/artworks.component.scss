@@ -4,6 +4,13 @@
 .flex-row {
     flex-direction: row;
 }
+h3 {
+    font-size: 27px;
+    line-height: 35px;
+    margin: 0;
+    padding: 20px 0;
+    color: #4b4b4b
+   }
 h5 {
     font-size: 18px;
     padding: 20px 0;
@@ -11,17 +18,24 @@ h5 {
     letter-spacing: 0.03em;
     font-weight: 500;
     margin-top: 0;
-
     line-height: 16px;
     padding: 0;
     text-overflow: ellipsis;
     -webkit-text-stroke: 0px;
     filter: alpha(opacity=40);
     transition: opacity 0.3s ease;
+    &.link {
+    cursor: pointer;
+    }
+    fa-icon {
+    color: #6c757d;
+    font-size: 14px;
+    }
+
 }
 
 p{
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     letter-spacing: 0.02em;
     font-size: 15px;
     font-weight: 500;
@@ -35,6 +49,11 @@ rgba(239, 242, 249, 0.1);
 
 .btn-danger {
     background-color: transparent;
-    color: #dc3545;
+    color: #dc3545 !important;
     border-width: 2px;
 }
+
+.col-text {
+    background: #fff;
+    z-index: 1;
+    }

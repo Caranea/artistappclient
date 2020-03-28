@@ -12,7 +12,7 @@ export class AppComponent {
         private router: Router,
         private authenticationService: AuthenticationService
     ) {
-        this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; console.log(this.currentUser) });
+        this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
     }
 
     logout() {

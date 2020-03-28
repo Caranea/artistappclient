@@ -13,8 +13,20 @@ export class UserService {
         return this.http.get<User[]>(`${this.paths.apiUrl}/users`);
     }
 
+    getShortUsers(type) {
+        return this.http.get(`${this.paths.apiUrl}/users/short/${type}`);
+    }
+
     register(user: User) {
         return this.http.post(`${this.paths.apiUrl}/users/register`, user);
+    }
+
+    update(user, id) {
+        return this.http.put(`${this.paths.apiUrl}/users/profile/${id}`, user);
+    }
+
+    getUserProfile(id, extended = false) {
+        return this.http.get(`${this.paths.apiUrl}/users/profile/${id}/${extended}`);
     }
 
     delete(id: number) {

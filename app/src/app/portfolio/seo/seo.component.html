@@ -1,0 +1,47 @@
+<div class="container">
+    <p class="lead mt-4">
+        Te informacje pomogą wyszukiwarkom odnaleźć Twoją stronę.
+    </p>
+    <div>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th>Nazwa pola</th>
+                    <th>
+                        Opis
+                    </th>
+                    <th>
+                        Wartość
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Tytuł strony</th>
+                    <td>Główny tytuł twojej strony internetowej. To on będzie widniał w wynikach wyszukiwania
+                        Upewnij się, że jest zwięzły i unikatowy dla Twojej strony. </td>
+                    <td><input type="text" name="title" [value]="seo.title" (change)="updateValue($event, 'title')"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Tytuł strony głównej</th>
+                    <td>Tytuł strony głownej twojej witryny internetowej. Będzie on widniał w wynikach wyszukiwania dla
+                        tej podstrony
+                        Upewnij się, że jest zwięzły i unikatowy dla Twojej strony. </td>
+                    <td><input type="text" name="homepageTitle" [value]="seo.homepageTitle" (change)="updateValue($event, 'homepageTitle')"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Opis strony</th>
+                    <td>Opis twojej strony zawierający słowa kluczowe. Zalecamy, aby użyć mniej niż 160 znaków</td>
+                    <td><textarea rows="3" type="text" name="homepageDescription" [value]="seo.homepageDescription" (change)="updateValue($event, 'homepageDescription')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Słowa kluczowe</th>
+                    <td>Lista fraz, oddzielonych przecinkami, najlepiej opisująca treść strony.</td>
+                    <td><input type="text" name="keywords" [value]="seo.keywords" (change)="updateValue($event, 'keywords')"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-primary" (click)="createAndSaveForm()">Zapisz</button>
+    </div>
+</div>

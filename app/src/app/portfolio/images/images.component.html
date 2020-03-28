@@ -1,0 +1,47 @@
+<div class="container">
+    <p class="lead mt-4" *ngIf="!websiteArtworks">
+        Prace poniżej zostały pobrane na podstane informacji, które uzupełniłeś w sekcji <a href="../prace">prace</a>.
+        Możesz tam dodać lub usunąć elementy poniższej tabeli.
+    </p>
+    <div class="d-flex justify-content-center align-items-center flex-column" *ngIf="websiteArtworks">
+        <p class="lead mt-4" >
+            Poniżej znajdują się prace obecnie przypisane do strony. Aktualizuj listę na podstawie danych z sekcji <a
+                href="../prace">prace</a>.
+
+        </p><button (click)="getAllArtworks()" class="btn-primary btn-small">
+            Pobierz prace
+        </button>
+    </div>
+    <div *ngIf="artworks">
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Obraz</th>
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">Atrybut ALT <fa-icon
+                            tooltip="Atrybut alt to tekst zastępczy wykorzystywany kiedy obraz nie może zostać wyświetlony, na przykład podczas używania syntezatora mowy. Ma on duże znaczenie przy pozycjonowaniu strony, więc polecamy wypełnienie pola. Wystarczy krótki opis, np.: 'Obraz olejny - martwa natura.'"
+                            [icon]="faQuestionCircle"></fa-icon>
+                    </th>
+                    <th scope="col">Umieść na stronie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let artwork of rows; let index = index">
+                    <th scope="row">{{index + 1}}</th>
+                    <td><img [src]="'http://localhost:5000/' + artwork.photoUrl.split('public/')[1]" alt=""></td>
+                    <td><input type="text" [name]="'title'+index" [value]="artwork.title" data-field='title'
+                            (change)="updateValue($event, index)">
+                    </td>
+                    <td><input type="text" [name]="'alt'+index" [value]="artwork.alt" data-field='alt'
+                            (change)="updateValue($event, index)">
+                    </td>
+                    <td>
+                        <input type="checkbox" [name]="'use'+ index" [checked]="!website ? true : artwork.include"
+                            data-field='include' (change)="updateValue($event, index)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

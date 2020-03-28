@@ -1,0 +1,181 @@
+.container-blue {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+.jumbotron {
+  background-color: #181823 !important;
+  color: #fff;
+  border-radius: 0;
+  padding: 3rem 2rem;
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: inherit;
+  }
+  p.text-muted {
+    text-align: center;
+    max-width: 450px;
+  }
+  .d-flex {
+    flex-direction: column;
+  }
+}
+section.pricing {
+  background: #4d79f6;
+  background: linear-gradient(to right, #0062e6, #33aeff);
+}
+
+.pricing .card {
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing hr {
+  margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.pricing .card-price {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.pricing .card-price .period {
+  font-size: 0.8rem;
+}
+
+.pricing ul li {
+  margin-bottom: 1rem;
+}
+
+.pricing .text-muted {
+  opacity: 0.7;
+}
+
+.pricing .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+/* Hover Effects on Card */
+
+@media (min-width: 992px) {
+  .pricing .card:hover {
+    margin-top: -0.25rem;
+    margin-bottom: 0.25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+  .pricing .card:hover .btn {
+    opacity: 1;
+  }
+}
+.process-step .btn:focus {
+  outline: none;
+}
+.process {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.process-row {
+  display: table-row;
+}
+.process-step button[disabled] {
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+.process-row:before {
+  top: 40px;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 1px;
+  background-color: #4d7af660;
+}
+.process-step {
+  display: table-cell;
+  text-align: center;
+  width: 20%;
+  position: relative;
+   fa-icon {
+    font-size: 34px;
+  }
+}
+.process-step p {
+  margin-top: 4px;
+ 
+}
+.btn-circle {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 50%;
+}
+.btn-info {
+  background-color: #4d79f6;
+}
+.btn.btn-default.btn-circle:not(.btn-info) {
+  background: 
+#fff;
+border: 1px solid #4d7af6c2;
+  fa-icon {
+    color: #4d79f6;
+  }
+}
+
+.btn-primary {
+  font-size: 24px;
+  padding: 10px 20px;
+  float: right;
+  margin-bottom: 30px;
+}
+table img {
+  max-height: 200px;
+  max-width: 200px;
+}
+.table, .alert {
+  border-radius: 5px;
+  th {
+    border-top: none;
+  }
+}
+.add-icon {
+  color: #4d79f6;
+font-size: 37px;
+margin-left: 5px;
+}
+
+.category-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.category-label {
+    padding: 10px;
+    background: 
+  #fff;
+  margin-bottom: 20px;
+  display: inline-block;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 10px;
+  fa-icon {
+    color:#e6533c ;
+  }
+}

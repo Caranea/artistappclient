@@ -1,0 +1,152 @@
+<div class="container-blue p-0">
+    <div class="banner" *ngIf="artwork">
+        <div class="overlay"></div>
+        <img src="http://localhost:5000/images/cover.jpg" alt="Banner image">
+        <h1>{{artwork.title}}</h1>
+        <div class="carousel-container">
+            <carousel interval="false" (activeSlideChange)="setPadding()">
+                <slide *ngFor='let photo of artwork.photosUrls'>
+                    <img #banner [src]="'http://localhost:5000/' + photo.split('public/')[1]" alt="first slide"
+                        style="display: block; width: 100%;">
+                </slide>
+            </carousel>
+        </div>
+    </div>
+    <div class="container artwork" *ngIf="artwork" #artworkContainer>
+        <div class="row white main-content">
+            <div class="slider col-lg-8">
+                <h2 class="mb-3">
+                    {{artwork.title}}
+                </h2>
+                <div *ngIf="!artwork.reviews" class="reviews inactive mb-3" tooltip="Brak jeszcze ocen"
+                    placement="left">
+                    <fa-icon *ngFor="let star of arrayFrom(5)" class="mr-2 d-inline" [icon]="faStar"></fa-icon>
+                </div>
+                <div *ngIf="artwork.reviews" [tooltip]="'Średnia z '+artwork.reviews.length+' ocen'"
+                    class="reviews mb-3" placement="left">
+                    <fa-icon *ngFor="let star of arrayFrom(artwork.meanReview)" class="mr-2 d-inline active "
+                        [icon]="faStar">
+                    </fa-icon>
+                    <fa-icon *ngFor="let star of arrayFrom(5 - artwork.meanReview)" class="mr-2 d-inline"
+                        [icon]="faStar">
+                    </fa-icon>
+                </div>
+                <p class="mt-2">{{artwork.opis}}</p>
+            </div>
+            <div class="details col-lg-4 white">
+                <div class="detail-item" *ngIf="artwork.price">
+                    <span class="label">Cena (zł)</span>
+                    <span class="detail text-right">
+                        {{artwork.price}}
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Rozmiar (cm)</span>
+                    <span class="detail text-right">
+                        {{artwork.height}}x{{artwork.width}}
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Materiały</span>
+                    <span class="detail text-right">
+                        {{artwork.material}}
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Podłoże</span>
+                    <span class="detail text-right">
+                        {{artwork.surface}}
+                    </span>
+                </div>
+                <div class="detail-item" *ngIf="artwork.style">
+                    <span class="label">Styl</span>
+                    <span class="detail text-right">
+                        {{artwork.style}}
+                    </span>
+                </div>
+                <div class="detail-item" *ngIf="artwork.varnish">
+                    <span class="label">Werniks</span>
+                    <span class="detail text-right">
+                        {{artwork.varnish ? 'Tak' : 'Nie'}}
+                    </span>
+                </div>
+                <div class="detail-item" *ngIf="artwork.year">
+                    <span class="label">Rok powstania</span>
+                    <span class="detail text-right">
+                        {{artwork.year}}
+                    </span>
+                </div>
+                <button class="btn-product-link">
+                    Link do sklepu
+                </button>
+            </div>
+        </div>
+        <div class="row author-info">
+            <div class="col lg-8 p-0 mr-0 d-flex justify-content-between ">
+                <div class="bio d-flex align-items-center">
+                    <div *ngIf="author.profilePhoto" class="profile-photo">
+                        <img src="" alt="">
+                    </div>
+                    <h2>{{author.firstName}} {{author.lastName}}</h2>
+                </div>
+                <div class="price mr-4" *ngIf="artwork.price">
+                    PLN{{artwork.price}}
+                </div>
+            </div>
+            <div class="col-lg-4 pr-0 d-flex align-items-center justify-content-end author-website">
+                <a *ngIf="author.website" [href]="author.website">
+                    <fa-icon class="mr-2" [icon]="faExternalLinkAlt"></fa-icon>
+                    Odwiedź autora pracy
+                </a>
+                <p class="m-0" *ngIf="!author.website">
+                    Autor nie dodał strony internetowej
+                </p>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-lg-8 flex-col pr-4">
+                <div class="card comment-add">
+                    <textarea #comment id="comment" cols="30" rows="5"
+                        placeholder="Dodaj komentarz. Bądź konstruktywny!"></textarea>
+                    <button class="btn-product-link" (click)=leaveComment(comment)>
+                        <fa-icon [icon]="faCheck"></fa-icon>
+                    </button>
+                </div>
+                <div *ngFor="let comment of artwork.comments" class="card">
+                    <div class="card-header">
+                        {{comment.author}} <br>
+                        <small>{{comment.date}}</small>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{comment.content}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 pl-0">
+                <div class="card review">
+                    <div class="card-header review">
+                        Zostaw swoją ocenę
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item leave-review" #leaveReview>
+                            <fa-icon *ngFor="let star of arrayFrom(5)" class="mr-2 d-inline " [icon]="faStar"
+                                (mouseenter)=reviewHover(star) (mouseleave)=reviewHoverOut() (click)="addReview(star)">
+                            </fa-icon>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card review" *ngFor="let review of artwork.reviews">
+                    <div class="card-header review">
+                        {{review.author}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <fa-icon *ngFor="let star of arrayFrom(review.review)" class="mr-2 d-inline active"
+                                [icon]="faStar"></fa-icon>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,26 +6,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class=" collapse navbar-collapse" id="navbarNav">
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'portal'}" (click)="setActive('portal')">
-                    <a class="nav-link d-flex" href="#">
+                <li class="nav-item" routerLink="/portal" [ngClass]="{'active': activeNavTop === 'portal'}" (click)="setActive('portal')">
+                    <a class="nav-link d-flex" >
                         <fa-icon class="mr-2" [icon]="faIcons"></fa-icon>Portal <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'artworks'}"
-                    (click)="setActive('artworks')">
-                    <a class="nav-link d-flex" href="#">
+                <li class="nav-item"  routerLink="/prace" [ngClass]="{'active': activeNavTop === 'prace'}"
+                    (click)="setActive('prace')">
+                    <a class="nav-link d-flex">
                         <fa-icon class="mr-2" [icon]="faPalette"></fa-icon>Twoje prace<span
                             class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'portfolio'}"
+                <li class="nav-item" routerLink="/portfolio" [ngClass]="{'active': activeNavTop === 'portfolio'}"
                     (click)="setActive('portfolio')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2" [icon]="faLaptopCode"></fa-icon>Portfolio <span
                             class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'profile'}" (click)="setActive('profile')">
+                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'profil'}" [routerLink]="bottomMenu.profil[0].path" (click)="setActive('profil')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2" [icon]="faHatWizard"></fa-icon>Profil<span
                             class="sr-only">(current)</span>
@@ -56,7 +56,6 @@
                        {{menuItem.name}} <span class="sr-only">(current)</span>
                     </a>
                 </li>
-
             </div>
         </ul>
     </div>

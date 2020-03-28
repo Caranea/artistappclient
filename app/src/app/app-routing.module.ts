@@ -4,12 +4,22 @@ import { RegisterComponent } from './register/register.component'
 import { LoginComponent } from './login/login.component'
 import { ArtworkAddComponent } from './artworks/artwork-add/artwork-add.component'
 import { ArtworksComponent } from './artworks/artworks.component'
-
+import { ArtworkSingleComponent } from './artworks/artwork-single/artwork-single.component'
+import { ProfileComponent } from './profile/profile.component'
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component'
+import { HomeComponent } from './home/home.component'
+import { PortfolioComponent } from './portfolio/portfolio.component'
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'portal', component: HomeComponent },
+  { path: 'portfolio', component: PortfolioComponent },
+  { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'prace/dodaj', component: ArtworkAddComponent },
-  { path: 'prace', component: ArtworksComponent }
+  { path: 'prace/edytuj/:id', component: ArtworkAddComponent },
+  { path: 'prace', component: ArtworksComponent },
+  { path: 'prace/:id', component: ArtworkSingleComponent },
+  { path: 'profil/zobacz/:id', component: ProfileComponent },
+  { path: 'profil/edytuj', component: ProfileEditComponent },
 ];
 
 @NgModule({

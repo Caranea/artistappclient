@@ -5,6 +5,7 @@ import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { ArtworkService } from '../../services/artwork.service'
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-artwork-add',
@@ -12,23 +13,28 @@ import { AuthenticationService } from '../../services/auth.service';
   styleUrls: ['./artwork-add.component.scss']
 })
 export class ArtworkAddComponent implements OnInit {
+  editMode: boolean;
+  id: string;
   artworkForm: FormGroup;
   loading = false;
   submitted = false;
+  artworkData;
   faLongArrowAltRight = faLongArrowAltRight;
   currentUser
   constructor(
     private formBuilder: FormBuilder, private alertService: AlertService, private artworkService: ArtworkService,
-     private authenticationService: AuthenticationService
-  ) { 
-    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; console.log(this.currentUser) });
-
+    private authenticationService: AuthenticationService, private activatedRoute: ActivatedRoute
+  ) {
+    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x;});
+    this.id = this.activatedRoute.snapshot.paramMap.get('id')
+    this.editMode = !!this.id
+    this.editMode && this.getFormData(this.id)
   }
 
   ngOnInit(): void {
     this.artworkForm = this.formBuilder.group({
       userId: this.currentUser._id,
-      photos: [[{}], Validators.required],
+      photos: ['', Validators.required],
       type: ['malarstwo', Validators.required],
       title: ['', Validators.required],
       height: ['', Validators.required],
@@ -38,17 +44,17 @@ export class ArtworkAddComponent implements OnInit {
       opis: ['', Validators.required],
       style: [''],
       varnish: [false, Validators.required],
-      year: ['', Validators.required],
-      forSale: [true, Validators.required],
+      year: [2020],
+      forSale: [true],
       price: [''],
       facebook: [true],
-      Instagram: [true],
-      Pinterest: [true],
-      Etsy: [true],
-      Amazon: [true],
+      instagram: [true],
+      pinterest: [true],
+      etsy: [true],
+      amazon: [true],
       artpal: [true],
-      Ebay: [true],
-      Allegro: [true]
+      ebay: [true],
+      allegro: [true]
     });
   }
 
@@ -58,21 +64,58 @@ export class ArtworkAddComponent implements OnInit {
     this.submitted = true;
 
     this.alertService.clear();
-
+    if(!this.artworkForm.value.photos) {
+      this.alertService.error('Zapomniałeś/aś o zdjęciach')
+    }
     if (this.artworkForm.invalid) {
       return;
     }
     this.loading = true;
-    this.artworkService.add(this.artworkForm.value)
+    if (this.editMode) {
+      this.artworkService.update(this.artworkForm.value, this.id)
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Udało się dodać pracę', true);
+          this.alertService.success('Udało się wprowdzić zmiany', true);
           this.loading = false;
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
         });
+    } else {
+      this.artworkService.add(this.artworkForm.value)
+        .pipe(first())
+        .subscribe(
+          data => {
+            this.alertService.success('Udało się dodać pracę', true);
+            this.loading = false;
+          },
+          error => {
+            this.alertService.error(error);
+            this.loading = false;
+          });
+    }
+  }
+
+  getFormData(id) {
+    this.artworkService.getOne(this.id)
+      .pipe(first())
+      .subscribe(
+        (data: any) => {
+          this.artworkData = data.artwork;
+          this.readFormValue()
+        },
+        error => {
+          this.alertService.error(error);
+        });
+  }
+  readFormValue() {
+    let fields = Object.keys(this.artworkData)
+    for (let field of fields) {
+      if (this.artworkForm.value[field] !== undefined) {
+        this.artworkForm.get(field).setValue(this.artworkData[field])
+      }
+    }
   }
 }
