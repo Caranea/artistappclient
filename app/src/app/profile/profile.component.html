@@ -38,23 +38,23 @@
                 <div class="socials">
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item" *ngIf="profile.facebook">
-                            <a [href]="profile.facebook"><img src="http://localhost:5000/images/facebook.svg"
+                            <a target="_blank" [href]="profile.facebook"><img src="http://localhost:5000/images/facebook.svg"
                                     alt="Facebook Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item" *ngIf="profile.instagram">
-                            <a [href]="profile.instagram"><img src="http://localhost:5000/images/instagram.svg"
+                            <a target="_blank" [href]="profile.instagram"><img src="http://localhost:5000/images/instagram.svg"
                                     alt="Instagram Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item"  *ngIf="profile.twitter">
-                            <a [href]="profile.twitter"><img src="http://localhost:5000/images/twitter.svg"
+                            <a target="_blank" [href]="profile.twitter"><img src="http://localhost:5000/images/twitter.svg"
                                     alt="Twitter Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item"  *ngIf="profile.behance">
-                            <a [href]="profile.behance"><img src="http://localhost:5000/images/behance.svg"
+                            <a target="_blank" [href]="profile.behance"><img src="http://localhost:5000/images/behance.svg"
                                     alt="behance Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item"  *ngIf="profile.youtube">
-                            <a [href]="profile.youtube"><img src="http://localhost:5000/images/youtube.svg"
+                            <a target="_blank" [href]="profile.youtube"><img src="http://localhost:5000/images/youtube.svg"
                                     alt="Youtube Icon" style="height: 40px;"></a>
                         </li>
                     </ul>
@@ -66,9 +66,12 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card side">
-                    <div class="btn btn-primary btn-big">
+                    <div class="btn btn-primary btn-big" (click)="follow()" *ngIf="!isFollowing()">
                         Obserwuj
                     </div>
+                    <button class="btn btn-primary btn-big" disabled *ngIf="isFollowing()">
+                        Obserwujesz
+                    </button>
                     <p class="mt-3" *ngIf="profile.bio">{{profile.bio}}</p>
                     <p class="mt-3" *ngIf="!profile.bio">Użytkownik nie przedstawił się</p>
                     <div class="details white">

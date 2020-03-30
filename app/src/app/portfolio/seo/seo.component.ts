@@ -38,7 +38,6 @@ export class SeoComponent implements OnInit {
 
   updateValue(e, key) {
     this.seo[key] = e.target.value
-    console.log(key, this.seo[key], e.target.value)
   }
   
   createAndSaveForm() {

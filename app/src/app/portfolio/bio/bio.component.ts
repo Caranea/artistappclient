@@ -51,7 +51,6 @@ export class BioComponent implements OnInit {
 
 
   getProfile() {
-    console.log('getting profile')
     this.userService.getUserProfile(this.currentUser._id)
       .pipe(first())
       .subscribe(

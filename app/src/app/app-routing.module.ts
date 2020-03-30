@@ -9,9 +9,13 @@ import { ProfileComponent } from './profile/profile.component'
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component'
 import { HomeComponent } from './home/home.component'
 import { PortfolioComponent } from './portfolio/portfolio.component'
+import { PreviewComponent } from './preview/preview.component'
+
 const routes: Routes = [
   { path: 'portal', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'portfolio', component: PortfolioComponent },
+  { path: 'podglad', component: PreviewComponent },
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'prace/dodaj', component: ArtworkAddComponent },

@@ -22,7 +22,8 @@ export class MainNavComponent implements AfterContentChecked {
     this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
     this.bottomMenu = {
       'portal': [{ name: 'Portal', path: 'portal' }],
-      'portfolio': [{ name: 'Panel', path: 'portfolio' }],
+      'portfolio': [{ name: 'Panel', path: 'portfolio' }, { name: 'Edycja strony', path: 'podglad' }],
+      'podglad': [{ name: 'Panel', path: 'portfolio' }, { name: 'Podgląd strony', path: 'podglad' }],
       'prace': [{ name: 'Przeglądaj', path: 'prace' }, { name: 'Dodaj nową', path: 'prace/dodaj' }],
       'profil': [{ name: 'Podgląd', path: `profil/zobacz/${this.currentUser._id}` }, { name: 'Edytuj profil', path: 'profil/edytuj' }]
     }

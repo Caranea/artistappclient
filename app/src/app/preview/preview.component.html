@@ -1,0 +1,123 @@
+<iframe width="100%" height="100%" [src]="('http://localhost:5000'+previewUrl) | safe: 'resourceUrl'"></iframe>
+<div class="form-container">
+    <h3><a [href]="'http://localhost:5000'+previewUrl" target="_blank">Otwórz w nowej karcie</a></h3>
+    <h3>Dopasuj teksty</h3>
+    <accordion closeOthers="true" [isAnimated]="true" *ngIf="texts">
+        <accordion-group heading="Strona główna">
+            <div class="replace" #homepage>
+                <select id="homepage">
+                    <option value="">Wybierz tekst do podmiany</option>
+                    <option *ngFor="let item of texts.homepage" [value]="getValue(item)">{{getValue(item)}}</option>
+                </select>
+                <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
+                <input type="text" placeholder="Wpisz tutaj nowy tekst">
+                <button class="btn btn-primary" (click)=replaceText(homepage)>
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+        <accordion-group heading="O mnie">
+            <div class="replace" #about>
+                <select id="about">
+                    <option value="">Wybierz tekst do podmiany</option>
+                    <option *ngFor="let item of texts.about" [value]="getValue(item)">{{getValue(item)}}</option>
+                </select>
+                <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
+                <input type="text" placeholder="Wpisz tutaj nowy tekst">
+                <button class="btn btn-primary" (click)=replaceText(about)>
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+        <accordion-group heading="Portfolio">
+            <div class="replace" #portfolio>
+                <select id="portfolio">
+                    <option value="">Wybierz tekst do podmiany</option>
+                    <option *ngFor="let item of texts.portfolio" [value]="getValue(item)">{{getValue(item)}}</option>
+                </select>
+                <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
+                <input type="text" placeholder="Wpisz tutaj nowy tekst">
+                <button class="btn btn-primary" (click)=replaceText(portfolio)>
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+        <accordion-group heading="Kontakt">
+            <div class="replace" #contact>
+                <select id="contact">
+                    <option value="">Wybierz tekst do podmiany</option>
+                    <option *ngFor="let item of texts.contact" [value]="getValue(item)">{{getValue(item)}}</option>
+                </select>
+                <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
+                <input type="text" placeholder="Wpisz tutaj nowy tekst">
+                <button class="btn btn-primary" (click)=replaceText(contact)>
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+    </accordion>
+    <h3>Opcje dodatkowe</h3>
+    <accordion closeOthers="true" [isAnimated]="true">
+        <accordion-group heading="Ustaw favicon"
+            tooltip="Favicon jest małą ikoną, która wyświetla się obok tytułu witryny w przeglądarce. Służy jako element rozpoznawczy, budujący zaufanie wśród odbiorców, ponieważ pomaga im wizualnie zidentyfikować witrynę internetową. Aby ustawic prawidłowo favicon, wybierz kwadratową ikonę w formacie .png.">
+            <div class="addExtra">
+                <input-file name="favicon" #icon fileAccept="image/png" fileLimit="1" [linkEnabled]="true">
+                </input-file>
+                <button class="btn btn-primary" (click)="saveIcon()">
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+        <accordion-group heading="Dodaj logo"
+            tooltip="Ustaw logo. Użyj formatu svg, który jest najlepszą opcją dla umieszczania podobnych obrazków na stronach internetowych.">
+            <div class="addExtra">
+                <input-file #logo name="logo" fileAccept="image/svg" fileLimit="1" [linkEnabled]="true">
+                </input-file>
+                <button class="btn btn-primary" (click)="saveLogo()">
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+    </accordion>
+    <h3>Zmień prace na stronie</h3>
+    <accordion closeOthers="true" [isAnimated]="true" *ngIf="categories && artworks">
+        <accordion-group heading="Zmień prace">
+            <div class="artworks-table">
+                <table class="table table-light artworks">
+                    <tbody>
+                        <tr *ngFor="let artwork of artworks; let index = index">
+                            <td><img [src]="'http://localhost:5000/' + artwork.photoUrl.split('public/')[1]" alt="">
+                            </td>
+                            <td>
+                                <label for="title">Tytuł</label>
+                                <input type="text" [name]="'title'+index" [value]="artwork.title" data-field='title'
+                                    (change)="updateValue($event, index)">
+                            </td>
+                            <td>
+                                <label for="categories"> Kategoria</label>
+                                <select id="categories" [disabled]="categories.length === 0" [name]="'alt'+index"
+                                    [value]="artwork.category" data-field='category'
+                                    (change)="updateValue($event, index)">
+                                    <option value=""></option>
+                                    <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                                </select>
+                            </td>
+                            <td><label for="alt">Atrybut ALT</label>
+                                <input type="text" [name]="'alt'+index" [value]="artwork.alt" data-field='alt'
+                                    (change)="updateValue($event, index)">
+                            </td>
+                            <td><label for="include">Umieść na stronie</label>
+                                <input type="checkbox" [name]="'use'+ index"
+                                    [checked]="!website ? true : artwork.include" data-field='include'
+                                    (change)="updateValue($event, index)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" (click)="saveArtworks()">
+                    Zapisz
+                </button>
+            </div>
+        </accordion-group>
+    </accordion>
+</div>

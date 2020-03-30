@@ -31,7 +31,6 @@ export class ProfileEditComponent implements OnInit {
             keys.forEach(key => {
               if (this.profileForm.get(key)) {
                 if ((key !== 'coverPhoto') && (key !== 'profilePhoto') ) {
-                  console.log(key)
                   this.profileForm.get(key).setValue(data.userProfile[key])
                 }
               }

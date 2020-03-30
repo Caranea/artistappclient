@@ -147,7 +147,7 @@
           " alt="" />
                 <div class="overlay">
                     <div class="content">
-                        <div class="img-container">
+                        <div class="img-container" *ngIf="item.profilePhoto">
                             <img [src]="
                   'http://localhost:5000/' +
                   item.profilePhoto.split('public/')[1]
@@ -156,12 +156,6 @@
                         <h3>{{ item.name }}</h3>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 artist">
-                <img [src]="
-            'http://localhost:5000/' +
-            users[0].bestArtworkUrl.split('public/')[1]
-          " alt="" />
             </div>
         </div>
     </section>

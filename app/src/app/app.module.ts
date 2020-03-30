@@ -24,11 +24,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { HomeComponent } from './home/home.component';
 import { NguCarouselModule } from '@ngu/carousel';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ImagesComponent } from './portfolio/images/images.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BioComponent } from './portfolio/bio/bio.component';
 import { SeoComponent } from './portfolio/seo/seo.component';
+import { PreviewComponent } from './preview/preview.component';
+import { SafePipe } from './pipes/safe.pipe'
 
 const config: InputFileConfig = {};
 
@@ -49,7 +54,9 @@ const config: InputFileConfig = {};
     PortfolioComponent,
     ImagesComponent,
     BioComponent,
-    SeoComponent
+    SeoComponent,
+    PreviewComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -61,11 +68,14 @@ const config: InputFileConfig = {};
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    BrowserAnimationsModule,
     InputFileModule.forRoot(config),
     TooltipModule.forRoot(),
-    CarouselModule.forRoot()
+    AccordionModule.forRoot(),
+    CarouselModule.forRoot(),
+    BsDropdownModule.forRoot()
+
   ],
+  exports: [SafePipe],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, CookieService
   ],

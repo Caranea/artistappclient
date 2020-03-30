@@ -47,6 +47,7 @@ export class ProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private artworkService: ArtworkService
   ) {
+    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
     this.userService.getUserProfile(this.id)
       .pipe(first())
@@ -80,6 +81,19 @@ export class ProfileComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         });
+  }
+  isFollowing() {
+    return this.profile.observers.includes(this.currentUser._id) ? true : false
+  }
+  follow() {
+    this.userService.follow({observerId: this.currentUser._id, observedId: this.id})
+    .pipe(first())
+    .subscribe(
+      (data: any) => {
+        this.alertService.success("Od teraz obserwujesz użytkownika");
+      }, error => {
+        this.alertService.error(error);
+      });
   }
   ngOnInit(): void {
   }

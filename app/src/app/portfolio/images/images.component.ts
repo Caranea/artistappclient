@@ -32,7 +32,6 @@ export class ImagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.currentUser)
     this.websiteService.getWebsite(this.currentUser._id)
       .pipe(first())
       .subscribe(
@@ -107,7 +106,6 @@ export class ImagesComponent implements OnInit {
             this.rows.push(artworkShort)
           }
           this.rows = [...this.rows]
-          console.log(this.rows)
         },
         error => {
           this.alertService.error(error);

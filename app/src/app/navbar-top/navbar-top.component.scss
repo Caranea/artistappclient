@@ -13,7 +13,7 @@ fa-icon {
     width: 50px;
     border-radius: 50%;
     border: 2px solid #f1f5fa;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
@@ -26,4 +26,24 @@ p {
     font-size: 13px;
     color: #828db1;
     line-height: 70px;
+    display: inline;
+}
+.btn-transparent, .btn-transparent:focus, .btn-transparent:hover, .btn-transparent:active {
+    background: 
+    transparent !important;
+    border:
+    transparent !important;
+    box-shadow: none !important;
+}
+.animations span{
+    color:red;
+    position: absolute;
+    font-size: 20px;
+    top: 15px;
+    right: 42px;
+}
+.dropdown-menu.show {
+    height: auto !important;
+    right: 0 !important;
+    left: auto !important;
 }

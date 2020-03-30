@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ArtworkService } from '../services/artwork.service'
 import { WebsiteService } from '../services/website.service'
+import { Router } from '@angular/router';
 
 import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faLongArrowAltRight, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,7 +33,8 @@ export class PortfolioComponent implements OnInit {
   loading = false;
   handler: any = null;
   categories = [];
-  constructor(private websiteService: WebsiteService, private formBuilder: FormBuilder, private artworkService: ArtworkService, private authenticationService: AuthenticationService, private userService: UserService, private alertService: AlertService) {
+  maxCategories;
+  constructor(private router: Router, private websiteService: WebsiteService, private formBuilder: FormBuilder, private artworkService: ArtworkService, private authenticationService: AuthenticationService, private userService: UserService, private alertService: AlertService) {
     this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
   }
   ngOnInit() {
@@ -49,6 +51,9 @@ export class PortfolioComponent implements OnInit {
         (data: any) => {
           this.userProfile = data.userProfile;
           if (!this.userProfile.plan) this.loadStripe(this.currentUser.email);
+          if (this.userProfile.plan) {
+            this.maxCategories = this.userProfile.plan === 'basic' ? 3 : this.userProfile.plan === 'pro' ? 10 : 20;
+          }
         },
         error => {
           this.alertService.error(error);
@@ -70,14 +75,13 @@ export class PortfolioComponent implements OnInit {
     if (this.seoForm.invalid) {
       return;
     }
-
     this.loading = true;
-    this.websiteService.addWebsite({ seo: this.seoForm.value, artworks: this.rows, userId: this.currentUser._id })
+    this.websiteService.addWebsite({ seo: this.seoForm.value, artworks: this.rows, userId: this.currentUser._id, categories: this.categories })
       .pipe(first())
       .subscribe(
         data => {
           this.alertService.success('Udało się zapisać informacje. Zostaniesz przekierowany do poglądu strony', true);
-          //   this.router.navigate(['/login']);
+          this.router.navigate(['/podglad']);
           this.loading = false;
         },
         error => {

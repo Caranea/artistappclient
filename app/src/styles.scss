@@ -8,12 +8,22 @@ body {
 .container {
   max-width: 1366px !important;
 }
+select {
+  height: 37px;
+  background: 
+#fff;
+border: 1px solid
+#ced4da;
+border-radius: .25rem;
+padding: 5px;
+}
 .register-container {
   background-image: url("./images/acount-page.jpg");
   min-height: 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+background-size: 100vw 100vh;
 }
 .logo-image {
   background-color: #fff;
@@ -110,6 +120,13 @@ label {
   margin-top: 20px;
   mat-icon {
     color: white;
+  }
+}
+.addExtra .file-container {
+  height: auto !important;
+  width: auto !important;
+  img {
+max-height: 80px;    width: auto !important;
   }
 }
 alert {
