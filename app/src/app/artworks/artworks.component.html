@@ -1,7 +1,7 @@
 <div class="container-blue">
     <div class="container">
         <h3>
-            Zarządzaj dodanymi pracami
+            {{artworks.length ? 'Zarządzaj dodanymi pracami' : 'Nie dodałeś jeszcze żadnych prac'}}
         </h3>
         <div class="d-flex flex-col">
             <div *ngFor="let artwork of artworks" class="card mb-3">

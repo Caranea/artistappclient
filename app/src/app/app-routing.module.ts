@@ -10,6 +10,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 import { HomeComponent } from './home/home.component'
 import { PortfolioComponent } from './portfolio/portfolio.component'
 import { PreviewComponent } from './preview/preview.component'
+import { SettingsComponent } from './settings/settings.component'
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'podglad', component: PreviewComponent },
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'ustawienia', component: SettingsComponent },
   { path: 'prace/dodaj', component: ArtworkAddComponent },
   { path: 'prace/edytuj/:id', component: ArtworkAddComponent },
   { path: 'prace', component: ArtworksComponent },

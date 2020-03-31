@@ -38,6 +38,10 @@ export class UserService {
         return this.http.get(`${this.paths.apiUrl}/users/profile/${id}/${extended}`);
     }
 
+    cancelSubscription(id) {
+        return this.http.get(`${this.paths.apiUrl}/users/subscription/cancel/${id}`);
+    }
+
     delete(id: number) {
         return this.http.delete(`${this.paths.apiUrl}/users/${id}`);
     }

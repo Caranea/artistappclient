@@ -31,8 +31,8 @@
                             class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'settings'}"
-                    (click)="setActive('settings')">
+                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'ustawienia'}"
+                [routerLink]="'/ustawienia'" (click)="setActive('ustawienia')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2" [icon]="faSlidersH"></fa-icon>Ustawienia<span
                             class="sr-only">(current)</span>

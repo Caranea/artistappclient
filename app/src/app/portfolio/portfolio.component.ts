@@ -52,7 +52,7 @@ export class PortfolioComponent implements OnInit {
           this.userProfile = data.userProfile;
           if (!this.userProfile.plan) this.loadStripe(this.currentUser.email);
           if (this.userProfile.plan) {
-            this.maxCategories = this.userProfile.plan === 'basic' ? 3 : this.userProfile.plan === 'pro' ? 10 : 20;
+            this.maxCategories = this.userProfile.plan === 'basic' ? 3 : this.userProfile.plan === 'premium' ? 10 : 20;
           }
         },
         error => {
@@ -65,6 +65,11 @@ export class PortfolioComponent implements OnInit {
       return el.include === true
     }).length === 0) {
       this.alertService.error('Musisz zamieścic choć jedną pracę')
+      return
+    }
+
+    if (this.categories.length === 0) {
+      this.alertService.error('Dodaj choć jedną kategorie')
       return
     }
     this.submitted = true;
@@ -97,7 +102,7 @@ export class PortfolioComponent implements OnInit {
     }
     this.categories.push(this.catInput.nativeElement.value.trim())
     this.catInput.nativeElement.value = ''
-    if (this.categories.length > 2) {
+    if (this.categories.length > this.maxCategories - 1) {
       this.catInput.nativeElement.disabled = true;
     }
   }

@@ -21,6 +21,7 @@ export class MainNavComponent implements AfterContentChecked {
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
     this.bottomMenu = {
+      'ustawienia': [{ name: 'Główne', path: '/ustawienia' }],
       'portal': [{ name: 'Portal', path: 'portal' }],
       'portfolio': [{ name: 'Panel', path: 'portfolio' }, { name: 'Edycja strony', path: 'podglad' }],
       'podglad': [{ name: 'Panel', path: 'portfolio' }, { name: 'Podgląd strony', path: 'podglad' }],
@@ -33,11 +34,13 @@ export class MainNavComponent implements AfterContentChecked {
     let activeRoute = this.router.url.split('/')[1]
     if (activeRoute) {
       this.activeNavTop = this.router.url.split('/')[1]
+      console.log(activeRoute, this.activeNavTop)
       this.activeNavBottom === undefined && (this.activeNavBottom = this.bottomMenu[activeRoute][0].name);
     }
   }
 
   setActive(active: string, setBottom = false) {
+    console.log(active)
     !setBottom ? () => {
       this.activeNavTop = active;
       this.activeNavBottom = this.bottomMenu[active][0].name;

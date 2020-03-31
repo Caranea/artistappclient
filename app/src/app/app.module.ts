@@ -33,7 +33,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BioComponent } from './portfolio/bio/bio.component';
 import { SeoComponent } from './portfolio/seo/seo.component';
 import { PreviewComponent } from './preview/preview.component';
-import { SafePipe } from './pipes/safe.pipe'
+import { SafePipe } from './pipes/safe.pipe';
+import { SettingsComponent } from './settings/settings.component'
 
 const config: InputFileConfig = {};
 
@@ -56,7 +57,8 @@ const config: InputFileConfig = {};
     BioComponent,
     SeoComponent,
     PreviewComponent,
-    SafePipe
+    SafePipe,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

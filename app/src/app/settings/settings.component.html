@@ -1,0 +1,36 @@
+<div class="container-blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item" (click)="activeTab='acc'">Konto</li>
+                    <!-- <li class="list-group-item" (click)="activeTab='payment'">Subskrypcje i płatności</li> -->
+                    <!-- <li class="list-group-item" (click)="activeTab='admin'">Kontakt z administratorem serwisu</li> -->
+                </ul>
+            </div>
+            <div class="border-right col-md-9 d-flex pt-2">
+                <div *ngIf="activeTab==='acc'">
+                    <h2 class="text-left mb-2">Informacje, jakie o Tobie posiadamy:</h2>
+                    <div class="p-2 mb-4 bg-info text-white">Możesz zażądać usunięcia lub zmiany Twoich danych poprzez
+                        kontakt z administratorem pod adresem kontakt@knickknacks.pl lub za pomocą okienka z czatem w rogu strony.</div>
+                    <div class="data-item">
+                        <label class="mr-3">E-mail</label>
+                        <input type="text" disabled [value]="profile.email">
+                    </div>
+                    <div class="data-item">
+                        <label class="mr-3">Telefon</label>
+                        <input type="text" disabled [value]="profile.phone">
+                    </div>
+                    <div class="data-item">
+                        <label class="mr-3">Imie i nazwisko</label>
+                        <input type="text" disabled [value]="profile.firstName + ' ' + profile.lastName">
+                    </div>
+                    <div class="data-item">
+                        <label class="mr-3">Wykupiony plan</label>
+                        <input type="text" disabled [value]="profile.plan">
+                    </div>
+                    <div class="btn btn-danger mr-3" *ngIf="profile.subscription" (click)="cancel()">Usuń subskrypcję</div>
+                </div>
+            </div>
+        </div>
+    </div>

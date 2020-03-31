@@ -1,0 +1,22 @@
+.container-blue {
+    padding: 0;
+}
+.col-md-3, .col-md-9 {
+    min-height: 100vh;
+    background-color: #fff;
+}
+.list-group, .list-group-item {
+    border: none;
+    cursor: pointer;
+}
+
+.list-group-item {
+    padding-left: 0;
+}
+
+.data-item {
+    margin-bottom: 10px;
+    label {
+        width: 100px;
+    }
+}
