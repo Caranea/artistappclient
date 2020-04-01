@@ -4,9 +4,9 @@ import { AuthenticationService } from "../services/auth.service";
 import { AlertService } from "../services/alert.service";
 import { first } from "rxjs/operators";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
-import { faAngleDoubleDown, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faQuestionCircle, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ArtworkService } from '../services/artwork.service'
-
+import { UserService } from '../services/user.service'
 @Component({
   selector: "app-preview",
   templateUrl: "./preview.component.html",
@@ -18,8 +18,12 @@ export class PreviewComponent implements OnInit {
   texts;
   faAngleDoubleDown = faAngleDoubleDown;
   faQuestionCircle = faQuestionCircle;
+  faPlus = faPlus;
   artworks
   categories
+  profile
+  testimonials = []
+  pricing = []
   @ViewChild("homepage") homepage;
   @ViewChild("about") about;
   @ViewChild("portfolio") portfolio;
@@ -33,10 +37,18 @@ export class PreviewComponent implements OnInit {
     private authService: AuthenticationService,
     private alertService: AlertService,
     public sanitizer: DomSanitizer,
-    private artworkService: ArtworkService
+    private artworkService: ArtworkService,
+    private userService: UserService
   ) {
     this.authService.currentUser.subscribe(x => {
       this.currentUser = x;
+      this.userService.getUserProfile(this.currentUser._id)
+        .pipe(first())
+        .subscribe((data: any) => {
+          this.profile = data.userProfile
+        }, error => {
+          this.alertService.error(error);
+        })
     });
   }
 
@@ -90,6 +102,47 @@ export class PreviewComponent implements OnInit {
         (data: any) => {
 
           this.categories = data.website.categories;
+          this.testimonials = data.website.testimonials || [
+            {
+              content: 'Tutaj możesz dodać opinię o Tobie osób, z którymi współpracowałeś lub Twoich klientów',
+              author: 'Przykladowy autor'
+            }
+          ]
+          this.pricing = data.website.pricing || [
+            { name: '', price: '', description: [''] }, { name: '', price: '', description: [''] }, { name: '', price: '', description: [''] }
+          ]
+        },
+        error => {
+          this.alertService.error(error);
+        }
+      );
+  }
+
+  saveTestimonials() {
+    this.testimonials = this.testimonials.filter(el => el.author.trim() !== '' && el.content.trim() !== '')
+    this.websiteService.addTestimonials(this.currentUser._id, { testimonials: this.testimonials })
+      .subscribe(
+        (data: any) => {
+          //this.testimonials = data.website.testimonials;
+        },
+        error => {
+          this.alertService.error(error);
+        }
+      );
+  }
+
+  savePricing() {
+    this.pricing.forEach(el => {
+      if (el.name.trim() === "" || el.price.trim() === "" || el.description[0].trim() === "") {
+        this.alertService.error("Wypełnij prawidłowo wszystkie trzy elementy cennika");
+        return;
+      }
+      el.description = el.description.filter(el => el.trim() !== '')
+    })
+    this.websiteService.addPricing(this.currentUser._id, { pricing: this.pricing })
+      .subscribe(
+        (data: any) => {
+          //this.testimonials = data.website.testimonials;
         },
         error => {
           this.alertService.error(error);
@@ -114,7 +167,7 @@ export class PreviewComponent implements OnInit {
 
   saveArtworks() {
     let included = this.artworks.filter(el => el.include)
-    if (included.length === 0 ) {
+    if (included.length === 0) {
       this.alertService.error('Musisz zaznaczyć choć 1 pracę')
       return;
     }

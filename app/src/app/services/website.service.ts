@@ -13,6 +13,12 @@ export class WebsiteService {
   getWebsite(userId) {
     return this.http.get(`${this.paths.apiUrl}/website/${userId}`);
   }
+  addTestimonials(userId, testimonials) {
+    return this.http.post(`${this.paths.apiUrl}/website/testimonials/${userId}`, testimonials);
+  }
+  addPricing(userId, pricing) {
+    return this.http.post(`${this.paths.apiUrl}/website/pricing/${userId}`, pricing);
+  }
   getTexts(userId) {
     return this.http.get(`${this.paths.apiUrl}/create_website/texts/${userId}`);
   }

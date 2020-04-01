@@ -25,7 +25,7 @@
                         <label class="mr-3">Imie i nazwisko</label>
                         <input type="text" disabled [value]="profile.firstName + ' ' + profile.lastName">
                     </div>
-                    <div class="data-item">
+                    <div class="data-item" *ngIf="profile.plan">
                         <label class="mr-3">Wykupiony plan</label>
                         <input type="text" disabled [value]="profile.plan">
                     </div>
