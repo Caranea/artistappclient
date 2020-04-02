@@ -1,12 +1,12 @@
 <div class="container-blue p-0">
     <div class="banner" *ngIf="artwork">
         <div class="overlay"></div>
-        <img src="http://localhost:5000/images/cover.jpg" alt="Banner image">
+        <img src="https://knickknacks.herokuapp.com/images/cover.jpg" alt="Banner image">
         <h1>{{artwork.title}}</h1>
         <div class="carousel-container">
             <carousel interval="false" (activeSlideChange)="setPadding()">
                 <slide *ngFor='let photo of artwork.photosUrls'>
-                    <img #banner [src]="'http://localhost:5000/' + photo.split('public/')[1]" alt="first slide"
+                    <img #banner [src]="'https://knickknacks.herokuapp.com/' + photo.split('public/')[1]" alt="first slide"
                         style="display: block; width: 100%;">
                 </slide>
             </carousel>

@@ -12,7 +12,7 @@
           <br>
           Motyw dobierz w sekcji <a [routerLink]="['/szablon']" routerLinkActive="router-link-active">szablon.</a>
           <br>
-          <a [href]="'http://localhost:5000'+userProfile.website">Otwórz stronę w nowej karcie.</a>
+          <a [href]="'https://knickknacks.herokuapp.com'+userProfile.website">Otwórz stronę w nowej karcie.</a>
         </p>
       </div>
       <div class="d-flex justify-content-center align-items-center" *ngIf="!userProfile.plan">
@@ -145,7 +145,7 @@
             <tbody>
               <tr *ngFor="let artwork of rows; let index = index">
                 <th scope="row">{{index + 1}}</th>
-                <td><img [src]="'http://localhost:5000/' + artwork.photoUrl.split('public/')[1]" alt=""></td>
+                <td><img [src]="'https://knickknacks.herokuapp.com/' + artwork.photoUrl.split('public/')[1]" alt=""></td>
                 <td><input type="text" [name]="'title'+index" [value]="artwork.title" data-field='title'
                     (change)="updateValue($event, index)">
                 </td>

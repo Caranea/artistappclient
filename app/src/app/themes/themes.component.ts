@@ -28,12 +28,10 @@ export class ThemesComponent implements OnInit {
 
 
   setTheme(theme) {
-    console.log('theme', theme)
     this.activeTheme = theme;
     this.websiteService.changeTheme(this.currentUser._id, theme)
       .pipe(first())
       .subscribe((data: any) => {
-        console.log(data)
       }, error => {
         this.alertService.error(error);
       })
@@ -41,10 +39,8 @@ export class ThemesComponent implements OnInit {
 
   changePhoto() {
     let file = this.theme1photo
-    console.log('activeTheme',this.activeTheme)
     let file_ = file.files[0]
     setTimeout(() => {
-      console.log(file_.preview)
       this.websiteService.changeTheme(this.currentUser._id, this.activeTheme, { photos: file_.preview })
         .pipe(first())
         .subscribe((data: any) => {

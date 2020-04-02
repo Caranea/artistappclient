@@ -1,5 +1,5 @@
 const Paths = {
-    apiUrl: 'http://localhost:5000'
+    apiUrl: 'https://knickknacks.herokuapp.com'
 }
 
 export { Paths }
