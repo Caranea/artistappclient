@@ -3,7 +3,7 @@ import { WebsiteService } from "../services/website.service";
 import { AuthenticationService } from "../services/auth.service";
 import { AlertService } from "../services/alert.service";
 import { first } from "rxjs/operators";
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
 import { faAngleDoubleDown, faQuestionCircle, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ArtworkService } from '../services/artwork.service'
 import { UserService } from '../services/user.service'
@@ -123,7 +123,7 @@ export class PreviewComponent implements OnInit {
     this.websiteService.addTestimonials(this.currentUser._id, { testimonials: this.testimonials })
       .subscribe(
         (data: any) => {
-          //this.testimonials = data.website.testimonials;
+         this.alertService.success('Udało się zapisać dane')
         },
         error => {
           this.alertService.error(error);
@@ -142,7 +142,7 @@ export class PreviewComponent implements OnInit {
     this.websiteService.addPricing(this.currentUser._id, { pricing: this.pricing })
       .subscribe(
         (data: any) => {
-          //this.testimonials = data.website.testimonials;
+          this.alertService.success('Udało się zapisać dane')
         },
         error => {
           this.alertService.error(error);

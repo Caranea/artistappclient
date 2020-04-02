@@ -1,0 +1,63 @@
+<div class="form-container container-blue preview">
+
+    <div class="container">
+        <div class="row photos">
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme4.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Wyeksponowane zdjęcie</h5>
+                        <a class="btn btn-primary" (click)="setTheme('theme1')">Ustaw motyw</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Minimalizm</h5>
+                        <a class="btn btn-primary" (click)="setTheme('theme2')">Ustaw motyw</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pastelowy z ramką</h5>
+                        <a class="btn btn-primary" (click)="setTheme('theme3')">Ustaw motyw</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Płynny błękit</h5>
+                        <a class="btn btn-primary" (click)="setTheme('theme4')">Ustaw motyw</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-photo" *ngIf="activeTheme">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 d-flex justify-content-start align-items-center">
+                        <h3 class="ml-0">Wybierz zdjęcie tła
+                            <p class="text-muted d-inline">(opcjonalnie)</p>
+                        </h3>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <input-file name="favicon" fileAccept="image/*" fileLimit="1" [linkEnabled]="true" #theme1photo
+                            (change)="changePhoto()">
+                        </input-file>
+                    </div>
+                    <div class="col-4  d-flex justify-content-end align-items-center">
+                       <button routerLink="/podglad" class="btn btn-primary mr-1">Podgląd <fa-icon [icon]="faArrowRight"></fa-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

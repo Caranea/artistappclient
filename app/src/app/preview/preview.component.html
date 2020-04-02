@@ -79,7 +79,7 @@
             </div>
         </accordion-group>
     </accordion>
-    <h3>Zmień prace na stronie</h3>
+    <h3>Galeria prac</h3>
     <accordion closeOthers="true" [isAnimated]="true" *ngIf="categories && artworks">
         <accordion-group heading="Zmień prace">
             <div class="artworks-table">
@@ -168,7 +168,7 @@
                         <label for="alt">Opis</label>
                         <ul>
                             <li class="mb-2" *ngFor="let el of pricing[0].description; let i = index">
-                                <input maxlength="25" type="text" [name]="el" [value]="el" data-field='title'
+                                <input maxlength="35" type="text" [name]="el" [value]="el" data-field='title'
                                     (change)="pricing[0].description[i] = $event.target.value">
                             </li>
                             <button class="btn btn-add btn-add-small mt-0 btn-primary"
@@ -191,7 +191,7 @@
                         <label for="alt">Opis</label>
                         <ul>
                             <li class="mb-2" *ngFor="let el of pricing[1].description; let i = index">
-                                <input maxlength="25" type="text" [name]="el" [value]="el" data-field='title'
+                                <input maxlength="35" type="text" [name]="el" [value]="el" data-field='title'
                                     (change)="pricing[1].description[i] = $event.target.value">
                             </li>
                             <button class="btn btn-add btn-add-small mt-0 btn-primary"
@@ -214,7 +214,7 @@
                         <label for="alt">Opis</label>
                         <ul>
                             <li class="mb-2" *ngFor="let el of pricing[2].description; let i = index">
-                                <input maxlength="25" type="text" [name]="el" [value]="el" data-field='title'
+                                <input maxlength="35" type="text" [name]="el" [value]="el" data-field='title'
                                     (change)="pricing[2].description[i] = $event.target.value">
                             </li>
                             <button class="btn btn-add btn-add-small mt-0 btn-primary"

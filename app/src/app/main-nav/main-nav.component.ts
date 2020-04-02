@@ -23,8 +23,9 @@ export class MainNavComponent implements AfterContentChecked {
     this.bottomMenu = {
       'ustawienia': [{ name: 'Główne', path: '/ustawienia' }],
       'portal': [{ name: 'Portal', path: 'portal' }],
-      'portfolio': [{ name: 'Panel', path: 'portfolio' }, { name: 'Edycja strony', path: 'podglad' }],
-      'podglad': [{ name: 'Panel', path: 'portfolio' }, { name: 'Podgląd strony', path: 'podglad' }],
+      'portfolio': [{ name: 'Panel', path: 'portfolio' }, { name: 'Wybierz motyw', path: 'szablon' }, { name: 'Edycja strony', path: 'podglad' }],
+      'podglad': [{ name: 'Panel', path: 'portfolio' }, { name: 'Wybierz motyw', path: 'szablon' }, { name: 'Edycja strony', path: 'podglad' }],
+      'szablon': [{ name: 'Panel', path: 'portfolio' }, { name: 'Wybierz motyw', path: 'szablon' }, { name: 'Edycja strony', path: 'podglad' }],
       'prace': [{ name: 'Przeglądaj', path: 'prace' }, { name: 'Dodaj nową', path: 'prace/dodaj' }],
       'profil': [{ name: 'Podgląd', path: `profil/zobacz/${this.currentUser._id}` }, { name: 'Edytuj profil', path: 'profil/edytuj' }]
     }

@@ -40,4 +40,7 @@ export class WebsiteService {
   updateWebsite(userId, website) {
     return this.http.put(`${this.paths.apiUrl}/website/${userId}`, website);
   }
+  changeTheme(userId, theme, photos = null) {
+    return this.http.post(`${this.paths.apiUrl}/create_website/theme/${userId}/${theme}`, photos);
+  }
 }

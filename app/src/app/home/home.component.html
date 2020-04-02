@@ -21,7 +21,7 @@
                 Nieodkryte
             </div>
         </div>
-        <div class="artworks-main mt-2" *ngIf="artworks && !showAll">
+        <!-- <div class="artworks-main mt-2" *ngIf="artworks && !showAll">
             <carousel isAnimated="true" interval="false">
                 <slide>
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
@@ -108,6 +108,19 @@
                     </div>
                 </slide>
             </carousel>
+        </div> -->
+        <div class="artworks-main mt-2" *ngIf="artworks && !showAll">
+            <div class="form-row" [ngClass]="{ show: showAll }">
+                <div class="col img-container" [routerLink]="'../prace/' + item._id"
+                    *ngFor="let item of artworks| slice: 0:8; ">
+                    <img [src]="
+              'http://localhost:5000/' + item.photosUrls[0].split('public/')[1]
+            " alt="" />
+                    <div class="overlay">
+                        {{ item.title }}
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="artworks-main mt-2" *ngIf="artworks && showAll">
             <div class="form-row" [ngClass]="{ show: showAll }">
@@ -175,7 +188,8 @@
         </div>
         <div *ngIf="sectionArtworks">
             <div class="form-row" [ngClass]="{ show: showAll }">
-                <div class="col img-container" [routerLink]="'../prace/' + item._id" *ngFor="let item of sectionArtworks">
+                <div class="col img-container" [routerLink]="'../prace/' + item._id"
+                    *ngFor="let item of sectionArtworks">
                     <img [src]="
               'http://localhost:5000/' + item.photosUrls[0].split('public/')[1]
             " alt="" />

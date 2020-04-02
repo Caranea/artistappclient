@@ -85,8 +85,8 @@ export class PortfolioComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Udało się zapisać informacje. Zostaniesz przekierowany do poglądu strony', true);
-          this.router.navigate(['/podglad']);
+          this.alertService.success('Udało się zapisać informacje. Zostaniesz przekierowany do wyboru szablonu', true);
+          this.router.navigate(['/szablon']);
           this.loading = false;
         },
         error => {

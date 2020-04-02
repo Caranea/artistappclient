@@ -2,20 +2,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: montserrat, -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans,
-    droid sans, helvetica neue, sans-serif !important;
+  font-family: montserrat, -apple-system, BlinkMacSystemFont, segoe ui, roboto,
+    oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif !important;
 }
 .container {
   max-width: 1366px !important;
 }
 select {
   height: 37px;
-  background: 
-#fff;
-border: 1px solid
-#ced4da;
-border-radius: .25rem;
-padding: 5px;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 5px;
 }
 .register-container {
   background-image: url("./images/acount-page.jpg");
@@ -23,7 +21,7 @@ padding: 5px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-background-size: 100vw 100vh;
+  background-size: 100vw 100vh;
 }
 .logo-image {
   background-color: #fff;
@@ -126,7 +124,8 @@ label {
   height: auto !important;
   width: auto !important;
   img {
-max-height: 80px;    width: auto !important;
+    max-height: 80px;
+    width: auto !important;
   }
 }
 alert {
@@ -138,7 +137,11 @@ alert {
 .container-blue {
   min-height: 100vh;
   background: #74ebd5;
-  background: -webkit-linear-gradient(to right, rgba(172, 182, 229, 0.74), #74ebd5d0); /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(172, 182, 229, 0.74),
+    #74ebd5d0
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
     rgba(172, 182, 229, 0.493),
@@ -226,11 +229,13 @@ alert {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14), 0 0 1px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14),
+      0 0 1px 0 rgba(0, 0, 0, 0.14);
   }
   img {
     border-radius: 5px;
-    box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14), 0 0 1px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14),
+      0 0 1px 0 rgba(0, 0, 0, 0.14);
   }
   .btn-product-link {
     margin-top: 20px;
@@ -242,8 +247,9 @@ alert {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, inter ui, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans,
-      droid sans, helvetica neue, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, inter ui, segoe ui, roboto,
+      oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue,
+      sans-serif;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: -0.006em;
@@ -260,7 +266,8 @@ alert {
     background-color: #2b3947;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14), 0 0 1px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14),
+      0 0 1px 0 rgba(0, 0, 0, 0.14);
     margin: 0;
     margin-top: 20px;
     padding: 20px;
@@ -278,8 +285,9 @@ alert {
   }
   .price {
     line-height: 75px;
-    font-family: montserrat, -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans,
-      droid sans, helvetica neue, sans-serif !important;
+    font-family: montserrat, -apple-system, BlinkMacSystemFont, segoe ui, roboto,
+      oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue,
+      sans-serif !important;
 
     color: #fff !important;
     font-weight: 600 !important;
@@ -307,7 +315,8 @@ alert {
   .comments {
     margin-top: 20px;
     .card {
-      box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14), 0 0 1px 0 rgba(0, 0, 0, 0.14);
+      box-shadow: 0 1px 2px 0 rgba(33, 33, 33, 0.14),
+        0 0 1px 0 rgba(0, 0, 0, 0.14);
       border-radius: 5px;
       -webkit-transition: all 0.2s ease;
       transition: all 0.2s ease;
@@ -461,8 +470,8 @@ alert {
 }
 slide {
   .img-container {
-	position: relative;
-	cursor: pointer;
+    position: relative;
+    cursor: pointer;
   }
   .item {
     width: 100%;
@@ -477,7 +486,7 @@ slide {
       animation-direction: alternate-reverse;
     }
   }
- 
+
   .img-container {
     margin: 0 10px;
   }
@@ -495,21 +504,21 @@ slide {
   }
 }
 .home {
-.overlay {
+  .overlay {
     opacity: 0;
     position: absolute;
     height: 100%;
     width: 100%;
-	top: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     padding: 10px;
     position: absolute;
-	transition: all 0.2s ease-out;
-	font-size: 15px;
+    transition: all 0.2s ease-out;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -518,10 +527,30 @@ slide {
     opacity: 1;
   }
 }
-.preview  .card-header {
+.preview .card-header {
   padding: 0 20px !important;
 }
 
 .preview h3 {
-  padding: 25px 30px !important
+  padding: 25px 30px !important;
+}
+
+.custom-photo {
+  box-shadow: 0 0 3px rgba(31, 30, 47, 0.05);
+  .files-container {
+    overflow: hidden;
+    .file-container {
+      height: auto !important;
+    }
+    .file-button {
+      border: 2px solid #4d79f6;
+    }
+  }
+}
+
+.photos {
+  padding-bottom: 100px;
+  .btn-primary {
+    color: #fff !important
+  }
 }

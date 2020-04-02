@@ -34,7 +34,9 @@ import { BioComponent } from './portfolio/bio/bio.component';
 import { SeoComponent } from './portfolio/seo/seo.component';
 import { PreviewComponent } from './preview/preview.component';
 import { SafePipe } from './pipes/safe.pipe';
-import { SettingsComponent } from './settings/settings.component'
+import { SettingsComponent } from './settings/settings.component';
+import { ThemesComponent } from './themes/themes.component';
+import { FooterComponent } from './footer/footer.component'
 
 const config: InputFileConfig = {};
 
@@ -58,7 +60,9 @@ const config: InputFileConfig = {};
     SeoComponent,
     PreviewComponent,
     SafePipe,
-    SettingsComponent
+    SettingsComponent,
+    ThemesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -11,12 +11,14 @@ import { HomeComponent } from './home/home.component'
 import { PortfolioComponent } from './portfolio/portfolio.component'
 import { PreviewComponent } from './preview/preview.component'
 import { SettingsComponent } from './settings/settings.component'
+import { ThemesComponent } from './themes/themes.component'
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent },
   { path: '', component: HomeComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'podglad', component: PreviewComponent },
+  { path: 'szablon', component: ThemesComponent },
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'ustawienia', component: SettingsComponent },
