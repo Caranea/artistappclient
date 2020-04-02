@@ -1,5 +1,5 @@
 const Paths = {
-    apiUrl: 'https://knickknacks.herokuapp.com'
+    apiUrl: 'https://knickknackspl.azurewebsites.net'
 }
 
 export { Paths }
