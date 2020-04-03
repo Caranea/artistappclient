@@ -29,7 +29,7 @@
             <tbody>
                 <tr *ngFor="let artwork of rows; let index = index">
                     <th scope="row">{{index + 1}}</th>
-                    <td><img [src]="'https://knickknacks.herokuapp.com/' + artwork.photoUrl.split('public/')[1]" alt=""></td>
+                    <td><img [src]="'https://artysta.knickknacks.pl/' + artwork.photoUrl.split('public/')[1]" alt=""></td>
                     <td><input type="text" [name]="'title'+index" [value]="artwork.title" data-field='title'
                             (change)="updateValue($event, index)">
                     </td>
