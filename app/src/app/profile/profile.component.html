@@ -1,16 +1,16 @@
 <div class="container-blue p-0" *ngIf="profile && usersArtworks">
     <div class="banner-profile">
         <div class="overlay"></div>
-        <img [src]="profile.coverPhoto ?  'https://knickknackspl.azurewebsites.net//' + profile.coverPhoto.split('public/')[1] : 'https://knickknackspl.azurewebsites.net//images/download.jpeg'"
+        <img [src]="profile.coverPhoto ?  'https://knickknackspl.azurewebsites.net/' + profile.coverPhoto.split('public/')[1] : 'https://knickknackspl.azurewebsites.net/images/download.jpeg'"
             alt="Banner image">
         <div class="main-bar">
             <div class="container container-bar">
                 <div class="profile-main">
                     <div class="profile-image mb-2">
                         <img *ngIf="profile.profilePhoto"
-                            [src]="'https://knickknackspl.azurewebsites.net//' + profile.profilePhoto.split('public/')[1]" alt="">
+                            [src]="'https://knickknackspl.azurewebsites.net/' + profile.profilePhoto.split('public/')[1]" alt="">
                             <img *ngIf="!profile.profilePhoto" class="img-placeholder"
-                            [src]="'https://knickknackspl.azurewebsites.net//images/artist.svg'" alt="">
+                            [src]="'https://knickknackspl.azurewebsites.net/images/artist.svg'" alt="">
                     </div>
                     <h1>
                         {{profile.firstName}} {{profile.lastName}}
@@ -41,23 +41,23 @@
                 <div class="socials">
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item" *ngIf="profile.facebook">
-                            <a target="_blank" [href]="profile.facebook"><img src="https://knickknackspl.azurewebsites.net//images/facebook.svg"
+                            <a target="_blank" [href]="profile.facebook"><img src="https://knickknackspl.azurewebsites.net/images/facebook.svg"
                                     alt="Facebook Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item" *ngIf="profile.instagram">
-                            <a target="_blank" [href]="profile.instagram"><img src="https://knickknackspl.azurewebsites.net//images/instagram.svg"
+                            <a target="_blank" [href]="profile.instagram"><img src="https://knickknackspl.azurewebsites.net/images/instagram.svg"
                                     alt="Instagram Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item"  *ngIf="profile.twitter">
-                            <a target="_blank" [href]="profile.twitter"><img src="https://knickknackspl.azurewebsites.net//images/twitter.svg"
+                            <a target="_blank" [href]="profile.twitter"><img src="https://knickknackspl.azurewebsites.net/images/twitter.svg"
                                     alt="Twitter Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item"  *ngIf="profile.behance">
-                            <a target="_blank" [href]="profile.behance"><img src="https://knickknackspl.azurewebsites.net//images/behance.svg"
+                            <a target="_blank" [href]="profile.behance"><img src="https://knickknackspl.azurewebsites.net/images/behance.svg"
                                     alt="behance Icon" style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item"  *ngIf="profile.youtube">
-                            <a target="_blank" [href]="profile.youtube"><img src="https://knickknackspl.azurewebsites.net//images/youtube.svg"
+                            <a target="_blank" [href]="profile.youtube"><img src="https://knickknackspl.azurewebsites.net/images/youtube.svg"
                                     alt="Youtube Icon" style="height: 40px;"></a>
                         </li>
                     </ul>
@@ -97,7 +97,7 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <img [src]="'https://knickknackspl.azurewebsites.net//' + artwork.photosUrls[0].split('public/')[1]"
+                                    <img [src]="'https://knickknackspl.azurewebsites.net/' + artwork.photosUrls[0].split('public/')[1]"
                                         class="card-img" style="max-height: 25vh; width: auto;"
                                         alt="Artwork main photo">
                                 </li>

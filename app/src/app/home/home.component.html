@@ -27,7 +27,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 0:4; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                         <div class="overlay">
@@ -39,7 +39,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 2:6; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -48,7 +48,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 4:8; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -57,7 +57,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 6:10; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -66,7 +66,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 8:12; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -75,7 +75,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 10:14; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -84,7 +84,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 12:16; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -93,7 +93,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 14:18; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -102,7 +102,7 @@
                     <div class="img-container" [routerLink]="'../prace/' + item._id"
                         *ngFor="let item of artworks | slice: 16:20; let i = index">
                         <img [src]="
-                'https://knickknackspl.azurewebsites.net//' +
+                'https://knickknackspl.azurewebsites.net/' +
                 item.photosUrls[0].split('public/')[1]
               " alt="" />
                     </div>
@@ -114,7 +114,7 @@
                 <div class="col img-container" [routerLink]="'../prace/' + item._id"
                     *ngFor="let item of artworks| slice: 0:8; ">
                     <img [src]="
-              'https://knickknackspl.azurewebsites.net//' + item.photosUrls[0].split('public/')[1]
+              'https://knickknackspl.azurewebsites.net/' + item.photosUrls[0].split('public/')[1]
             " alt="" />
                     <div class="overlay">
                         {{ item.title }}
@@ -126,7 +126,7 @@
             <div class="form-row" [ngClass]="{ show: showAll }">
                 <div class="col img-container" [routerLink]="'../prace/' + item._id" *ngFor="let item of artworks">
                     <img [src]="
-              'https://knickknackspl.azurewebsites.net//' + item.photosUrls[0].split('public/')[1]
+              'https://knickknackspl.azurewebsites.net/' + item.photosUrls[0].split('public/')[1]
             " alt="" />
                     <div class="overlay">
                         {{ item.title }}
@@ -156,13 +156,13 @@
             <div class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
                 *ngFor="let item of users | slice: 0:3; let i = index">
                 <img [src]="
-            'https://knickknackspl.azurewebsites.net//' + item.bestArtworkUrl.split('public/')[1]
+            'https://knickknackspl.azurewebsites.net/' + item.bestArtworkUrl.split('public/')[1]
           " alt="" />
                 <div class="overlay">
                     <div class="content">
                         <div class="img-container" *ngIf="item.profilePhoto">
                             <img [src]="
-                  'https://knickknackspl.azurewebsites.net//' +
+                  'https://knickknackspl.azurewebsites.net/' +
                   item.profilePhoto.split('public/')[1]
                 " alt="" />
                         </div>
@@ -191,7 +191,7 @@
                 <div class="col img-container" [routerLink]="'../prace/' + item._id"
                     *ngFor="let item of sectionArtworks">
                     <img [src]="
-              'https://knickknackspl.azurewebsites.net//' + item.photosUrls[0].split('public/')[1]
+              'https://knickknackspl.azurewebsites.net/' + item.photosUrls[0].split('public/')[1]
             " alt="" />
                     <div class="overlay">
                         {{ item.title }}

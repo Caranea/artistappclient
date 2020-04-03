@@ -86,7 +86,7 @@
                 <table class="table table-light artworks">
                     <tbody>
                         <tr *ngFor="let artwork of artworks; let index = index">
-                            <td><img [src]="'https://knickknackspl.azurewebsites.net//' + artwork.photoUrl.split('public/')[1]" alt="">
+                            <td><img [src]="'https://knickknackspl.azurewebsites.net/' + artwork.photoUrl.split('public/')[1]" alt="">
                             </td>
                             <td>
                                 <label for="title">Tytuł</label>
