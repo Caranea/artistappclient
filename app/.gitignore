@@ -9,7 +9,9 @@
 
 # dependencies
 /node_modules
-
+/public/dest
+/public/clients/*
+!/public/clients/plan_basic_template_1
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json

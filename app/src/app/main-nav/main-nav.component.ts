@@ -23,7 +23,7 @@ export class MainNavComponent implements AfterContentChecked {
     this.bottomMenu = {
       'ustawienia': [{ name: 'Główne', path: '/ustawienia' }],
       'portal': [{ name: 'Portal', path: 'portal' }],
-      'portfolio': [{ name: 'Panel', path: 'portfolio' }, { name: 'Wybierz motyw', path: 'szablon' }, { name: 'Edycja strony', path: 'podglad' }],
+      'portfolio': [{ name: 'Panel', path: 'portfolio' }],
       'podglad': [{ name: 'Panel', path: 'portfolio' }, { name: 'Wybierz motyw', path: 'szablon' }, { name: 'Edycja strony', path: 'podglad' }],
       'szablon': [{ name: 'Panel', path: 'portfolio' }, { name: 'Wybierz motyw', path: 'szablon' }, { name: 'Edycja strony', path: 'podglad' }],
       'prace': [{ name: 'Przeglądaj', path: 'prace' }, { name: 'Dodaj nową', path: 'prace/dodaj' }],
@@ -33,7 +33,7 @@ export class MainNavComponent implements AfterContentChecked {
 
   ngAfterContentChecked() {
     let activeRoute = this.router.url.split('/')[1]
-    if (activeRoute) {
+    if (activeRoute && this.bottomMenu[activeRoute]) {
       this.activeNavTop = this.router.url.split('/')[1]
       this.activeNavBottom === undefined && (this.activeNavBottom = this.bottomMenu[activeRoute][0].name);
     }

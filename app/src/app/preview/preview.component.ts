@@ -108,9 +108,9 @@ export class PreviewComponent implements OnInit {
               author: 'Przykladowy autor'
             }
           ]
-          this.pricing = data.website.pricing || [
+          this.pricing = data.website.pricing.length > 0 ? data.website.pricing : [
             { name: '', price: '', description: [''] }, { name: '', price: '', description: [''] }, { name: '', price: '', description: [''] }
-          ]
+          ];
         },
         error => {
           this.alertService.error(error);

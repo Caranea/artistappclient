@@ -50,7 +50,9 @@ export class PortfolioComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.userProfile = data.userProfile;
-          if (!this.userProfile.plan) this.loadStripe(this.currentUser.email);
+          console.log('should load')
+          console.log(!this.userProfile.plan)
+          if (!this.userProfile.plan) { this.loadStripe(this.currentUser.email) };
           if (this.userProfile.plan) {
             this.maxCategories = this.userProfile.plan === 'basic' ? 3 : this.userProfile.plan === 'premium' ? 10 : 20;
           }
@@ -148,62 +150,61 @@ export class PortfolioComponent implements OnInit {
   }
 
   loadStripe(email) {
+    console.log('loadstr')
+    var s = window.document.createElement("script");
+    s.id = "stripe-script";
+    s.type = "text/javascript";
+    s.src = "https://js.stripe.com/v3";
+    s.onload = () => {
+      let stripes = Stripe('pk_test_KIVSmDBlCt12Bn2tyirHxHNi00575cY6N2');
+      var checkoutButton = document.getElementById('checkout-button-plan_GybwTOhupEPvny');
+      checkoutButton.addEventListener('click', function () {
+        console.log('click')
+        stripes.redirectToCheckout({
+          items: [{ plan: 'plan_GybwTOhupEPvny', quantity: 1 }],
+          successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
+          cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
+          customerEmail: email
+        })
+          .then(function (result) {
+            if (result.error) {
+              var displayError = document.getElementById('error-message');
+              displayError.textContent = result.error.message;
+            }
+          });
+      });
+      var checkoutButton2 = document.getElementById('checkout-button-plan_GygExNVJ3cXyjU');
+      checkoutButton2.addEventListener('click', function () {
+        stripes.redirectToCheckout({
+          items: [{ plan: 'plan_GygExNVJ3cXyjU', quantity: 1 }],
+          successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
+          cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
+          customerEmail: email
 
-    if (!window.document.getElementById('stripe-script')) {
-      var s = window.document.createElement("script");
-      s.id = "stripe-script";
-      s.type = "text/javascript";
-      s.src = "https://js.stripe.com/v3";
-      s.onload = () => {
-        let stripes = Stripe('pk_test_KIVSmDBlCt12Bn2tyirHxHNi00575cY6N2');
-        var checkoutButton = document.getElementById('checkout-button-plan_GybwTOhupEPvny');
-        checkoutButton.addEventListener('click', function () {
-          stripes.redirectToCheckout({
-            items: [{ plan: 'plan_GybwTOhupEPvny', quantity: 1 }],
-            successUrl: window.location.protocol + '//knickknacks.pl/success',
-            cancelUrl: window.location.protocol + '//knickknacks.pl/canceled',
-            customerEmail: email
-          })
-            .then(function (result) {
-              if (result.error) {
-                var displayError = document.getElementById('error-message');
-                displayError.textContent = result.error.message;
-              }
-            });
-        });
-        var checkoutButton2 = document.getElementById('checkout-button-plan_GygExNVJ3cXyjU');
-        checkoutButton2.addEventListener('click', function () {
-          stripes.redirectToCheckout({
-            items: [{ plan: 'plan_GygExNVJ3cXyjU', quantity: 1 }],
-            successUrl: window.location.protocol + '//knickknacks.pl/success',
-            cancelUrl: window.location.protocol + '//knickknacks.pl/canceled',
-            customerEmail: email
-
-          })
-            .then(function (result) {
-              if (result.error) {
-                var displayError = document.getElementById('error-message');
-                displayError.textContent = result.error.message;
-              }
-            });
-        });
-        var checkoutButton3 = document.getElementById('checkout-button-plan_GygFUxHrx9S8LB');
-        checkoutButton3.addEventListener('click', function () {
-          stripes.redirectToCheckout({
-            items: [{ plan: 'plan_GygFUxHrx9S8LB', quantity: 1 }],
-            successUrl: window.location.protocol + '//knickknacks.pl/success',
-            cancelUrl: window.location.protocol + '//knickknacks.pl/canceled',
-            customerEmail: email
-          })
-            .then(function (result) {
-              if (result.error) {
-                var displayError = document.getElementById('error-message');
-                displayError.textContent = result.error.message;
-              }
-            });
-        });
-      }
-      window.document.body.appendChild(s);
+        })
+          .then(function (result) {
+            if (result.error) {
+              var displayError = document.getElementById('error-message');
+              displayError.textContent = result.error.message;
+            }
+          });
+      });
+      var checkoutButton3 = document.getElementById('checkout-button-plan_GygFUxHrx9S8LB');
+      checkoutButton3.addEventListener('click', function () {
+        stripes.redirectToCheckout({
+          items: [{ plan: 'plan_GygFUxHrx9S8LB', quantity: 1 }],
+          successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
+          cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
+          customerEmail: email
+        })
+          .then(function (result) {
+            if (result.error) {
+              var displayError = document.getElementById('error-message');
+              displayError.textContent = result.error.message;
+            }
+          });
+      });
     }
+    window.document.body.appendChild(s);
   }
 }

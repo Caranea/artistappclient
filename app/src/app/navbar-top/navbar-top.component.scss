@@ -8,6 +8,15 @@ fa-icon {
     justify-content: center;
     align-items: center;
 }
+.notifications {
+    ul {
+        padding: 50px 0 !important;
+
+    }
+    li {
+        transform: translateY(-50px) !important;
+    }
+}
 .icon-container{
     height: 50px;
     width: 50px;

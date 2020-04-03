@@ -62,7 +62,7 @@
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" formControlName="termsAgreement"
                 [ngClass]="{ 'is-invalid': submitted && f.termsAgreement.errors }" /><label class="form-check-label"
-                for="termsAgreement">Rejestrując się, zgadzasz się z postanowieniami <a href="#">Regulaminu</a></label>
+                for="termsAgreement">Rejestrując się, zgadzasz się z postanowieniami <a href="https://knickknacks.pl/pages/regulamin-artysty" target="_blank">Regulaminu</a></label>
             <div *ngIf="submitted && f.termsAgreement.errors" class="invalid-feedback">
                 <div *ngIf="f.termsAgreement.errors.required">Musisz wyrazić zgodę</div>
             </div>

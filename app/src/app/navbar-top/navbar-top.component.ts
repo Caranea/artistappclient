@@ -21,6 +21,7 @@ export class NavbarTopComponent {
   faUser = faUser;
   currentUser;
   profile
+  unred = false;
   constructor(
     private authenticationService: AuthenticationService,
     private userService: UserService,
@@ -33,13 +34,11 @@ export class NavbarTopComponent {
       .subscribe(
         (data: any) => {
           this.profile = data.userProfile;
+          this.unred = this.profile.notifications.filter(el => {
+            return el.displayed === false}).length === 0 ? false : true
         }, error => {
           this.alertService.error(error);
         });
-  }
-  unredNotifications() {
-    let unred = this.profile.notifications.filter(el => el.displayed)
-    return unred.length === 0 ? false : true
   }
 
   logout() {
@@ -57,7 +56,9 @@ export class NavbarTopComponent {
     this.userService.readNotifications(this.currentUser._id)
       .pipe(first())
       .subscribe(
-        (data: any) => { }, error => {
+        (data: any) => {
+          this.unred = false;
+        }, error => {
           this.alertService.error(error);
         });
   }

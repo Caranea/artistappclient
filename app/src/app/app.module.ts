@@ -36,7 +36,9 @@ import { PreviewComponent } from './preview/preview.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { SettingsComponent } from './settings/settings.component';
 import { ThemesComponent } from './themes/themes.component';
-import { FooterComponent } from './footer/footer.component'
+import { FooterComponent } from './footer/footer.component';
+import { SuccessComponent } from './success/success.component';
+import { CancelledComponent } from './cancelled/cancelled.component'
 
 const config: InputFileConfig = {};
 
@@ -62,7 +64,9 @@ const config: InputFileConfig = {};
     SafePipe,
     SettingsComponent,
     ThemesComponent,
-    FooterComponent
+    FooterComponent,
+    SuccessComponent,
+    CancelledComponent
   ],
   imports: [
     BrowserModule,

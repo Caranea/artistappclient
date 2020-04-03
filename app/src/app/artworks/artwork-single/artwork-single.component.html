@@ -1,12 +1,12 @@
 <div class="container-blue p-0">
     <div class="banner" *ngIf="artwork">
         <div class="overlay"></div>
-        <img src="https://knickknackspl.azurewebsites.net/images/cover.jpg" alt="Banner image">
+        <img src="https://knickknackspl.azurewebsites.net//images/cover.jpg" alt="Banner image">
         <h1>{{artwork.title}}</h1>
         <div class="carousel-container">
             <carousel interval="false" (activeSlideChange)="setPadding()">
                 <slide *ngFor='let photo of artwork.photosUrls'>
-                    <img #banner [src]="'https://knickknackspl.azurewebsites.net/' + photo.split('public/')[1]" alt="first slide"
+                    <img #banner [src]="'https://knickknackspl.azurewebsites.net//' + photo.split('public/')[1]" alt="first slide"
                         style="display: block; width: 100%;">
                 </slide>
             </carousel>

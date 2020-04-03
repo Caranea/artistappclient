@@ -12,9 +12,14 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
 import { PreviewComponent } from './preview/preview.component'
 import { SettingsComponent } from './settings/settings.component'
 import { ThemesComponent } from './themes/themes.component'
+import { SuccessComponent } from './success/success.component'
+import { CancelledComponent } from './cancelled/cancelled.component'
+
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent },
+  { path: 'portfolio/sukces', component: SuccessComponent },
+  { path: 'portfolio/blad', component: CancelledComponent },
   { path: '', component: HomeComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'podglad', component: PreviewComponent },

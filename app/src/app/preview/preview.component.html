@@ -1,6 +1,6 @@
-<iframe width="100%" height="100%" [src]="('https://knickknackspl.azurewebsites.net'+previewUrl) | safe: 'resourceUrl'"></iframe>
+<iframe width="100%" height="100%" [src]="('https://knickknackspl.azurewebsites.net/'+previewUrl) | safe: 'resourceUrl'"></iframe>
 <div class="form-container preview" *ngIf="profile">
-    <h3><a [href]="'https://knickknackspl.azurewebsites.net'+previewUrl" target="_blank">Otwórz w nowej karcie</a></h3>
+    <h3><a [href]="'https://knickknackspl.azurewebsites.net/'+previewUrl" target="_blank">Otwórz w nowej karcie</a></h3>
     <h3>Dopasuj teksty</h3>
     <accordion closeOthers="true" [isAnimated]="true" *ngIf="texts">
         <accordion-group heading="Strona główna">
@@ -86,7 +86,7 @@
                 <table class="table table-light artworks">
                     <tbody>
                         <tr *ngFor="let artwork of artworks; let index = index">
-                            <td><img [src]="'https://knickknackspl.azurewebsites.net/' + artwork.photoUrl.split('public/')[1]" alt="">
+                            <td><img [src]="'https://knickknackspl.azurewebsites.net//' + artwork.photoUrl.split('public/')[1]" alt="">
                             </td>
                             <td>
                                 <label for="title">Tytuł</label>
@@ -121,7 +121,8 @@
         </accordion-group>
     </accordion>
     <h3 *ngIf=" profile.plan && profile.plan !== 'basic'">Opinie klientów</h3>
-    <accordion closeOthers="true" [isAnimated]="true" *ngIf="categories && artworks">
+    <accordion closeOthers="true" [isAnimated]="true"
+        *ngIf="categories && artworks && profile.plan && profile.plan !== 'basic'">
         <accordion-group heading="Dodaj opinie">
             <div class="artworks-table">
                 <table class="table table-light testimonials">
@@ -150,7 +151,7 @@
         </accordion-group>
     </accordion>
     <h3 *ngIf="profile.plan && profile.plan !== 'basic'">Cennik usług</h3>
-    <accordion closeOthers="true" [isAnimated]="true">
+    <accordion closeOthers="true" [isAnimated]="true" *ngIf="profile.plan && profile.plan !== 'basic'">
         <accordion-group heading="Cennik">
             <div class="artworks-table">
                 <div class="pricing-item" *ngIf="pricing.length > 0">

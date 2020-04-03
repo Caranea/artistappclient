@@ -28,7 +28,7 @@
             <tbody>
                 <tr *ngIf="profile.profilePhoto">
                     <th scope="row">Zdjęcie profilowe</th>
-                    <td><img [src]="'https://knickknackspl.azurewebsites.net/' + profile.profilePhoto.value.split('public/')[1]" alt="">
+                    <td><img [src]="'https://knickknackspl.azurewebsites.net//' + profile.profilePhoto.value.split('public/')[1]" alt="">
                     </td>
                     <td>
                         <input type="checkbox" [checked]="!website ? true : profile.profilePhoto.include"
@@ -37,7 +37,7 @@
                 </tr>
                 <tr *ngIf="profile.coverPhoto">
                     <th scope="row">Zdjęcie tła</th>
-                    <td><img [src]="'https://knickknackspl.azurewebsites.net/' + profile.coverPhoto.value.split('public/')[1]" alt="">
+                    <td><img [src]="'https://knickknackspl.azurewebsites.net//' + profile.coverPhoto.value.split('public/')[1]" alt="">
                     </td>
                     <td>
                         <input type="checkbox" [checked]="!website ? true : profile.coverPhoto.include"
