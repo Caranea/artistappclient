@@ -27,11 +27,13 @@ export class ArtworkSingleComponent implements OnInit, AfterViewChecked {
   faCheck = faCheck;
   author: any = {};
   comments = []
+  currentUser;
 
   constructor(
     private formBuilder: FormBuilder, private alertService: AlertService, private artworkService: ArtworkService,
     private authenticationService: AuthenticationService, private activatedRoute: ActivatedRoute
   ) {
+    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
 
   }
@@ -102,7 +104,7 @@ export class ArtworkSingleComponent implements OnInit, AfterViewChecked {
     })
   }
   addReview(star) {
-    let author = `${this.author.firstName} ${this.author.lastName}`
+    let author = `${this.currentUser.firstName} ${this.currentUser.lastName}`
     this.artworkService.addReview({ review: star + 1, author: author }, this.id)
       .pipe(first())
       .subscribe(
@@ -120,7 +122,7 @@ export class ArtworkSingleComponent implements OnInit, AfterViewChecked {
       this.alertService.error('Komentarz nie może być pusty');
       return;
     }
-    let author = `${this.author.firstName} ${this.author.lastName}`
+    let author = `${this.currentUser.firstName} ${this.currentUser.lastName}`
     this.artworkService.addComment({ content: comment.value, author: author }, this.id)
       .pipe(first())
       .subscribe(

@@ -1,3 +1,8 @@
+<div class="container-blue d-flex justify-content-center " *ngIf="!userProfile" >
+  <div class="spinner-border mt-5" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <div class="container-blue home" *ngIf="userProfile">
   <section class="jumbotron page-cover">
     <div class="head-content container">

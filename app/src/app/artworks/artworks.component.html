@@ -1,4 +1,9 @@
-<div class="container-blue">
+<div class="container-blue d-flex justify-content-center " *ngIf="!artworks" >
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>
+<div class="container-blue" *ngIf="artworks">
     <div class="container">
         <h3>
             {{artworks.length ? 'Zarządzaj dodanymi pracami' : 'Nie dodałeś jeszcze żadnych prac'}}

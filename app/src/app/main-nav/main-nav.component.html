@@ -8,33 +8,33 @@
             <div class=" collapse navbar-collapse" id="navbarNav">
                 <li class="nav-item" routerLink="/portal" [ngClass]="{'active': activeNavTop === 'portal'}" (click)="setActive('portal')">
                     <a class="nav-link d-flex" >
-                        <fa-icon class="mr-2" [icon]="faIcons"></fa-icon>Portal <span class="sr-only">(current)</span>
+                        <fa-icon class="mr-2 d-none d-sm-block" [icon]="faIcons"></fa-icon>Portal <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item"  routerLink="/prace" [ngClass]="{'active': activeNavTop === 'prace'}"
                     (click)="setActive('prace')">
                     <a class="nav-link d-flex">
-                        <fa-icon class="mr-2" [icon]="faPalette"></fa-icon>Twoje prace<span
+                        <fa-icon class="mr-2 d-none d-sm-block" [icon]="faPalette"></fa-icon>Twoje prace<span
                             class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item" routerLink="/portfolio" [ngClass]="{'active': activeNavTop === 'portfolio'}"
                     (click)="setActive('portfolio')">
                     <a class="nav-link d-flex">
-                        <fa-icon class="mr-2" [icon]="faLaptopCode"></fa-icon>Portfolio <span
+                        <fa-icon class="mr-2 d-none d-sm-block" [icon]="faLaptopCode"></fa-icon>Portfolio <span
                             class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item" [ngClass]="{'active': activeNavTop === 'profil'}" [routerLink]="bottomMenu.profil[0].path" (click)="setActive('profil')">
                     <a class="nav-link d-flex">
-                        <fa-icon class="mr-2" [icon]="faHatWizard"></fa-icon>Profil<span
+                        <fa-icon class="mr-2 d-none d-sm-block " [icon]="faHatWizard"></fa-icon>Profil<span
                             class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'ustawienia'}"
+                <li class="nav-item d-none d-sm-block" [ngClass]="{'active': activeNavTop === 'ustawienia'}"
                 [routerLink]="'/ustawienia'" (click)="setActive('ustawienia')">
                     <a class="nav-link d-flex">
-                        <fa-icon class="mr-2" [icon]="faSlidersH"></fa-icon>Ustawienia<span
+                        <fa-icon class="mr-2 d-none d-sm-block" [icon]="faSlidersH"></fa-icon>Ustawienia<span
                             class="sr-only">(current)</span>
                     </a>
                 </li>

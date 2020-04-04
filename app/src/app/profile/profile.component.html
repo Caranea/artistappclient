@@ -1,3 +1,8 @@
+<div class="container-blue d-flex justify-content-center " *ngIf="!profile && !usersArtworks" >
+    <div class="spinner-border mt-5" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+  </div>
 <div class="container-blue p-0" *ngIf="profile && usersArtworks">
     <div class="banner-profile">
         <div class="overlay"></div>
@@ -69,7 +74,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card side">
-                    <div class="btn btn-primary btn-big" (click)="follow()" *ngIf="!isFollowing()">
+                    <div class="btn btn-primary btn-big" (click)="follow()" *ngIf="!isFollowing() && (currentUser._id !== id)">
                         Obserwuj
                     </div>
                     <button class="btn btn-primary btn-big" disabled *ngIf="isFollowing()">

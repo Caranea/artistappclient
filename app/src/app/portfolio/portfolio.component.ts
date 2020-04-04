@@ -50,8 +50,6 @@ export class PortfolioComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.userProfile = data.userProfile;
-          console.log('should load')
-          console.log(!this.userProfile.plan)
           if (!this.userProfile.plan) { this.loadStripe(this.currentUser.email) };
           if (this.userProfile.plan) {
             this.maxCategories = this.userProfile.plan === 'basic' ? 3 : this.userProfile.plan === 'premium' ? 10 : 20;
@@ -150,7 +148,6 @@ export class PortfolioComponent implements OnInit {
   }
 
   loadStripe(email) {
-    console.log('loadstr')
     var s = window.document.createElement("script");
     s.id = "stripe-script";
     s.type = "text/javascript";
@@ -159,7 +156,6 @@ export class PortfolioComponent implements OnInit {
       let stripes = Stripe('pk_test_KIVSmDBlCt12Bn2tyirHxHNi00575cY6N2');
       var checkoutButton = document.getElementById('checkout-button-plan_GybwTOhupEPvny');
       checkoutButton.addEventListener('click', function () {
-        console.log('click')
         stripes.redirectToCheckout({
           items: [{ plan: 'plan_GybwTOhupEPvny', quantity: 1 }],
           successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',

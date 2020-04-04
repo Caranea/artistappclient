@@ -23,12 +23,14 @@
             </button>
             <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
                 aria-labelledby="button-animated">
-                <li role="menuitem" *ngFor="let item of profile.notifications"><a class="dropdown-item" [href]="item.link">{{item.notification}}</a></li>
+                <li role="menuitem" *ngFor="let item of profile.notifications"><a class="dropdown-item"
+                        [href]="item.link">{{item.notification}}</a></li>
             </ul>
         </div>
-        <div class="btn-group" dropdown >
+        <div class="btn-group" dropdown>
             <button id="button-animated" dropdownToggle type="button" (click)="readNotifications()"
-                class="btn btn-primary dropdown-toggle btn-transparent d-inline-flex justify-content-center align-items-center" aria-controls="dropdown-animated">
+                class="btn btn-primary dropdown-toggle btn-transparent d-inline-flex justify-content-center align-items-center"
+                aria-controls="dropdown-animated">
                 <div class="icon-container">
                     <fa-icon [icon]="faUser"></fa-icon>
                 </div>
@@ -36,6 +38,7 @@
             </button>
             <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
                 aria-labelledby="button-animated">
+                <li role="menuitem"><a class="dropdown-item" [routerLink]="['/ustawienia']">Ustawienia</a></li>
                 <li role="menuitem"><a class="dropdown-item" (click)="logout()">Wyloguj się</a></li>
             </ul>
         </div>

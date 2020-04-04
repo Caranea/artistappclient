@@ -49,12 +49,13 @@
                         </h3>
                     </div>
                     <div class="col-4 d-flex justify-content-center align-items-center">
-                        <input-file name="favicon" fileAccept="image/*" fileLimit="1" [linkEnabled]="true" #theme1photo
-                            (change)="changePhoto()">
+                        <input-file name="favicon" sizeLimit="5000" fileAccept="image/*" fileLimit="1"
+                            [linkEnabled]="true" #theme1photo (change)="changePhoto()">
                         </input-file>
                     </div>
                     <div class="col-4  d-flex justify-content-end align-items-center">
-                       <button routerLink="/podglad" class="btn btn-primary mr-1">Podgląd <fa-icon [icon]="faArrowRight"></fa-icon></button>
+                        <button routerLink="/podglad" class="btn btn-primary mr-1" [disabled]="!previewActive">Podgląd
+                            <fa-icon *ngIf="previewActive" [icon]="faArrowRight"></fa-icon></button>
                     </div>
                 </div>
             </div>

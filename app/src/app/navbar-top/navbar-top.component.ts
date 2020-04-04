@@ -28,22 +28,29 @@ export class NavbarTopComponent {
     private alertService: AlertService,
     private router: Router,
   ) {
-    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; })
+    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; }); 
+    this.getUser()
+    router.events.subscribe((val) => {
+      this.getUser()
+    })
+  }
+
+  getUser() {
     this.userService.getUserProfile(this.currentUser._id, true)
-      .pipe(first())
-      .subscribe(
-        (data: any) => {
-          this.profile = data.userProfile;
-          this.unred = this.profile.notifications.filter(el => {
-            return el.displayed === false}).length === 0 ? false : true
-        }, error => {
-          this.alertService.error(error);
-        });
+    .subscribe(
+      (data: any) => {
+        this.profile = data.userProfile;
+        this.unred = this.profile.notifications.filter(el => {
+          return el.displayed === false
+        }).length === 0 ? false : true
+      }, error => {
+        this.alertService.error(error);
+      });
   }
 
   logout() {
     this.userService.logout()
-    .pipe(first())
+      .pipe(first())
       .subscribe(
         (data: any) => {
           this.router.navigate(['login']);

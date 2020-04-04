@@ -13,7 +13,7 @@ import { first } from 'rxjs/operators';
 })
 export class ArtworksComponent implements OnInit {
   currentUser;
-  artworks = [];
+  artworks;
   faHourglassHalf = faHourglassHalf
   faLink = faLink
    constructor(private artworkService: ArtworkService, private authenticationService: AuthenticationService, private alertService: AlertService) {
@@ -43,6 +43,7 @@ export class ArtworksComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data: any) => {
+          this.artworks = [];
           for (let artwork of data.artworks) {
             this.artworks.push(artwork)
           }

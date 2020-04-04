@@ -14,6 +14,7 @@ export class ThemesComponent implements OnInit {
   currentUser;
   activeTheme;
   faArrowRight = faArrowRight;
+  previewActive = true
   @ViewChild("theme1photo") theme1photo;
 
   constructor(
@@ -28,22 +29,26 @@ export class ThemesComponent implements OnInit {
 
 
   setTheme(theme) {
+    this.previewActive = false
     this.activeTheme = theme;
     this.websiteService.changeTheme(this.currentUser._id, theme)
       .pipe(first())
       .subscribe((data: any) => {
+        this.previewActive = true
       }, error => {
         this.alertService.error(error);
       })
   }
 
   changePhoto() {
+    this.previewActive = false
     let file = this.theme1photo
     let file_ = file.files[0]
     setTimeout(() => {
       this.websiteService.changeTheme(this.currentUser._id, this.activeTheme, { photos: file_.preview })
         .pipe(first())
         .subscribe((data: any) => {
+          this.previewActive = true
         }, error => {
           this.alertService.error(error);
         })

@@ -13,7 +13,7 @@
                         <p>Wybierz zdjęcie z komputera, lub wklej link. </p>
                     </div>
                     <div class="col-lg-9 justify-content-center  align-items-center d-flex">
-                        <input-file formControlName="profilePhoto" fileAccept="image/*" fileLimit="1"
+                        <input-file formControlName="profilePhoto" sizeLimit="5000" fileAccept="image/*" fileLimit="1"
                             [linkEnabled]="true">
                         </input-file>
                     </div>
@@ -25,7 +25,7 @@
                         <p>Wybierz zdjęcie z komputera, lub wklej link. </p>
                     </div>
                     <div class="col-lg-9 justify-content-center  align-items-center d-flex">
-                        <input-file formControlName="coverPhoto" fileAccept="image/*" fileLimit="1"
+                        <input-file formControlName="coverPhoto" sizeLimit="5000" fileAccept="image/*" fileLimit="1"
                             [linkEnabled]="true">
                         </input-file>
                     </div>
