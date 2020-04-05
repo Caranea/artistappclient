@@ -153,11 +153,11 @@ export class PortfolioComponent implements OnInit {
     s.type = "text/javascript";
     s.src = "https://js.stripe.com/v3";
     s.onload = () => {
-      let stripes = Stripe('pk_test_KIVSmDBlCt12Bn2tyirHxHNi00575cY6N2');
+      let stripes = Stripe('pk_live_Wn3nGfddYQmQHKrNzmGSQPDH00cEkEjiSp');
       var checkoutButton = document.getElementById('checkout-button-plan_GybwTOhupEPvny');
       checkoutButton.addEventListener('click', function () {
         stripes.redirectToCheckout({
-          items: [{ plan: 'plan_GybwTOhupEPvny', quantity: 1 }],
+          items: [{ plan: 'plan_H2mqINVY1YhquP', quantity: 1 }],
           successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
           cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
           customerEmail: email
@@ -172,7 +172,7 @@ export class PortfolioComponent implements OnInit {
       var checkoutButton2 = document.getElementById('checkout-button-plan_GygExNVJ3cXyjU');
       checkoutButton2.addEventListener('click', function () {
         stripes.redirectToCheckout({
-          items: [{ plan: 'plan_GygExNVJ3cXyjU', quantity: 1 }],
+          items: [{ plan: 'plan_H2mqwJur7yNScJ', quantity: 1 }],
           successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
           cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
           customerEmail: email
@@ -188,7 +188,7 @@ export class PortfolioComponent implements OnInit {
       var checkoutButton3 = document.getElementById('checkout-button-plan_GygFUxHrx9S8LB');
       checkoutButton3.addEventListener('click', function () {
         stripes.redirectToCheckout({
-          items: [{ plan: 'plan_GygFUxHrx9S8LB', quantity: 1 }],
+          items: [{ plan: 'plan_H2mtJNctVqip1b', quantity: 1 }],
           successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
           cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
           customerEmail: email
