@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewChecked } from "@angular/core";
 import { WebsiteService } from "../services/website.service";
 import { AuthenticationService } from "../services/auth.service";
 import { AlertService } from "../services/alert.service";
 import { first } from "rxjs/operators";
 import { DomSanitizer } from "@angular/platform-browser";
-import { faAngleDoubleDown, faQuestionCircle, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faQuestionCircle, faPlus, faArrowAltCircleDown} from "@fortawesome/free-solid-svg-icons";
 import { ArtworkService } from '../services/artwork.service'
 import { UserService } from '../services/user.service'
 @Component({
@@ -12,12 +12,13 @@ import { UserService } from '../services/user.service'
   templateUrl: "./preview.component.html",
   styleUrls: ["./preview.component.scss"]
 })
-export class PreviewComponent implements OnInit {
+export class PreviewComponent implements OnInit, AfterViewChecked {
   currentUser;
   previewUrl;
   texts;
   faAngleDoubleDown = faAngleDoubleDown;
   faQuestionCircle = faQuestionCircle;
+  faArrowAltCircleDown = faArrowAltCircleDown;
   faPlus = faPlus;
   artworks
   categories
@@ -38,7 +39,7 @@ export class PreviewComponent implements OnInit {
     private alertService: AlertService,
     public sanitizer: DomSanitizer,
     private artworkService: ArtworkService,
-    private userService: UserService
+    private userService: UserService,
   ) {
     this.authService.currentUser.subscribe(x => {
       this.currentUser = x;
@@ -50,6 +51,20 @@ export class PreviewComponent implements OnInit {
           this.alertService.error(error);
         })
     });
+  }
+
+  ngAfterViewChecked() {
+    let navTop = document.querySelector('app-main-nav .nav-top'),
+      navBottom = document.querySelector('app-main-nav .nav-bottom'),
+      navBar = document.querySelector('app-navbar-top .navbar'),
+      iframe = document.querySelector('iframe'),
+      form:any = document.querySelector('iframe+div'),
+      previewHeight;
+    if (navTop && navBottom && navBar && iframe && form && (document.documentElement.clientWidth > 1023)) {
+      previewHeight = document.documentElement.clientHeight - navTop.clientHeight - navBottom.clientHeight - navBar.clientHeight;
+      iframe.style.height = previewHeight + 'px';
+      form.style.height = previewHeight + 'px';
+    }
   }
 
   ngOnInit(): void {
@@ -123,7 +138,7 @@ export class PreviewComponent implements OnInit {
     this.websiteService.addTestimonials(this.currentUser._id, { testimonials: this.testimonials })
       .subscribe(
         (data: any) => {
-         this.alertService.success('Udało się zapisać dane')
+          this.alertService.success('Udało się zapisać dane')
         },
         error => {
           this.alertService.error(error);

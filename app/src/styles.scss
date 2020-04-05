@@ -15,6 +15,11 @@ select {
   border-radius: 0.25rem;
   padding: 5px;
 }
+@media (max-width: 750px) {
+  .register-form {
+    margin-top: 60px;
+  }
+}
 .register-container {
   background-image: url("./images/acount-page.jpg");
   min-height: 100vh;
@@ -469,10 +474,6 @@ alert {
   }
 }
 slide {
-  .img-container {
-    position: relative;
-    cursor: pointer;
-  }
   .item {
     width: 100%;
     justify-content: center;
@@ -491,7 +492,17 @@ slide {
     margin: 0 10px;
   }
 }
-
+.img-container {
+  position: relative;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .form-row .col.img-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+  }
+}
 @keyframes rotate {
   0% {
     opacity: 1;
@@ -551,6 +562,6 @@ slide {
 .photos {
   padding-bottom: 100px;
   .btn-primary {
-    color: #fff !important
+    color: #fff !important;
   }
 }

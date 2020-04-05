@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(catchError(err => {
             let error = (err.error && err.error.error) ||  (err.error[0] && err.error[0].error) || err.error.message || err.statusText;
             if (err.status === 401) {
-                error = "Nie jestes zalogowany"
+                error = "Zaloguj się używając poprawnych danych"
                 this.authenticationService.logout();
                 this.router.navigate(['/login']);
             }

@@ -11,7 +11,7 @@
         <div class="d-flex flex-col">
             <div *ngFor="let artwork of artworks" class="card mb-3">
                 <div class="row no-gutters">
-                    <div class="col-md-3">
+                    <div class="col-md-3 artworks-img">
                         <img [src]="'https://artysta.knickknacks.pl/' + artwork.photosUrls[0].split('public/')[1]"
                             class="card-img" style="max-height: 25vh; width: auto;" alt="Artwork main photo">
                     </div>

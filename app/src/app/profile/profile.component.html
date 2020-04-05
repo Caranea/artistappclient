@@ -1,20 +1,20 @@
-<div class="container-blue d-flex justify-content-center " *ngIf="!profile && !usersArtworks" >
+<div class="container-blue d-flex justify-content-center " *ngIf="!profile && !usersArtworks">
     <div class="spinner-border mt-5" role="status">
         <span class="sr-only">Loading...</span>
-      </div>
-  </div>
+    </div>
+</div>
 <div class="container-blue p-0" *ngIf="profile && usersArtworks">
     <div class="banner-profile">
         <div class="overlay"></div>
         <img [src]="profile.coverPhoto ?  'https://artysta.knickknacks.pl/' + profile.coverPhoto.split('public/')[1] : 'https://artysta.knickknacks.pl/images/download.jpeg'"
             alt="Banner image">
-        <div class="main-bar">
+        <div class="main-bar display-desktop">
             <div class="container container-bar">
                 <div class="profile-main">
                     <div class="profile-image mb-2">
                         <img *ngIf="profile.profilePhoto"
                             [src]="'https://artysta.knickknacks.pl/' + profile.profilePhoto.split('public/')[1]" alt="">
-                            <img *ngIf="!profile.profilePhoto" class="img-placeholder"
+                        <img *ngIf="!profile.profilePhoto" class="img-placeholder"
                             [src]="'https://artysta.knickknacks.pl/images/artist.svg'" alt="">
                     </div>
                     <h1>
@@ -24,7 +24,7 @@
                         Brak dodanej strony
                     </p>
                     <p *ngIf="profile.website">
-                       <a [href]="profile.website" target="_blank">Odwiedź stronę</a>
+                        <a [href]="profile.website" target="_blank">Odwiedź stronę</a>
                     </p>
                 </div>
                 <div class="stats">
@@ -46,27 +46,96 @@
                 <div class="socials">
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item" *ngIf="profile.facebook">
-                            <a target="_blank" [href]="profile.facebook"><img src="https://artysta.knickknacks.pl/images/facebook.svg"
-                                    alt="Facebook Icon" style="height: 40px;"></a>
+                            <a target="_blank" [href]="profile.facebook"><img
+                                    src="https://artysta.knickknacks.pl/images/facebook.svg" alt="Facebook Icon"
+                                    style="height: 40px;"></a>
                         </li>
                         <li class="list-group-item" *ngIf="profile.instagram">
-                            <a target="_blank" [href]="profile.instagram"><img src="https://artysta.knickknacks.pl/images/instagram.svg"
-                                    alt="Instagram Icon" style="height: 40px;"></a>
+                            <a target="_blank" [href]="profile.instagram"><img
+                                    src="https://artysta.knickknacks.pl/images/instagram.svg" alt="Instagram Icon"
+                                    style="height: 40px;"></a>
                         </li>
-                        <li class="list-group-item"  *ngIf="profile.twitter">
-                            <a target="_blank" [href]="profile.twitter"><img src="https://artysta.knickknacks.pl/images/twitter.svg"
-                                    alt="Twitter Icon" style="height: 40px;"></a>
+                        <li class="list-group-item" *ngIf="profile.twitter">
+                            <a target="_blank" [href]="profile.twitter"><img
+                                    src="https://artysta.knickknacks.pl/images/twitter.svg" alt="Twitter Icon"
+                                    style="height: 40px;"></a>
                         </li>
-                        <li class="list-group-item"  *ngIf="profile.behance">
-                            <a target="_blank" [href]="profile.behance"><img src="https://artysta.knickknacks.pl/images/behance.svg"
-                                    alt="behance Icon" style="height: 40px;"></a>
+                        <li class="list-group-item" *ngIf="profile.behance">
+                            <a target="_blank" [href]="profile.behance"><img
+                                    src="https://artysta.knickknacks.pl/images/behance.svg" alt="behance Icon"
+                                    style="height: 40px;"></a>
                         </li>
-                        <li class="list-group-item"  *ngIf="profile.youtube">
-                            <a target="_blank" [href]="profile.youtube"><img src="https://artysta.knickknacks.pl/images/youtube.svg"
-                                    alt="Youtube Icon" style="height: 40px;"></a>
+                        <li class="list-group-item" *ngIf="profile.youtube">
+                            <a target="_blank" [href]="profile.youtube"><img
+                                    src="https://artysta.knickknacks.pl/images/youtube.svg" alt="Youtube Icon"
+                                    style="height: 40px;"></a>
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="display-mobile">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <div class="profile-image mb-2">
+                    <img *ngIf="profile.profilePhoto"
+                        [src]="'https://artysta.knickknacks.pl/' + profile.profilePhoto.split('public/')[1]" alt="">
+                    <img *ngIf="!profile.profilePhoto" class="img-placeholder"
+                        [src]="'https://artysta.knickknacks.pl/images/artist.svg'" alt="">
+                </div>
+                <h1>
+                    {{profile.firstName}} {{profile.lastName}}
+                </h1>
+                <p *ngIf="!profile.website">
+                    Brak dodanej strony
+                </p>
+                <p *ngIf="profile.website">
+                    <a [href]="profile.website" target="_blank">Odwiedź stronę</a>
+                </p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item">
+                        <span>Liczba prac</span>
+                        <span>{{usersArtworks.length}}</span>
+                    </li>
+                    <li class="list-group-item" [tooltip]="'Liczba wszystkich ocen: ' + allReviews">
+                        <span>Średnia ocen</span>
+                        <span>{{meanReview}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Obserwujący</span>
+                        <span>{{profile.observers.length}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center align-items-center  flex-column">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item" *ngIf="profile.facebook">
+                        <a target="_blank" [href]="profile.facebook"><img
+                                src="https://artysta.knickknacks.pl/images/facebook.svg" alt="Facebook Icon"
+                                style="height: 40px;"></a>
+                    </li>
+                    <li class="list-group-item" *ngIf="profile.instagram">
+                        <a target="_blank" [href]="profile.instagram"><img
+                                src="https://artysta.knickknacks.pl/images/instagram.svg" alt="Instagram Icon"
+                                style="height: 40px;"></a>
+                    </li>
+                    <li class="list-group-item" *ngIf="profile.twitter">
+                        <a target="_blank" [href]="profile.twitter"><img
+                                src="https://artysta.knickknacks.pl/images/twitter.svg" alt="Twitter Icon"
+                                style="height: 40px;"></a>
+                    </li>
+                    <li class="list-group-item" *ngIf="profile.behance">
+                        <a target="_blank" [href]="profile.behance"><img
+                                src="https://artysta.knickknacks.pl/images/behance.svg" alt="behance Icon"
+                                style="height: 40px;"></a>
+                    </li>
+                    <li class="list-group-item" *ngIf="profile.youtube">
+                        <a target="_blank" [href]="profile.youtube"><img
+                                src="https://artysta.knickknacks.pl/images/youtube.svg" alt="Youtube Icon"
+                                style="height: 40px;"></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -74,7 +143,8 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card side">
-                    <div class="btn btn-primary btn-big" (click)="follow()" *ngIf="!isFollowing() && (currentUser._id !== id)">
+                    <div class="btn btn-primary btn-big" (click)="follow()"
+                        *ngIf="!isFollowing() && (currentUser._id !== id)">
                         Obserwuj
                     </div>
                     <button class="btn btn-primary btn-big" disabled *ngIf="isFollowing()">

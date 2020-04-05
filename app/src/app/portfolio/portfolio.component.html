@@ -1,14 +1,14 @@
-<div class="container-blue d-flex justify-content-center " *ngIf="!userProfile" >
+<div class="container-blue d-flex justify-content-center " *ngIf="!userProfile">
   <div class="spinner-border mt-5" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 <div class="container-blue home" *ngIf="userProfile">
   <section class="jumbotron page-cover">
     <div class="head-content container">
       <div class="d-flex justify-content-center align-items-center" *ngIf="userProfile.website">
-        <h1>Dzień dobry, {{ currentUser.firstName }}!</h1>
-        <p>
+        <h1 class="text-center">Dzień dobry, {{ currentUser.firstName }}!</h1>
+        <p  class="text-center">
           Gratulacje, Twoja strona jest online.
         </p>
 
@@ -17,12 +17,13 @@
           <br>
           Motyw dobierz w sekcji <a [routerLink]="['/szablon']" routerLinkActive="router-link-active">szablon.</a>
           <br>
-          <a [href]="'https://artysta.knickknacks.pl'+userProfile.website" target="_blank">Otwórz stronę w nowej karcie.</a>
+          <a [href]="'https://artysta.knickknacks.pl'+userProfile.website" target="_blank">Otwórz stronę w nowej
+            karcie.</a>
         </p>
       </div>
       <div class="d-flex justify-content-center align-items-center" *ngIf="!userProfile.plan">
-        <h1>Dzień dobry, {{ currentUser.firstName }}!</h1>
-        <p>
+        <h1 class="text-center">Dzień dobry, {{ currentUser.firstName }}!</h1>
+        <p  class="text-center">
           Jesteś kilka minut od stworzenia portfolio, które zobaczy cały świat
         </p>
 
@@ -33,8 +34,8 @@
         </p>
       </div>
       <div class="d-flex justify-content-center align-items-center" *ngIf="userProfile.plan && !userProfile.website">
-        <h1>Dzień dobry, {{ currentUser.firstName }}.</h1>
-        <p>
+        <h1 class="text-center">Dzień dobry, {{ currentUser.firstName }}.</h1>
+        <p  class="text-center">
           Zacznijmy działać! Uzupełnij dane poniżej, na ich podstawie
           wygenerujemy Twoje portfolio
         </p>
@@ -237,7 +238,7 @@
               <li class="text-muted">
                 <span class="fa-li">
                   <fa-icon [icon]="faTimes"></fa-icon>
-                </span>Własna domena i konfiguracja kont e-mail
+                </span>Domena w cenie i konfiguracja kont e-mail
               </li>
               <li class="text-muted">
                 <span class="fa-li">
@@ -313,7 +314,7 @@
               <li class="text-muted">
                 <span class="fa-li">
                   <fa-icon [icon]="faTimes"></fa-icon>
-                </span>Własna domena i konfiguracja kont e-mail
+                </span>Domena w cenie i konfiguracja kont e-mail
               </li>
               <li class="text-muted">
                 <span class="fa-li">
@@ -337,7 +338,7 @@
               Pro
             </h5>
             <h6 class="card-price text-center">
-              49zł<span class="period">/miesiąc</span>
+              39zł<span class="period">/miesiąc</span>
             </h6>
             <hr />
             <ul class="fa-ul">
@@ -389,7 +390,7 @@
               <li>
                 <span class="fa-li">
                   <fa-icon [icon]="faCheck"></fa-icon>
-                </span>Własna domena i konfiguracja kont e-mail
+                </span>Domena w cenie i konfiguracja kont e-mail
               </li>
               <li>
                 <span class="fa-li">

@@ -3,6 +3,25 @@ fa-icon {
     vertical-align: middle;
     color: #a4abc5;
 }
+@media (max-width:600px) {
+    p.my-0 {
+        display: none !important;
+    }
+    .notifications {
+        button {
+            margin-right: 0 !important;
+            padding-right: 0 !important;
+            fa-icon {
+                margin-right:  0 !important;
+            }
+        }
+    }
+}
+@media (max-width:340px) {
+    .dropdown-menu.show {
+        max-width: 260px !important
+    }
+}
 .notification {
     display: flex;
     justify-content: center;

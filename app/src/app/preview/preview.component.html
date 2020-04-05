@@ -1,5 +1,8 @@
-<iframe width="100%" height="100%" [src]="('https://artysta.knickknacks.pl'+previewUrl) | safe: 'resourceUrl'"></iframe>
-<div class="form-container preview" *ngIf="profile">
+<!-- <div class="edit-info">
+    <p>Edycja</p> <fa-icon [icon]="faArrowAltCircleDown"></fa-icon>
+</div> -->
+<iframe *ngIf="previewUrl" width="100%" height="100%" [src]="('https://artysta.knickknacks.pl'+previewUrl) | safe: 'resourceUrl'"></iframe>
+<div class="form-container preview" *ngIf="profile" id="edit-form">
     <h3><a [href]="'https://artysta.knickknacks.pl'+previewUrl" target="_blank">Otwórz w nowej karcie</a></h3>
     <h3>Dopasuj teksty</h3>
     <accordion closeOthers="true" [isAnimated]="true" *ngIf="texts">
@@ -86,7 +89,8 @@
                 <table class="table table-light artworks">
                     <tbody>
                         <tr *ngFor="let artwork of artworks; let index = index">
-                            <td><img [src]="'https://artysta.knickknacks.pl/' + artwork.photoUrl.split('public/')[1]" alt="">
+                            <td><img [src]="'https://artysta.knickknacks.pl/' + artwork.photoUrl.split('public/')[1]"
+                                    alt="">
                             </td>
                             <td>
                                 <label for="title">Tytuł</label>
