@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   sectionArtworks;
   constructor(private artworkService: ArtworkService, private alertService: AlertService, private userService: UserService) { }
   ngOnInit(): void {
-    this.getArtworks('today', 'best');
+    this.getArtworks('month', 'best');
     this.getArtists('best')
     this.getSection('malarstwo')
   }
