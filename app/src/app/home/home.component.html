@@ -159,7 +159,7 @@
         </div>
         <div class="row artists">
             <div class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
-                *ngFor="let item of users | slice: 0:3; let i = index">
+                *ngFor="let item of users | slice: 0:4; let i = index">
                 <img [src]="
             'https://artysta.knickknacks.pl/' + item.bestArtworkUrl.split('public/')[1]
           " alt="" />
