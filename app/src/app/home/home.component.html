@@ -151,15 +151,15 @@
                 Mogą Ci się spodobać
             </div> -->
             <div class="tile active col" [ngClass]="{ active: activeArtist === 'best' }" (click)="getArtists('best')">
-                Najlepsi artyści
+                Ostatnio dołączyli
             </div>
             <!-- <div class="tile col" [ngClass]="{ active: activeArtist === 'new' }" (click)="getArtists('new')">
                 Ostatnio dołączyli
             </div> -->
         </div>
-        <div class="row artists">
+        <div class="row artists" *ngIf="!allArtists">
             <div class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
-                *ngFor="let item of users | slice: 2:6; let i = index">
+                *ngFor="let item of users | slice: users.length - 4:users.length; let i = index">
                 <img [src]="
             'https://artysta.knickknacks.pl/' + item.bestArtworkUrl.split('public/')[1]
           " alt="" />
@@ -175,6 +175,30 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row artists" *ngIf="allArtists">
+            <div class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
+                *ngFor="let item of users; let i = index">
+                <img [src]="
+            'https://artysta.knickknacks.pl/' + item.bestArtworkUrl.split('public/')[1]
+          " alt="" />
+                <div class="overlay">
+                    <div class="content">
+                        <div class="img-container" *ngIf="item.profilePhoto">
+                            <img [src]="
+                  'https://artysta.knickknacks.pl/' +
+                  item.profilePhoto.split('public/')[1]
+                " alt="" />
+                        </div>
+                        <h3>{{ item.name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary p-3" (click)="showAllArtistsFn()">
+                {{ allArtists ? "Ukryj" : "Pokaż wszystkie" }}
+            </button>
         </div>
     </section>
     <section class="container mt-5">

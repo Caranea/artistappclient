@@ -106,6 +106,8 @@
     padding: 10px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
     &:first-of-type {
       padding-left: 0;
     }
@@ -127,10 +129,11 @@
         width: 60px;
         overflow: hidden;
         border-radius: 50%;
+        display: flex;
+        justify-content: center;
 
         img {
           height: 100%;
-          transform: translateX(-15%);
         }
       }
         h3 {

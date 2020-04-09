@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   artworks;
   active;
   showAll;
+  allArtists;
   users;
   activeArtist = 'best'
   activeSection = 'malarstwo'
@@ -41,6 +42,9 @@ export class HomeComponent implements OnInit {
     if(this.active === 'monthbest' || this.active === 'todaybest')  {
       this.getArtworks('allTime', 'best')
     }
+  }
+  showAllArtistsFn() {
+    this.allArtists = !this.allArtists
   }
   getArtists(type) {
     this.activeArtist = type

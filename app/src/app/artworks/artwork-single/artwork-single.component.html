@@ -84,7 +84,8 @@
                     <div *ngIf="author.profilePhoto" class="profile-photo">
                         <img src="" alt="">
                     </div>
-                    <h2>{{author.firstName}} {{author.lastName}}</h2>
+                    <h2><a [routerLink]="'/profil/zobacz/' + artwork.userId">{{author.firstName}} {{author.lastName}}</a>
+                    </h2>
                 </div>
                 <div class="price mr-4" *ngIf="artwork.price">
                     PLN{{artwork.price}}
