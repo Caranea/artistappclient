@@ -14,29 +14,31 @@ import { SettingsComponent } from './settings/settings.component'
 import { ThemesComponent } from './themes/themes.component'
 import { SuccessComponent } from './success/success.component'
 import { CancelledComponent } from './cancelled/cancelled.component'
-
+import { AuthGuardService } from './guard/guard'
 
 const routes: Routes = [
-  { path: 'portal', component: HomeComponent },
-  { path: 'portfolio/sukces', component: SuccessComponent },
-  { path: 'portfolio/blad', component: CancelledComponent },
-  { path: '', component: HomeComponent },
-  { path: 'portfolio', component: PortfolioComponent },
-  { path: 'podglad', component: PreviewComponent },
-  { path: 'szablon', component: ThemesComponent },
+  { path: 'portal', component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: 'portfolio/sukces', component: SuccessComponent, canActivate: [AuthGuardService] },
+  { path: 'portfolio/blad', component: CancelledComponent, canActivate: [AuthGuardService] },
+  { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: 'portfolio', component: PortfolioComponent, canActivate: [AuthGuardService] },
+  { path: 'podglad', component: PreviewComponent, canActivate: [AuthGuardService] },
+  { path: 'szablon', component: ThemesComponent, canActivate: [AuthGuardService] },
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'ustawienia', component: SettingsComponent },
-  { path: 'prace/dodaj', component: ArtworkAddComponent },
-  { path: 'prace/edytuj/:id', component: ArtworkAddComponent },
-  { path: 'prace', component: ArtworksComponent },
-  { path: 'prace/:id', component: ArtworkSingleComponent },
-  { path: 'profil/zobacz/:id', component: ProfileComponent },
-  { path: 'profil/edytuj', component: ProfileEditComponent },
+  { path: 'ustawienia', component: SettingsComponent, canActivate: [AuthGuardService] },
+  { path: 'prace/dodaj', component: ArtworkAddComponent, canActivate: [AuthGuardService] },
+  { path: 'prace/edytuj/:id', component: ArtworkAddComponent, canActivate: [AuthGuardService] },
+  { path: 'prace', component: ArtworksComponent, canActivate: [AuthGuardService] },
+  { path: 'prace/:id', component: ArtworkSingleComponent, canActivate: [AuthGuardService] },
+  { path: 'profil/zobacz/:id', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'profil/edytuj', component: ProfileEditComponent, canActivate: [AuthGuardService] },
+  { path: '**', component: HomeComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuardService]
 })
 export class AppRoutingModule { }
