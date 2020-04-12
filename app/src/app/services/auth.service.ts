@@ -37,5 +37,14 @@ export class AuthenticationService {
         this.router.navigate(['login']);
         this.currentUserSubject.next(null);
     }
-    
+
+    reset(email) {
+        return this.http.post<any>(`${this.paths.apiUrl}/users/reset-password`, { email})
+    }
+    validateToken(token) {
+        return this.http.get<any>(`${this.paths.apiUrl}/users/reset/${token}`)
+    }
+    setPassword(token, password) {
+        return this.http.post<any>(`${this.paths.apiUrl}/users/set-password/${token}`, {password})
+    }
 }

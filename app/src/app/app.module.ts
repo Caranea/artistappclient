@@ -38,7 +38,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { ThemesComponent } from './themes/themes.component';
 import { FooterComponent } from './footer/footer.component';
 import { SuccessComponent } from './success/success.component';
-import { CancelledComponent } from './cancelled/cancelled.component'
+import { CancelledComponent } from './cancelled/cancelled.component';
+import { ResetComponent } from './reset/reset.component';
+import { NewPasswordComponent } from './new-password/new-password.component'
 
 const config: InputFileConfig = {};
 
@@ -66,7 +68,9 @@ const config: InputFileConfig = {};
     ThemesComponent,
     FooterComponent,
     SuccessComponent,
-    CancelledComponent
+    CancelledComponent,
+    ResetComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

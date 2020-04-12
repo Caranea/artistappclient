@@ -64,6 +64,9 @@
         <accordion-group heading="Ustaw favicon"
             tooltip="Favicon jest małą ikoną, która wyświetla się obok tytułu witryny w przeglądarce. Służy jako element rozpoznawczy, budujący zaufanie wśród odbiorców, ponieważ pomaga im wizualnie zidentyfikować witrynę internetową. Aby ustawic prawidłowo favicon, wybierz kwadratową ikonę w formacie .png.">
             <div class="addExtra">
+                <div class="alert alert-light d-flex align-items-center file-info" role="alert">
+                    <fa-icon [icon]="faExclamation"></fa-icon> Upewnij się, że dodajesz plik w odpowiednim formacie (.png).
+                   </div>
                 <input-file name="favicon" #icon fileAccept="image/png" fileLimit="1" [linkEnabled]="true">
                 </input-file>
                 <button class="btn btn-primary" (click)="saveIcon()">
@@ -74,6 +77,9 @@
         <accordion-group heading="Dodaj logo"
             tooltip="Ustaw logo. Użyj formatu svg, który jest najlepszą opcją dla umieszczania podobnych obrazków na stronach internetowych.">
             <div class="addExtra">
+                <div class="alert alert-light d-flex align-items-center file-info" role="alert">
+                   <fa-icon [icon]="faExclamation"></fa-icon> Upewnij się, że dodajesz plik w odpowiednim formacie (.svg).
+                  </div>
                 <input-file #logo name="logo" fileAccept="image/svg" fileLimit="1" [linkEnabled]="true">
                 </input-file>
                 <button class="btn btn-primary" (click)="saveLogo()">

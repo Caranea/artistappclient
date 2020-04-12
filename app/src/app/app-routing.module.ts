@@ -15,6 +15,8 @@ import { ThemesComponent } from './themes/themes.component'
 import { SuccessComponent } from './success/success.component'
 import { CancelledComponent } from './cancelled/cancelled.component'
 import { AuthGuardService } from './guard/guard'
+import { ResetComponent } from './reset/reset.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'szablon', component: ThemesComponent, canActivate: [AuthGuardService] },
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'reset', component: ResetComponent },
+  { path: 'reset/:token', component: NewPasswordComponent },
   { path: 'ustawienia', component: SettingsComponent, canActivate: [AuthGuardService] },
   { path: 'prace/dodaj', component: ArtworkAddComponent, canActivate: [AuthGuardService] },
   { path: 'prace/edytuj/:id', component: ArtworkAddComponent, canActivate: [AuthGuardService] },

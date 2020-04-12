@@ -53,6 +53,9 @@ export class PortfolioComponent implements OnInit {
           if (!this.userProfile.plan) { this.loadStripe(this.currentUser.email) };
           if (this.userProfile.plan) {
             this.maxCategories = this.userProfile.plan === 'basic' ? 3 : this.userProfile.plan === 'premium' ? 10 : 20;
+            if (this.userProfile.plan !== 'pro') {
+              this.loadStripeUpgrade(this.currentUser.email)
+            }
           }
         },
         error => {
@@ -146,7 +149,31 @@ export class PortfolioComponent implements OnInit {
       this.rows[i][dataField] = e.target.checked
     }
   }
-
+  loadStripeUpgrade(email) {
+    var s = window.document.createElement("script");
+    s.id = "stripe-script";
+    s.type = "text/javascript";
+    s.src = "https://js.stripe.com/v3";
+    s.onload = () => {
+      let stripes = Stripe('pk_live_Wn3nGfddYQmQHKrNzmGSQPDH00cEkEjiSp');
+      var checkoutButton = document.getElementById('checkout-button-plan_H5KtfdBKssNv8y');
+      checkoutButton.addEventListener('click', function () {
+        stripes.redirectToCheckout({
+          items: [{ plan: 'plan_H5KppzQqajZzoj', quantity: 1 }],
+          successUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/sukces',
+          cancelUrl: window.location.protocol + '//artysta.knickknacks.pl/portfolio/blad',
+          customerEmail: email
+        })
+          .then(function (result) {
+            if (result.error) {
+              var displayError = document.getElementById('error-message');
+              displayError.textContent = result.error.message;
+            }
+          });
+      });
+    }
+    window.document.body.appendChild(s); 
+  }
   loadStripe(email) {
     var s = window.document.createElement("script");
     s.id = "stripe-script";

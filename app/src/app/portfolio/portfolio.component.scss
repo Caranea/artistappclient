@@ -24,7 +24,21 @@ section.pricing {
   background: #4d79f6;
   background: linear-gradient(to right, #0062e6, #33aeff);
 }
-
+.alert-warning {
+  border-radius: 5px;
+  background-color: #fffde1;
+  color: #aa7918;
+  border-color: rgba(170, 121, 24, 0.24);
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .btn {
+    margin-bottom: 10px !important;
+    margin-top: 10px;
+  }
+}
 .pricing .card {
   border: none;
   border-radius: 1rem;
@@ -111,13 +125,12 @@ section.pricing {
   text-align: center;
   width: 20%;
   position: relative;
-   fa-icon {
+  fa-icon {
     font-size: 34px;
   }
 }
 .process-step p {
   margin-top: 4px;
- 
 }
 .btn-circle {
   width: 80px;
@@ -130,9 +143,8 @@ section.pricing {
   background-color: #4d79f6;
 }
 .btn.btn-default.btn-circle:not(.btn-info) {
-  background: 
-#fff;
-border: 1px solid #4d7af6c2;
+  background: #fff;
+  border: 1px solid #4d7af6c2;
   fa-icon {
     color: #4d79f6;
   }
@@ -148,7 +160,8 @@ table img {
   max-height: 200px;
   max-width: 200px;
 }
-.table, .alert {
+.table,
+.alert {
   border-radius: 5px;
   th {
     border-top: none;
@@ -156,8 +169,8 @@ table img {
 }
 .add-icon {
   color: #4d79f6;
-font-size: 37px;
-margin-left: 5px;
+  font-size: 37px;
+  margin-left: 5px;
 }
 
 .category-input {
@@ -167,15 +180,14 @@ margin-left: 5px;
 }
 
 .category-label {
-    padding: 10px;
-    background: 
-  #fff;
+  padding: 10px;
+  background: #fff;
   margin-bottom: 20px;
   display: inline-block;
   border-radius: 5px;
   position: relative;
   margin-right: 10px;
   fa-icon {
-    color:#e6533c ;
+    color: #e6533c;
   }
 }

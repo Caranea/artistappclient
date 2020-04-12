@@ -40,6 +40,7 @@ export class NavbarTopComponent {
     .subscribe(
       (data: any) => {
         this.profile = data.userProfile;
+        this.profile.notifications = this.profile.notifications.reverse()
         this.unred = this.profile.notifications.filter(el => {
           return el.displayed === false
         }).length === 0 ? false : true

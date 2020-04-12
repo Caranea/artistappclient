@@ -23,7 +23,7 @@
             </button>
             <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
                 aria-labelledby="button-animated">
-                <li role="menuitem" *ngFor="let item of profile.notifications"><a class="dropdown-item"
+                <li role="menuitem" *ngFor="let item of profile.notifications | slice:0:6;"><a class="dropdown-item"
                         [href]="item.link">{{item.notification}}</a></li>
             </ul>
         </div>

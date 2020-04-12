@@ -4,7 +4,7 @@ import { AuthenticationService } from "../services/auth.service";
 import { AlertService } from "../services/alert.service";
 import { first } from "rxjs/operators";
 import { DomSanitizer } from "@angular/platform-browser";
-import { faAngleDoubleDown, faQuestionCircle, faPlus, faArrowAltCircleDown} from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faQuestionCircle, faPlus, faArrowAltCircleDown, faExclamation} from "@fortawesome/free-solid-svg-icons";
 import { ArtworkService } from '../services/artwork.service'
 import { UserService } from '../services/user.service'
 @Component({
@@ -20,6 +20,7 @@ export class PreviewComponent implements OnInit, AfterViewChecked {
   faQuestionCircle = faQuestionCircle;
   faArrowAltCircleDown = faArrowAltCircleDown;
   faPlus = faPlus;
+  faExclamation = faExclamation;
   artworks
   categories
   profile

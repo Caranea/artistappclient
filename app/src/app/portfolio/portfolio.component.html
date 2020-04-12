@@ -8,7 +8,7 @@
     <div class="head-content container">
       <div class="d-flex justify-content-center align-items-center" *ngIf="userProfile.website">
         <h1 class="text-center">Dzień dobry, {{ currentUser.firstName }}!</h1>
-        <p  class="text-center">
+        <p class="text-center">
           Gratulacje, Twoja strona jest online.
         </p>
 
@@ -20,10 +20,27 @@
           <a [href]="'https://artysta.knickknacks.pl'+userProfile.website" target="_blank">Otwórz stronę w nowej
             karcie.</a>
         </p>
+        <div *ngIf="userProfile.plan === 'basic' || userProfile.plan === 'premium'"
+          class="alert alert-primary alert-warning">
+          <p class="text-center">
+            Twoja strona nie ma domeny, przez co może nie prezentować się profesjonalnie. Jeśli chcesz, możesz przejść
+            do
+            planu profesjonalnego w promocyjnej cenie <b> 29zł / miesiąc</b>. Domena i rejestracja w niej kont
+            pocztowych są
+            wliczone w cenę.</p>
+          <button class="btn btn-primary d-block" id="checkout-button-plan_H5KtfdBKssNv8y">
+            Ulepsz swój plan
+          </button>
+        </div>
+        <p class="text-center mt-2" *ngIf="userProfile.plan === 'pro' && !userProfile.domainSet">
+          Na adres e-mail
+          <b>{{userProfile.email}}</b> wysłaliśmy informacje dotyczące konfiguracji domeny. Jeśli masz jakieś pytania
+          lub potrzebujesz pomocy, odpisz na e-mail lub użyj czata w rogu strony.
+        </p>
       </div>
       <div class="d-flex justify-content-center align-items-center" *ngIf="!userProfile.plan">
         <h1 class="text-center">Dzień dobry, {{ currentUser.firstName }}!</h1>
-        <p  class="text-center">
+        <p class="text-center">
           Jesteś kilka minut od stworzenia portfolio, które zobaczy cały świat
         </p>
 
@@ -35,7 +52,7 @@
       </div>
       <div class="d-flex justify-content-center align-items-center" *ngIf="userProfile.plan && !userProfile.website">
         <h1 class="text-center">Dzień dobry, {{ currentUser.firstName }}.</h1>
-        <p  class="text-center">
+        <p class="text-center">
           Zacznijmy działać! Uzupełnij dane poniżej, na ich podstawie
           wygenerujemy Twoje portfolio
         </p>
@@ -183,10 +200,9 @@
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center">
-              Za darmo - dla pierwszych 50 osób
-            </h5>
+              Plan podstawowy </h5>
             <h6 class="card-price text-center">
-              0zł<span class="period">/miesiąc</span>
+              9.99zł<span class="period">/miesiąc</span>
             </h6>
             <hr />
             <ul class="fa-ul">
