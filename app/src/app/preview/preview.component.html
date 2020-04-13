@@ -75,12 +75,12 @@
             </div>
         </accordion-group>
         <accordion-group heading="Dodaj logo"
-            tooltip="Ustaw logo. Użyj formatu svg, który jest najlepszą opcją dla umieszczania podobnych obrazków na stronach internetowych.">
+            tooltip="Ustaw logo. Użyj formatu png, który jest najlepszą opcją dla umieszczania podobnych obrazków na stronach internetowych.">
             <div class="addExtra">
                 <div class="alert alert-light d-flex align-items-center file-info" role="alert">
-                   <fa-icon [icon]="faExclamation"></fa-icon> Upewnij się, że dodajesz plik w odpowiednim formacie (.svg).
+                   <fa-icon [icon]="faExclamation"></fa-icon> Upewnij się, że dodajesz plik w odpowiednim formacie (.png).
                   </div>
-                <input-file #logo name="logo" fileAccept="image/svg" fileLimit="1" [linkEnabled]="true">
+                <input-file #logo name="logo" fileAccept="image/png" fileLimit="1" [linkEnabled]="true">
                 </input-file>
                 <button class="btn btn-primary" (click)="saveLogo()">
                     Zapisz
