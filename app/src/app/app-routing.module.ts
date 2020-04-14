@@ -15,8 +15,10 @@ import { ThemesComponent } from './themes/themes.component'
 import { SuccessComponent } from './success/success.component'
 import { CancelledComponent } from './cancelled/cancelled.component'
 import { AuthGuardService } from './guard/guard'
+import {AdminGuardService} from './guard/adminGuard'
 import { ResetComponent } from './reset/reset.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -37,12 +39,13 @@ const routes: Routes = [
   { path: 'prace/:id', component: ArtworkSingleComponent, canActivate: [AuthGuardService] },
   { path: 'profil/zobacz/:id', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'profil/edytuj', component: ProfileEditComponent, canActivate: [AuthGuardService] },
+  { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AdminGuardService] },
   { path: '**', component: HomeComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuardService]
+  providers: [AuthGuardService, AdminGuardService]
 })
 export class AppRoutingModule { }

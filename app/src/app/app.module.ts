@@ -26,6 +26,7 @@ import { HomeComponent } from './home/home.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ImagesComponent } from './portfolio/images/images.component';
@@ -40,7 +41,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SuccessComponent } from './success/success.component';
 import { CancelledComponent } from './cancelled/cancelled.component';
 import { ResetComponent } from './reset/reset.component';
-import { NewPasswordComponent } from './new-password/new-password.component'
+import { NewPasswordComponent } from './new-password/new-password.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component'
 
 const config: InputFileConfig = {};
 
@@ -70,7 +72,8 @@ const config: InputFileConfig = {};
     SuccessComponent,
     CancelledComponent,
     ResetComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -86,8 +89,8 @@ const config: InputFileConfig = {};
     TooltipModule.forRoot(),
     AccordionModule.forRoot(),
     CarouselModule.forRoot(),
-    BsDropdownModule.forRoot()
-
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   exports: [SafePipe],
   providers: [
