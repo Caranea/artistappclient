@@ -42,7 +42,8 @@ import { SuccessComponent } from './success/success.component';
 import { CancelledComponent } from './cancelled/cancelled.component';
 import { ResetComponent } from './reset/reset.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component'
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { DomenaComponent } from './domena/domena.component'
 
 const config: InputFileConfig = {};
 
@@ -73,7 +74,8 @@ const config: InputFileConfig = {};
     CancelledComponent,
     ResetComponent,
     NewPasswordComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    DomenaComponent
   ],
   imports: [
     BrowserModule,

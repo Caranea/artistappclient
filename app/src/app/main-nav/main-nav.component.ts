@@ -29,6 +29,11 @@ export class MainNavComponent implements AfterContentChecked {
       'prace': [{ name: 'Przeglądaj', path: 'prace' }, { name: 'Dodaj nową', path: 'prace/dodaj' }],
       'profil': [{ name: 'Podgląd', path: `profil/zobacz/${this.currentUser._id}` }, { name: 'Edytuj profil', path: 'profil/edytuj' }]
     }
+
+    if (this.currentUser.plan === 'pro') {
+      this.bottomMenu['podglad'].push({ name: 'Domena', path: 'domena' })
+      this.bottomMenu['szablon'].push({ name: 'Domena', path: 'domena' })
+    }
   }
 
   ngAfterContentChecked() {

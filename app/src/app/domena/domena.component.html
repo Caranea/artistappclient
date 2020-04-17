@@ -1,0 +1,44 @@
+<section class="artwork-add container-blue">
+    <div class="container">
+        <h3>
+            Wybierz swoją domenę
+        </h3>
+        <div [formGroup]="domainForm" (ngSubmit)="onSubmit()">
+            <div class="section info">
+
+                <div class="alert alert-primary alert-warning">
+                    <p class="text-center">
+                        Przypisanie domeny do strony może potrwać do 24h.</p>
+                </div>
+                <div class="form-group mb-0">
+                    <div>
+                        <label class="required" for="domain">domena <span class="text-muted">(np.
+                                knickknacks.pl)</span></label>
+                        <input (change)="domainForm.updateValueAndValidity()" type="text" id="domain"
+                            formControlName="domain" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.domain.errors, 'is-valid': submitted && !f.domain.errors}" />
+                    </div>
+                    <div *ngIf="f.domain.errors">
+                        <div class="invalid-feedback d-block" *ngIf="submitted && f.domain.errors.required">Pole
+                            obowiązkowe</div>
+                        <div class="invalid-feedback d-block" *ngIf="submitted && f.domain.errors.pattern">Nieprawidłowy
+                            format domeny.
+                            Użyj
+                            formatu
+                            twojanazwa.rozszerzenie, np: knickknacks.pl. Użyj wyłącznie małych liter. Polskie znaki są
+                            niedozwolone.</div>
+                    </div>
+                    <button (click)="onSubmit()" [disabled]="loading" class="btn-send btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        {{buttonText}}<fa-icon class="ml-2" [icon]="faLongArrowAltRight"></fa-icon>
+                    </button>
+                    <button (click)="setDomain()" *ngIf="domain && submitted && !f.domain.errors && !loading" [disabled]="loading"
+                        class="btn-send d-block btn-small btn btn-success mt-0">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Wybierz domenę<fa-icon class="ml-2" [icon]="faLongArrowAltRight"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

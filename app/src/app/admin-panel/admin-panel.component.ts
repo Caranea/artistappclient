@@ -12,6 +12,7 @@ import { first } from 'rxjs/operators';
 })
 export class AdminPanelComponent implements OnInit {
   activeSection = 'shops'
+  socialMode = "artists"
   artworks = []
   users = []
   selectedArtworks = []
@@ -29,7 +30,7 @@ export class AdminPanelComponent implements OnInit {
         (data: any) => {
           this.artworks = data.artworks
           this.users = data.users
-          console.log(this.artworks)
+          console.log(this.users)
         },
         error => {
           this.alertService.error(error);

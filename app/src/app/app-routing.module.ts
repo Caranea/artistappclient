@@ -19,6 +19,7 @@ import {AdminGuardService} from './guard/adminGuard'
 import { ResetComponent } from './reset/reset.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { DomenaComponent } from './domena/domena.component';
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent, canActivate: [AuthGuardService] },
   { path: 'podglad', component: PreviewComponent, canActivate: [AuthGuardService] },
   { path: 'szablon', component: ThemesComponent, canActivate: [AuthGuardService] },
+  { path: 'domena', component: DomenaComponent, canActivate: [AuthGuardService] },
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },

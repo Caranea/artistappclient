@@ -15,7 +15,8 @@
         <p class="text-muted mt-2">
           Możesz ją edytować w sekcji <a [routerLink]="['/podglad']" routerLinkActive="router-link-active">edycja.</a>
           <br>
-          Motyw dobierz w sekcji <a [routerLink]="['/szablon']" routerLinkActive="router-link-active">szablon.</a>
+          Motyw dobierz w sekcji <a [routerLink]="['/szablon']" routerLinkActive="router-link-active">szablon.</a> <br>
+          <span *ngIf="userProfile.plan === 'pro'">Wybierz adres dla swojej strony w sekcji <a [routerLink]="['/domena']" routerLinkActive="router-link-active">domena.</a></span>
           <br>
           <a [href]="'https://artysta.knickknacks.pl'+userProfile.website" target="_blank">Otwórz stronę w nowej
             karcie.</a>

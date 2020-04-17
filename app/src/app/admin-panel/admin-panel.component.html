@@ -12,7 +12,7 @@
             <div class="card p-3 m-3  bg-success  text-white">
                 Roześlij maile
             </div>
-            <div class="card p-3 m-3  bg-warning  text-white">
+            <div class="card p-3 m-3  bg-warning  text-white" (click)="activeSection='socials'">
                 Posty social media </div>
             <p class="px-3">Kategorie prac</p>
             <div class="card p-3 m-3">
@@ -62,6 +62,43 @@
                     </span>
                 </div>
             </div>
+            <div *ngIf="activeSection==='socials'">
+                <div class="row justify-content-center mx-5">
+                    <div class="card p-3 m-3  bg-primary  text-white" (click)="getArtworks('6')">
+                        Ostatnie 6h
+                    </div>
+                    <div class="card p-3 m-3  bg-success  text-white" (click)="getArtworks('24')">
+                        Ostatnie 24h
+                    </div>
+                    <div class="card p-3 m-3  bg-warning  text-white" (click)="getArtworks('7d')">
+                        Ostatnie 7dni</div>
+                </div>
+                <div class="row mx-5 justify-content-center">
+                    <span *ngFor="let item of artworks">
+
+                        <div class="card m-3" style="height: 300px; width:180px" *ngIf="item.forSale && item.accepted">
+                            <div style="overflow: hidden;">
+                                <img style="width:200px"
+                                    [src]="'https://artysta.knickknacks.pl' + item.photosUrls[0].split('public')[1]"
+                                    alt="">
+                            </div>
+                            {{item.title}}
+                            <br>
+                            Zaakceptowana: {{item.accepted ? "Tak" : "Nie"}}
+                            <p class="text-success">
+                                Platformy: {{item.platforms.facebook ? "Fb," : ""}}
+                                {{item.platforms.instagram ? "Insta," : ""}}
+                                {{item.platforms.etsy ? "Etsy," : ""}}
+                                {{item.platforms.pinterest ? "Pinterest," : ""}}
+                                {{item.platforms.artpal ? "Artpal," : ""}}
+                                {{item.platforms.ebay ? "Ebay," : ""}}
+                                {{item.platforms.amazon ? "Amazon," : ""}}
+                                {{item.platforms.allegro ? "Allegro," : ""}}</p>
+                            <input class="m-2 pull-left" type="checkbox" (change)="change($event, item)">
+                        </div>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="col-2">
             <div class="card p-3 m-3 my-5  border-0 text-white">
@@ -70,10 +107,10 @@
                 <br>
             </div>
             <p class="m-3">Zaznaczono {{selectedArtworks.length}} prac</p>
-            <button class=" m-3 btn btn-primary" (click)="getShopifyJson(true, template)" >
+            <button class=" m-3 btn btn-primary" (click)="getShopifyJson(true, template)">
                 exportuj JSON (format shopify)
             </button>
-            <button class=" m-3 btn btn-primary" (click)="getShopifyJson(false, template)" >
+            <button class=" m-3 btn btn-primary" (click)="getShopifyJson(false, template)">
                 exportuj JSON (shopify bez zdjęć)
             </button>
             <p class="px-3">Lista kroków: </p>
@@ -91,12 +128,12 @@
 
 <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Skopiuj ten plik JSON i zamień go na CSV</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        <h4 class="modal-title pull-left">Skopiuj ten plik JSON i zamień go na CSV</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body">
-      <textarea name="" id="" cols="30" rows="10" [value]="resultString"></textarea>
+        <textarea name="" id="" cols="30" rows="10" [value]="resultString"></textarea>
     </div>
-  </ng-template>
+</ng-template>
