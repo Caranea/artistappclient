@@ -187,14 +187,6 @@ export class PreviewComponent implements OnInit, AfterViewChecked {
       this.alertService.error('Musisz zaznaczyć choć 1 pracę')
       return;
     }
-    let error
-    included.forEach(element => {
-      if (!element.category) {
-        this.alertService.error('Zapomniałeś o kategorii');
-        error = true
-      }
-    });
-    if (error) return;
     this.websiteService.updateWebsite(this.currentUser._id, { artworks: this.artworks })
       .pipe(first())
       .subscribe(

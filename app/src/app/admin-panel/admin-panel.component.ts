@@ -52,10 +52,11 @@ export class AdminPanelComponent implements OnInit {
         return el2._id === el.userId[0]
       })[0]
       if (el.price) {
+        el.varnish = el.varnish ? 'Tak' : 'Nie'
         let product: any = {};
         product.Handle = el.title.replace(' ', '-').toLowerCase()
         product.Title = el.title
-        product.Body = "<p>${el.opis}</p><p>Wymiary (cm): ${el.height}x${el.width}</p><p>Materiały: ${el.material}</p><p>Podłoże: ${el.surface}</p><p>Werniks: ${el.varnish}</p><p>Rok: ${el.year}</p>";
+        product.Body = `<p>${el.opis}</p><p>Wymiary (cm): ${el.height}x${el.width}</p><p>Materiały: ${el.material}</p><p>Podłoże: ${el.surface}</p><p>Werniks: ${el.varnish}</p><p>Rok: ${el.year}</p>`;
         product.Publish = false;
         product["Variant Inventory Qty"] = 1
         product.Price = el.price;
