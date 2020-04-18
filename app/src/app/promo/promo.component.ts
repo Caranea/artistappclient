@@ -5,6 +5,8 @@ import { AuthenticationService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { AlertService } from '../services/alert.service'
 import { first } from 'rxjs/operators';
+
+declare const Stripe: any;
 @Component({
   selector: 'app-promo',
   templateUrl: './promo.component.html',

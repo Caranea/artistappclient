@@ -18,7 +18,7 @@
           Motyw dobierz w sekcji <a [routerLink]="['/szablon']" routerLinkActive="router-link-active">szablon.</a> <br>
           <span *ngIf="userProfile.plan === 'pro'">Wybierz adres dla swojej strony w sekcji <a [routerLink]="['/domena']" routerLinkActive="router-link-active">domena.</a></span>
           <br>
-          <a [href]="'https://artysta.knickknacks.pl/clients/'+userProfile._id+'/index2.html'" target="_blank">Otwórz stronę w nowej
+          <a [href]="'https://artysta.knickknacks.pl/clients/'+currentUser._id+'/index2.html'" target="_blank">Otwórz stronę w nowej
             karcie.</a>
         </p>
         <div *ngIf="userProfile.plan === 'basic' || userProfile.plan === 'premium'"
