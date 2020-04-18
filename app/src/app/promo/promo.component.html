@@ -1,0 +1,98 @@
+<div class="container-blue d-flex justify-content-center " *ngIf="!userProfile">
+    <div class="spinner-border mt-5" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container-blue home" *ngIf="userProfile">
+    <div class="container mt-5">
+        <div class="row" *ngIf="!userProfile.plan">
+            <div class="col-lg-8 info">
+                <h2>
+                    Stwórz własną stronę - portfolio.
+                </h2>
+                <p class="text-left mt-3">
+                    Skorzystaj z naszego kreatora, aby stworzyć przejrzystą i nowoczesną stronę portfolio. Kupując
+                    subskrypcję, masz gwarancję braku ukrytych kosztów. Nasz kreator to cena dużo korzystniejsza niż
+                    inne kreatory stron lub skorzystanie z usług agencji programistycznej. Do Twojej dyspozycji będzie
+                    pomoc techniczna, która sprawnie i szybko odpowie na wszelkie pytania, a sam kreator umożliwi w
+                    łatwy sposób personalizacje strony i zarządzanie w niej pracami.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-5 mb-lg-0 h-lg-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted text-uppercase text-center">
+                            Pro </h5>
+                        <h6 class="card-price text-center">
+                            <del>39zł</del> <span class="text-success"> 34zł</span>
+                            <span class="period">/miesiąc</span>
+                        </h6>
+                        <hr />
+                        <ul class="fa-ul">
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>2000 prac
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>20 galerii
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Formularz kontaktowy
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Integracja z mediami społecznościowymi
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Najlepsze praktyki SEO (optymizacja dla wyszukiwarek)
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Wsparcie techniczne
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Referencje i opinie klientów
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Cennik prac i usług
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Domena na rok w cenie i konfiguracja kont e-mail
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Zwiększona wydajność - czas ładowania strony nawet o połowę krótszy.
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Modyfikacje na stronie na zamówienie
+                            </li>
+                        </ul>
+                        <button class="btn-primary w-100 mt-lg-5"
+                            style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                            id="checkout-button-plan_H7XGz5qzgJetd4" role="link">
+                            Skorzystaj z oferty
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

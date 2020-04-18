@@ -1,0 +1,21 @@
+.info {
+  h2 {
+    text-align: left;
+    font-size: 2em;
+  }
+  p {
+    font-size: 1.2em;
+    width: 70%;
+  }
+}
+
+@media (max-width: 991px) {
+  .info {
+    h2 {
+      text-align: center !important;
+    }
+    p {
+      display: none;
+    }
+  }
+}

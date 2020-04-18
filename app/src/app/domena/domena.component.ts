@@ -55,7 +55,7 @@ export class DomenaComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
+    this.domain = ''
     this.f.domain.value.trim()
     // reset alerts on submit
     this.alertService.clear();
@@ -69,7 +69,7 @@ export class DomenaComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data: any) => {
-          console.log(data)
+          data = JSON.parse(data)
           if (data.domainAvailability === "AVAILABLE" || data.DomainInfo.domainAvailability === "AVAILABLE") {
             this.alertService.success("Wybrana przez Ciebie domena jest dostępna");
             this.domain = this.f.domain.value

@@ -9,7 +9,7 @@ export class DomainService {
      }
     private paths: any = Paths;
     checkAvailability(domain) {
-        return this.http.get(`https://domain-availability-api.whoisxmlapi.com/api/v1?apiKey=at_0trJN8hRWjgNw2gFo67EsNslvfcFF&domainName=${domain}`);
+        return this.http.get(`${this.paths.apiUrl}/create_website/check_domain/${domain}`);
     }
     setDomain(userId, domain) {
         return this.http.post(`${this.paths.apiUrl}/create_website/set_domain/${userId}`, {domain});
