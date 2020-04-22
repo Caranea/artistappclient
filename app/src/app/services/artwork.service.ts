@@ -12,8 +12,8 @@ export class ArtworkService {
     getAll(userId) {
         return this.http.get<Artwork[]>(`${this.paths.apiUrl}/artwork/${userId}`);
     }
-    getAllBy(time = 'allTime', sortBy = 'best', type = "all") {
-        return this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}`)
+    getAllBy(time = 'allTime', sortBy = 'best', type = "all", lastID?) {
+        return this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}/${lastID}/`)
     }
     getAuthor(userId) {
         return this.http.get<Artwork[]>(`${this.paths.apiUrl}/artwork/autor/${userId}`);
@@ -36,5 +36,4 @@ export class ArtworkService {
     delete(id: number) {
         return this.http.delete(`${this.paths.apiUrl}/artwork/${id}`);
     }
-
 }
