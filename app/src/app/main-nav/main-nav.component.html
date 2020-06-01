@@ -6,45 +6,45 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class=" collapse navbar-collapse" id="navbarNav">
-                <li class="nav-item" routerLink="/portal" [ngClass]="{'active': activeNavTop === 'portal'}" (click)="setActive('portal')">
+                <a class="nav-item" routerLink="/portal" [ngClass]="{'active': activeNavTop === 'portal'}" (click)="setActive('portal')">
                     <a class="nav-link d-flex" >
                         <fa-icon class="mr-2 d-none d-sm-block" [icon]="faIcons"></fa-icon>Portal <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item"  routerLink="/prace" [ngClass]="{'active': activeNavTop === 'prace'}"
+                </a>
+                <a class="nav-item"  routerLink="/prace" [ngClass]="{'active': activeNavTop === 'prace'}"
                     (click)="setActive('prace')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2 d-none d-sm-block" [icon]="faPalette"></fa-icon>Prace<span
                             class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item" routerLink="/portfolio" [ngClass]="{'active': activeNavTop === 'portfolio'}"
+                </a>
+                <a class="nav-item" routerLink="/portfolio" [ngClass]="{'active': activeNavTop === 'portfolio'}"
                     (click)="setActive('portfolio')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2 d-none d-sm-block" [icon]="faLaptopCode"></fa-icon>Portfolio <span
                             class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item" [ngClass]="{'active': activeNavTop === 'profil'}" [routerLink]="bottomMenu.profil[0].path" (click)="setActive('profil')">
+                </a>
+                <a class="nav-item" [ngClass]="{'active': activeNavTop === 'profil'}" [routerLink]="bottomMenu.profil[0].path" (click)="setActive('profil')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2 d-none d-sm-block " [icon]="faHatWizard"></fa-icon>Profil<span
                             class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item d-none d-sm-block" [ngClass]="{'active': activeNavTop === 'ustawienia'}"
+                </a>
+                <a class="nav-item d-none d-sm-block" [ngClass]="{'active': activeNavTop === 'ustawienia'}"
                 [routerLink]="'/ustawienia'" (click)="setActive('ustawienia')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2 d-none d-sm-block" [icon]="faSlidersH"></fa-icon>Ustawienia<span
                             class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item " [ngClass]="{'active': activeNavTop === 'faq'}"
+                </a>
+                <a class="nav-item " [ngClass]="{'active': activeNavTop === 'faq'}"
                 [routerLink]="'/faq'" (click)="setActive('faq')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2 d-none d-sm-block" [icon]="faQuestionCircle"></fa-icon>FAQ<span
                             class="sr-only">(current)</span>
                     </a>
-                </li>
+                </a>
             </div>
         </ul>
     </div>
@@ -57,12 +57,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class=" collapse navbar-collapse" id="navbarNav">
-                <li class="nav-item" *ngFor="let menuItem of bottomMenu[activeNavTop];" 
+                <a class="nav-item" *ngFor="let menuItem of bottomMenu[activeNavTop];" 
                 [ngClass]="{'active': activeNavBottom === menuItem.name}" (click)="setActive(menuItem.name, true)" [routerLink]="menuItem.path">
                     <a class="nav-link d-flex">
                        {{menuItem.name}} <span class="sr-only">(current)</span>
                     </a>
-                </li>
+                </a>
             </div>
         </ul>
     </div>

@@ -1,6 +1,6 @@
 .nav-top {
     background-color: #181823;
-    li a {
+    a a {
         font-size: 14px;
         -webkit-transition: all .1s ease;
         transition: all .1s ease;
@@ -13,7 +13,7 @@
            font-size: 22px;
        }
     } 
-    li.active  a {
+    a.active  a {
             color: #fff;
             fa-icon {
                 color:#4d79f6;
@@ -35,7 +35,7 @@
 }
 
 .nav-bottom {
-    li a {
+    a a {
         color: #4a4a71;
         padding: 8px 25px;
         clear: both;
@@ -43,7 +43,7 @@
         font-size: 13px;
         padding-left: 15px;
     }
-    li.active a {
+    a.active a {
         color: #4d79f6;
     }
 }

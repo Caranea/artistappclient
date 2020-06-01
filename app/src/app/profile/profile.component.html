@@ -164,9 +164,9 @@
             </div>
             <div class="col-lg-8">
                 <div class="form-row mb-0 d-flex align-items-center">
-                    <div class="col d-flex" *ngFor="let artwork of usersArtworks">
+                    <a class="col d-flex" [routerLink]="'/prace/'+artwork._id"  *ngFor="let artwork of usersArtworks">
                         <div class="card">
-                            <div [routerLink]="'/prace/'+artwork._id" class="card-header">
+                            <div class="card-header">
                                 {{artwork.title}} <br>
                                 <small>{{artwork.date}}</small>
                             </div>
@@ -178,7 +178,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
             </div>
