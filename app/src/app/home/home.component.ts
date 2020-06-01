@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit {
   activeSection = 'malarstwo'
   sectionArtworks;
   time;
-  sortBy
+  sortBy;
+  loadingPics = false;
   constructor(private artworkService: ArtworkService, private alertService: AlertService, private userService: UserService) { }
   ngOnInit(): void {
     this.getArtworks('30', 'best');
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.getSection('malarstwo')
   }
   getArtworks(time, sortBy) {
+    this.loadingPics = true;
     this.time = time;
     this.sortBy = sortBy;
     let changedCategory = ((time + sortBy !== this.active) && (this.artworks !== undefined))
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit {
           } else {
             this.artworks = this.artworks.concat(data.artworks)
           }
+          this.loadingPics = false;
         },
         error => {
           this.alertService.error(error);

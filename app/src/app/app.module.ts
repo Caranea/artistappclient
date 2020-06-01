@@ -27,7 +27,6 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ImagesComponent } from './portfolio/images/images.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -44,7 +43,8 @@ import { ResetComponent } from './reset/reset.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { DomenaComponent } from './domena/domena.component';
-import { PromoComponent } from './promo/promo.component'
+import { PromoComponent } from './promo/promo.component';
+import { FawComponent } from './faw/faw.component'
 
 const config: InputFileConfig = {};
 
@@ -77,7 +77,8 @@ const config: InputFileConfig = {};
     NewPasswordComponent,
     AdminPanelComponent,
     DomenaComponent,
-    PromoComponent
+    PromoComponent,
+    FawComponent
   ],
   imports: [
     BrowserModule,

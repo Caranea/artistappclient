@@ -21,6 +21,7 @@ import { NewPasswordComponent } from './new-password/new-password.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { DomenaComponent } from './domena/domena.component';
 import { PromoComponent } from './promo/promo.component';
+import { FawComponent } from './faw/faw.component';
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'reset', component: ResetComponent },
   { path: 'reset/:token', component: NewPasswordComponent },
   { path: 'ustawienia', component: SettingsComponent, canActivate: [AuthGuardService] },
+  { path: 'faq', component: FawComponent, canActivate: [AuthGuardService] },
   { path: 'prace/dodaj', component: ArtworkAddComponent, canActivate: [AuthGuardService] },
   { path: 'prace/edytuj/:id', component: ArtworkAddComponent, canActivate: [AuthGuardService] },
   { path: 'prace', component: ArtworksComponent, canActivate: [AuthGuardService] },

@@ -1,4 +1,4 @@
-<nav class="navbar nav-top  navbar-expand">
+<nav class="navbar nav-top  navbar-expand p-sm-1">
     <div class="container">
         <ul class="navbar-nav">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -35,6 +35,13 @@
                 [routerLink]="'/ustawienia'" (click)="setActive('ustawienia')">
                     <a class="nav-link d-flex">
                         <fa-icon class="mr-2 d-none d-sm-block" [icon]="faSlidersH"></fa-icon>Ustawienia<span
+                            class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item " [ngClass]="{'active': activeNavTop === 'faq'}"
+                [routerLink]="'/faq'" (click)="setActive('faq')">
+                    <a class="nav-link d-flex">
+                        <fa-icon class="mr-2 d-none d-sm-block" [icon]="faQuestionCircle"></fa-icon>FAQ<span
                             class="sr-only">(current)</span>
                     </a>
                 </li>

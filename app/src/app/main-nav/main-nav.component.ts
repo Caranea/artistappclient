@@ -1,5 +1,5 @@
 import { Component, AfterContentChecked } from '@angular/core';
-import { faPalette, faIcons, faLaptopCode, faHatWizard, faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { faPalette, faIcons, faLaptopCode, faHatWizard, faSlidersH, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth.service';
 
@@ -14,6 +14,7 @@ export class MainNavComponent implements AfterContentChecked {
   faLaptopCode = faLaptopCode;
   faHatWizard = faHatWizard;
   faSlidersH = faSlidersH;
+  faQuestionCircle = faQuestionCircle;
   currentUser;
   bottomMenu;
   activeNavTop;
@@ -21,6 +22,7 @@ export class MainNavComponent implements AfterContentChecked {
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; });
     this.bottomMenu = {
+      'faq': [{ name: 'Najczęstsze pytania', path: '/faq' }],
       'ustawienia': [{ name: 'Główne', path: '/ustawienia' }],
       'portal': [{ name: 'Portal', path: 'portal' }],
       'portfolio': [{ name: 'Panel', path: 'portfolio' }],

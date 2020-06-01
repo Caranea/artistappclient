@@ -47,4 +47,8 @@
         color: #4d79f6;
     }
 }
-
+@media (max-width:350px) {
+   .p-sm-1 {
+       padding: .25rem;
+   } 
+}
