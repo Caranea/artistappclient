@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Paths } from "../config/paths"
 
+import { Observable } from 'rxjs';
+import { shareReplay, map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(private http: HttpClient) { }
     private paths:any  = Paths;
-
+    private user$: Observable<Object>
     getAll() {
         return this.http.get<User[]>(`${this.paths.apiUrl}/users`);
     }
@@ -35,7 +37,12 @@ export class UserService {
         return this.http.get(`${this.paths.apiUrl}/users/read_notifications/${id}`);
     }
     getUserProfile(id, extended = false) {
-        return this.http.get(`${this.paths.apiUrl}/users/profile/${id}/${extended}`);
+        if (!this.user$) {
+            this.user$ = this.http.get(`${this.paths.apiUrl}/users/profile/${id}/${extended}`).pipe(
+              shareReplay(1)
+            );
+          }
+          return this.user$;
     }
 
     cancelSubscription(id) {

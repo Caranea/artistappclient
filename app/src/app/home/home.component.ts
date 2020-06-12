@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   artworks;
   active;
   showAll;
-  allArtists;
   users;
   activeArtist = 'best'
   activeSection = 'malarstwo'
@@ -66,8 +65,17 @@ export class HomeComponent implements OnInit {
           this.alertService.error(error);
         });
   }
-  showAllArtistsFn() {
-    this.allArtists = !this.allArtists
+  showAllArtistsFn(type) {
+    this.userService.getShortUsers('all')
+      .pipe(first())
+      .subscribe(
+        (data: any) => {
+          this.users = this.users.concat(data.usersShort)
+          console.log(this.users, data.usersShort)
+        },
+        error => {
+          this.alertService.error(error);
+        });
   }
   getArtists(type) {
     this.activeArtist = type

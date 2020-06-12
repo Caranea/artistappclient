@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { shareReplay, map } from 'rxjs/operators';
 
 import { Artwork } from '../models/artwork';
 import { Paths } from "../config/paths"
 
 @Injectable({ providedIn: 'root' })
 export class ArtworkService {
+    private artworks$: Observable<Object>;
+    private artworksAllTime$: Observable<Object>;
+
     constructor(private http: HttpClient) {
      }
     private paths: any = Paths;
@@ -13,6 +18,22 @@ export class ArtworkService {
         return this.http.get<Artwork[]>(`${this.paths.apiUrl}/artwork/${userId}`);
     }
     getAllBy(time = 'allTime', sortBy = 'best', type = "all", lastID?) {
+        if (time === '30' && sortBy === 'best') {
+            if (!this.artworks$) {
+                this.artworks$ = this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}/${lastID}/`).pipe(
+                  shareReplay(1)
+                );
+              }
+              return this.artworks$;
+        }
+        if (time === 'allTime' && sortBy === 'best') {
+            if (!this.artworksAllTime$) {
+                this.artworksAllTime$ = this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}/${lastID}/`).pipe(
+                  shareReplay(1)
+                );
+              }
+              return this.artworksAllTime$;
+        }
         return this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}/${lastID}/`)
     }
     getAuthor(userId) {
