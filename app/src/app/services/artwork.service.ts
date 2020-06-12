@@ -18,7 +18,10 @@ export class ArtworkService {
         return this.http.get<Artwork[]>(`${this.paths.apiUrl}/artwork/${userId}`);
     }
     getAllBy(time = 'allTime', sortBy = 'best', type = "all", lastID?) {
-        if (time === '30' && sortBy === 'best') {
+        console.log(type)
+        if (time === '30' && sortBy === 'best' && !lastID && type === "all") {
+        console.log(type)
+
             if (!this.artworks$) {
                 this.artworks$ = this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}/${lastID}/`).pipe(
                   shareReplay(1)
@@ -26,7 +29,9 @@ export class ArtworkService {
               }
               return this.artworks$;
         }
-        if (time === 'allTime' && sortBy === 'best') {
+        if (time === 'allTime' && sortBy === 'best' && !lastID && type === "all") {
+        console.log(type)
+
             if (!this.artworksAllTime$) {
                 this.artworksAllTime$ = this.http.get(`${this.paths.apiUrl}/artwork/all/${time}/${sortBy}/${type}/${lastID}/`).pipe(
                   shareReplay(1)

@@ -27,6 +27,7 @@ export class SettingsComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.profile = data.userProfile;
+          console.log(this.profile)
         }, error => {
           this.alertService.error(error);
         });
@@ -37,6 +38,8 @@ export class SettingsComponent implements OnInit {
     .pipe(first())
       .subscribe(
         (data: any) => {
+          delete this.profile.plan
+          delete this.profile.subscription
           this.alertService.success('Subskrypcja anulowana.');
         }, error => {
           this.alertService.error(error);

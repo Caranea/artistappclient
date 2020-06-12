@@ -97,6 +97,10 @@
             <div class="tile col" [ngClass]="{ active: activeSection === 'rysunek' }" (click)="getSection('rysunek')">
                 Rysunek
             </div>
+            <div class="tile col" [ngClass]="{ active: activeSection === 'Rękodzieło' }"
+                (click)="getSection('Rękodzieło')">
+                Rękodzieło
+            </div>
         </div>
         <div *ngIf="sectionArtworks">
             <a class="form-row" [ngClass]="{ show: showAll }">
