@@ -1,0 +1,431 @@
+<nav class="navbar container navbar-expand justify-content-between">
+    <div class="navbar-nav">
+        <a class="navbar-brand" href="#">
+            <img src="../../images/knickknacks-logo.svg" height="50px" alt="knickknacks logo">
+        </a>
+    </div>
+    <div class="d-flex sm-none">
+        <ul class="navbar-nav">
+            <a class="nav-item" href="https://artysta.knickknacks.pl">
+                <a class="nav-link d-flex">
+                    Portal Artysty<span class="sr-only">(current)</span>
+                </a>
+            </a>
+            <a class="nav-item" href="https://knickknacks.pl">
+                <a class="nav-link d-flex">
+                    Galeria<span class="sr-only">(current)</span>
+                </a>
+            </a>
+            <a class="nav-item" href="https://knickknacks.pl/sklep">
+                <a class="nav-link d-flex">
+                    Sklep<span class="sr-only">(current)</span>
+                </a>
+            </a>
+        </ul>
+    </div>
+</nav>
+<div class="container-blue d-flex justify-content-center flex-direction-column">
+    <div class="container home">
+        <section class="jumbotron page-cover">
+            <div class="head-content container">
+                <div class="d-flex justify-content-center align-items-center flex-direction-column">
+                    <h1 class="text-center">Portfolio artysty</h1>
+                    <p class="text-center text-strong">
+                        Nasz serwis łączy tysiące polskich artystów. Pomagamy im sprzedawać prace, budować swój
+                        wizerunek i docierać do odbiorców sztuki. Dziś chcemy dać Wam możliwość stworzenia własnej
+                        strony w internecie. Rejestrując się w naszym serwisie, zyskujecie nie tylko własną stronę www,
+                        ale także dostęp do narzędzi, które ułatwią waszą karierę artysty i sprzedaż prac.
+                    </p>
+                    <p class="text-center mt-2">
+                        Zobacz z jaką łatwością stworzysz atrakcyjne portfolio, która będzie świetnie wyglądała na
+                        dowolnym
+                        urządzeniu. Nie potrzebujesz już wiedzy technicznej i znajomości programowiania - stronę www
+                        zrobisz sam,
+                        bez programistów, w kilka minut!
+                        Żadnego z naszych użytkowników nie zostawiamy bez pomocy - nasi doradcy z chęcią pomogą Ci
+                        sprawić aby strona była atrakcyjna i znalazła się wysoko w wyszukiwarce.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-5 mb-lg-0 h-lg-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted text-uppercase text-center">
+                            Plan podstawowy </h5>
+                        <h6 class="card-price text-center">
+                            9.99zł<span class="period">/miesiąc</span>
+                        </h6>
+                        <hr />
+                        <ul class="fa-ul">
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>50 prac
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>3 galerie
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Podstrona z danymi kontaktowymi
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Integracja z mediami społecznościowymi
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Najlepsze praktyki SEO (optymizacja dla wyszukiwarek)
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Wsparcie techniczne
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Darmowy okres próbny (30 dni)
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Referencje i opinie klientów
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>CV na stronie
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Cennik prac i usług
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Domena w cenie i konfiguracja kont e-mail
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Zwiększona wydajność
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Modyfikacje na stronie na zamówienie
+                            </li>
+                        </ul>
+                        <button class="btn-primary w-100 mt-lg-5"
+                            style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                            id="checkout-button-plan_GybwTOhupEPvny" role="link" (click)="openModal(template, 'plan_GybwTOhupEPvny')">
+                            Wypróbuj za darmo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Plus Tier -->
+            <div class="col-lg-4">
+                <div class="card mb-5 mb-lg-0 h-lg-100 mt-3 mt-lg-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted text-uppercase text-center">
+                            Wersja rozszerzona
+                        </h5>
+                        <h6 class="card-price text-center">
+                            19zł<span class="period">/miesiąc</span>
+                        </h6>
+                        <hr />
+                        <ul class="fa-ul">
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>200 prac
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>10 galerii
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Formularz kontaktowy
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Integracja z mediami społecznościowymi
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Najlepsze praktyki SEO (optymizacja dla wyszukiwarek)
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Wsparcie techniczne
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Darmowy okres próbny (30 dni)
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Referencje i opinie klientów
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>CV na stronie
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Cennik prac i usług
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Domena w cenie i konfiguracja kont e-mail
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Zwiększona wydajność
+                            </li>
+                            <li class="text-muted">
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                </span>Modyfikacje na stronie na zamówienie
+                            </li>
+                        </ul>
+                        <button class="btn-primary w-100 mt-lg-5"
+                            style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                            id="checkout-button-plan_GygExNVJ3cXyjU" role="link"  (click)="openModal(template, 'plan_GygExNVJ3cXyjU')">
+                            Wypróbuj za darmo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Pro Tier -->
+            <div class="col-lg-4">
+                <div class="card mt-3 mt-lg-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted text-uppercase text-center">
+                            Pro
+                        </h5>
+                        <h6 class="card-price text-center">
+                            39zł<span class="period">/miesiąc</span>
+                        </h6>
+                        <hr />
+                        <ul class="fa-ul">
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>2000 prac
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>20 galerii
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Formularz kontaktowy
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Integracja z mediami społecznościowymi
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Najlepsze praktyki SEO (optymizacja dla wyszukiwarek)
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Wsparcie techniczne
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Darmowy okres próbny (30 dni)
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Referencje i opinie klientów
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>CV na stronie
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Cennik prac i usług
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Domena na rok w cenie i konfiguracja kont e-mail
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Zwiększona wydajność - czas ładowania strony nawet o połowę krótszy.
+                            </li>
+                            <li>
+                                <span class="fa-li">
+                                    <fa-icon [icon]="faCheck"></fa-icon>
+                                </span>Modyfikacje na stronie na zamówienie
+                            </li>
+                        </ul>
+                        <button class="btn-primary w-100"
+                            style="color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;"
+                            id="checkout-button-plan_GygFUxHrx9S8LB" role="link" (click)="openModal(template, 'plan_GygFUxHrx9S8LB')">
+                            Wypróbuj za darmo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="error-message"></div>
+        </div>
+    </div>
+    <h2 class="mt-5">
+        Przykładowe Motywy
+    </h2>
+    <div class="container">
+        <div class="row photos mt-5">
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme4.jpg" alt="Card image cap">
+
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme3.jpg" alt="Card image cap">
+
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme2.jpg" alt="Card image cap">
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme1.jpg" alt="Card image cap">
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme5.png" alt="Card image cap">
+
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="./images/theme6.png" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #template class="mt-5 ngx-template">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex justify-content-center register-form ">
+        <div class="logo-image"></div>
+        <h2 class="mt-2 mb-2">
+            Zarejestruj się, aby kontynuować
+        </h2>
+        <div class="form-group mb-0">
+            <label for="exampleInputEmail1">Adres e-mail</label>
+            <input type="email" id="email" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Podaj swój adres e-mail</div>
+            </div>
+        </div>
+        <div class="form-row mt-3">
+            <div class="col">
+                <label for="firstName">Imię</label>
+                <input id="firstName" type="text" formControlName="firstName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Podaj swoje imię</div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="lastName">Nazwisko</label>
+                <input id="lastName" type="text" formControlName="lastName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Podaj swoje nazwisko</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mt-3">
+            <div class="col">
+                <label for="password">Hasło</label>
+                <input id="password" type="password" formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Podaj hasło</div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="password2">Potwierdź hasło</label>
+                <input id="password2" type="password" formControlName="password2" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+                <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+                    <div *ngIf="f.password2.errors.required">Potwierdź hasło</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" formControlName="phone" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Podaj numer telefonu</div>
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" formControlName="termsAgreement"
+                [ngClass]="{ 'is-invalid': submitted && f.termsAgreement.errors }" /><label class="form-check-label"
+                for="termsAgreement">Rejestrując się, zgadzasz się z postanowieniami <a
+                    href="https://knickknacks.pl/pages/regulamin-artysty" target="_blank">Regulaminu</a></label>
+            <div *ngIf="submitted && f.termsAgreement.errors" class="invalid-feedback">
+                <div *ngIf="f.termsAgreement.errors.required">Musisz wyrazić zgodę</div>
+            </div>
+
+        </div>
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Wyślij<fa-icon class="ml-2" [icon]="faLongArrowAltRight"></fa-icon>
+        </button>
+    </form>
+</ng-template>

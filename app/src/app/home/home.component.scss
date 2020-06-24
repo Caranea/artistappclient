@@ -30,6 +30,13 @@
   &.purple .tile.active {
     background-color: #7252d3;
   }
+  &.black .tile {
+    background-color:
+#181823;
+font-size: 18px;
+font-weight: inherit;
+text-transform: none;
+  }
 }
 .artworks-main {
   img {

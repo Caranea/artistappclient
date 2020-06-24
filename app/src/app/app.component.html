@@ -4,4 +4,23 @@
 </div>
 <alert></alert>
 <router-outlet></router-outlet>
-<app-footer  *ngIf="currentUser"></app-footer>
+<div #info class="mt-5 info p-3 pb-5">
+        <button class="close">
+            <fa-icon class="ml-2" [icon]="faTimes" (click)="hide()"></fa-icon>
+        </button>
+        <strong>Chcesz szybciej sprzedać prace?</strong>
+        Chętnie Ci pomożemy. 
+        <ul class="mt-2">
+            <li>
+                Twoje zdjęcia nie wyglądają najlepiej? Umów się z nami na profesjonalną sesję fotograficzną.
+            </li>
+            <li>
+                Nieoprawione obrazy? To też możemy dla Ciebie zrobić.
+            </li>
+        </ul>
+        Aby skorzystać z tych usług, napisz do nas na czacie.
+        <button class="btn btn-primary mt-3" (click)="showChat()">
+            Chcę skorzystać
+        </button>
+</div>
+<app-footer *ngIf="currentUser"></app-footer>

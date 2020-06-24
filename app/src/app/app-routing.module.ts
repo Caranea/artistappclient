@@ -22,11 +22,12 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { DomenaComponent } from './domena/domena.component';
 import { PromoComponent } from './promo/promo.component';
 import { FawComponent } from './faw/faw.component';
+import { GeneralPortfolioComponent } from './general-portfolio/general-portfolio.component';
 
 const routes: Routes = [
   { path: 'portal', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'portfolio/sukces', component: SuccessComponent, canActivate: [AuthGuardService] },
-  { path: 'portfolio/blad', component: CancelledComponent, canActivate: [AuthGuardService] },
+  { path: 'portfolio/blad', component: CancelledComponent},
   { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'portfolio', component: PortfolioComponent, canActivate: [AuthGuardService] },
   { path: 'podglad', component: PreviewComponent, canActivate: [AuthGuardService] },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'rejestracja', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },
+  { path: 'kreator', component: GeneralPortfolioComponent },
   { path: 'reset/:token', component: NewPasswordComponent },
   { path: 'ustawienia', component: SettingsComponent, canActivate: [AuthGuardService] },
   { path: 'faq', component: FawComponent, canActivate: [AuthGuardService] },

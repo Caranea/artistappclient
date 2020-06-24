@@ -16,9 +16,11 @@
           Możesz ją edytować w sekcji <a [routerLink]="['/podglad']" routerLinkActive="router-link-active">edycja.</a>
           <br>
           Motyw dobierz w sekcji <a [routerLink]="['/szablon']" routerLinkActive="router-link-active">szablon.</a> <br>
-          <span *ngIf="userProfile.plan === 'pro'">Wybierz adres dla swojej strony w sekcji <a [routerLink]="['/domena']" routerLinkActive="router-link-active">domena.</a></span>
+          <span *ngIf="userProfile.plan === 'pro'">Wybierz adres dla swojej strony w sekcji <a
+              [routerLink]="['/domena']" routerLinkActive="router-link-active">domena.</a></span>
           <br>
-          <a [href]="'https://artysta.knickknacks.pl/clients/'+currentUser._id+'/index2.html'" target="_blank">Otwórz stronę w nowej
+          <a [href]="'https://artysta.knickknacks.pl/clients/'+currentUser._id+'/index2.html'" target="_blank">Otwórz stronę w
+            nowej
             karcie.</a>
         </p>
         <div *ngIf="userProfile.plan === 'basic' || userProfile.plan === 'premium'"
@@ -44,11 +46,11 @@
         <p class="text-center">
           Jesteś kilka minut od stworzenia portfolio, które zobaczy cały świat
         </p>
-
-        <p class="text-muted mt-2">
-          Prosimy o podanie w następnym kroku tego samego adresu e-mail, którego
-          użyli Państwo przy rejestracji. Zapewni to natychmiastowe
-          przetworzenie płatności.
+        <p class="text-center mt-2">
+          Zobacz z jaką łatwością stworzysz atrakcyjne portfolio, która będzie świetnie wyglądała na dowolnym
+          urządzeniu. Nie potrzebujesz już wiedzy technicznej i znajomości programowiania - stronę www zrobisz sam,
+          bez programistów, w kilka minut!
+          Żadnego z naszych użytkowników nie zostawiamy bez pomocy - nasi doradcy z chęcią pomogą Ci sprawić aby strona była atrakcyjna i znalazła się wysoko w wyszukiwarce.
         </p>
       </div>
       <div class="d-flex justify-content-center align-items-center" *ngIf="userProfile.plan && !userProfile.website">

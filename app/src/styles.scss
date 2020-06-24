@@ -565,6 +565,34 @@ slide {
     color: #fff !important;
   }
 }
-.faq .card-header .btn.btn-link{
+.faq .card-header .btn.btn-link {
   white-space: break-spaces;
+}
+.modal-dialog {
+  margin-top: 100px;
+}
+.info {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  max-width: 500px;
+  background-color: #181823;
+  color: #fff;
+  border-radius: 10px;
+  margin-left: 10px;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+
+  fa-icon {
+    color: #fff;
+  }
+  ul {
+    padding: 0;
+    padding-left: 0px;
+    padding-left: 15px;
+  }
+  .btn {
+    box-shadow: none;
+    display: block;
+  }
 }
