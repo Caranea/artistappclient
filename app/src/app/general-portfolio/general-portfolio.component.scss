@@ -3,9 +3,9 @@
   color: #fff;
   border-radius: 0;
   padding: 3rem 2rem;
-  
 }
-.nav-link, h2 {
+.nav-link,
+h2 {
   color: #181823 !important;
 }
 @media (max-width: 500px) {
@@ -27,4 +27,16 @@
 }
 .flex-direction-column {
   flex-direction: column;
+}
+.foot {
+  section {
+    background-color: #181823 !important;
+    padding-top: 20px;
+  }
+  * {
+    color: #fff !important;
+  }
+  .footer-column {
+    max-width: 200px;
+  }
 }

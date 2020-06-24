@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faLongArrowAltRight, faPlusSquare, faIcons } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faLongArrowAltRight, faPlusSquare, faIcons, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class GeneralPortfolioComponent implements OnInit {
   faCheck = faCheck;
   faTimes = faTimes;
   faIcons = faIcons;
+  faAngleDoubleRight =faAngleDoubleRight;
   faQuestionCircle = faQuestionCircle;
   faInfoCircle = faInfoCircle;
   faLongArrowAltRight = faLongArrowAltRight;
