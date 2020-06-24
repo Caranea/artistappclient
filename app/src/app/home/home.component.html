@@ -23,8 +23,8 @@
             </div>
         </div>
         <div *ngIf="sectionArtworks">
-            <a class="form-row" [ngClass]="{ show: showAll }">
-                <div class="col img-container" [routerLink]="'../prace/' + item._id"
+            <div class="form-row" [ngClass]="{ show: showAll }">
+                <a class="col img-container" [routerLink]="'../prace/' + item._id"
                     *ngFor="let item of sectionArtworks">
                     <img [src]="
               'https://artysta.knickknacks.pl/' + item.photosUrls[0].split('public/')[1]
@@ -32,9 +32,8 @@
                     <div class="overlay">
                         {{ item.title }}
                     </div>
-                </div>
-
-            </a>
+                </a>
+            </div>
             <div class="btn-row">
                 <button class="btn btn-primary p-3" (click)="showAllTypeFn()">
                     Pokaż więcej
@@ -56,12 +55,12 @@
             </div> -->
         </div>
         <div class="row artists">
-            <div class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
+            <a class="col-lg-3 artist" [routerLink]="'../profil/zobacz/' + item._id"
                 *ngFor="let item of users; let i = index">
                 <img [src]="
             'https://artysta.knickknacks.pl/' + item.bestArtworkUrl.split('public/')[1]
           " alt="" />
-                <div class="overlay">
+                <a class="overlay"  [routerLink]="'../profil/zobacz/' + item._id">
                     <div class="content">
                         <div class="img-container" *ngIf="item.profilePhoto">
                             <img [src]="
@@ -71,8 +70,8 @@
                         </div>
                         <h3>{{ item.name }}</h3>
                     </div>
-                </div>
-            </div>
+                </a>
+            </a>
         </div>
         <div class="btn-row">
             <button class="btn btn-primary p-3" (click)="showAllArtistsFn()">

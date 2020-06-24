@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 declare var Stripe: any
-
+declare var fbq: any;
 import { AuthenticationService } from '../services/auth.service';
 import { AlertService, } from '../services/alert.service';
 import { UserService, } from '../services/user.service';
@@ -19,7 +19,7 @@ export class GeneralPortfolioComponent implements OnInit {
   faCheck = faCheck;
   faTimes = faTimes;
   faIcons = faIcons;
-  faAngleDoubleRight =faAngleDoubleRight;
+  faAngleDoubleRight = faAngleDoubleRight;
   faQuestionCircle = faQuestionCircle;
   faInfoCircle = faInfoCircle;
   faLongArrowAltRight = faLongArrowAltRight;
@@ -51,7 +51,7 @@ export class GeneralPortfolioComponent implements OnInit {
       password2: ['', [Validators.required, Validators.minLength(6)]],
       termsAgreement: ['', Validators.required],
     });
-
+    console.log(fbq)
   }
 
   // convenience getter for easy access to form fields
@@ -74,6 +74,7 @@ export class GeneralPortfolioComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          fbq('track', 'StartTrial');
           var s = window.document.createElement("script");
           s.id = "stripe-script";
           s.type = "text/javascript";
