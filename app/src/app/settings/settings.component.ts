@@ -22,15 +22,7 @@ export class SettingsComponent implements OnInit {
     private router: Router,
   ) {
     this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; })
-    this.userService.getUserProfile(this.currentUser._id, true)
-      .pipe(first())
-      .subscribe(
-        (data: any) => {
-          this.profile = data.userProfile;
-          console.log(this.profile)
-        }, error => {
-          this.alertService.error(error);
-        });
+    
   }
 
   cancel() {
@@ -45,8 +37,28 @@ export class SettingsComponent implements OnInit {
           this.alertService.error(error);
         });
   }
-
+  cancelArtworkSub() {
+    this.userService.cancelSubscription(this.profile.artworkSubId)
+    .pipe(first())
+      .subscribe(
+        (data: any) => {
+          delete this.profile.hasPaid
+          delete this.profile.artworkSubId
+          this.alertService.success('Subskrypcja anulowana.');
+        }, error => {
+          this.alertService.error(error);
+        });
+  }
   ngOnInit(): void {
+    this.userService.getUserProfile(this.currentUser._id, true)
+      .pipe(first())
+      .subscribe(
+        (data: any) => {
+          this.profile = data.userProfile;
+          console.log(this.profile)
+        }, error => {
+          this.alertService.error(error);
+        });
   }
 
 }

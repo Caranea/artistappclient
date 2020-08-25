@@ -4,7 +4,7 @@
 </div>
 <alert></alert>
 <router-outlet></router-outlet>
-<div #info class="mt-5 info p-3 pb-5" *ngIf="!isRegisterOrLoginPage">
+<div #info class="mt-5 info-popup p-3 pb-5" *ngIf="!isRegisterOrLoginPage">
     <button class="close">
         <fa-icon class="ml-2" [icon]="faTimes" (click)="hide()"></fa-icon>
     </button>

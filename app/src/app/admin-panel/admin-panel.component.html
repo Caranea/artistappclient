@@ -113,6 +113,9 @@
             <button class=" m-3 btn btn-primary" (click)="getShopifyJson(false, template)">
                 exportuj JSON (shopify bez zdjęć)
             </button>
+            <button class=" m-3 btn btn-primary" (click)="getEmailList( template2)">
+                exportuj listę emaili
+            </button>
             <p class="px-3">Lista kroków: </p>
             <div class="card p-3 m-3">
                 Przygotuj prace, jeśli to konieczne (obróbka zdjęć) </div>
@@ -135,5 +138,17 @@
     </div>
     <div class="modal-body">
         <textarea name="" id="" cols="30" rows="10" [value]="resultString"></textarea>
+    </div>
+</ng-template>
+
+<ng-template #template2>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Skopiuj ten plik JSON i zamień go na CSV</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <textarea name="" id="" cols="30" rows="10" [value]="resultString2"></textarea>
     </div>
 </ng-template>

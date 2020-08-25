@@ -23,7 +23,7 @@ export class AppComponent implements DoCheck {
     ngDoCheck() {
         let url = window.location.href;
         url = url.toString()
-        if (url.includes('rejestracja') || url.includes('login')) {
+        if (url.includes('rejestracja') || url.includes('login')|| url.includes('kreator')) {
             this.isRegisterOrLoginPage = true;
             console.log(this.isRegisterOrLoginPage)
         }

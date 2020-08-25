@@ -1,10 +1,21 @@
-<div class="container-blue d-flex justify-content-center " *ngIf="!artworks" >
+<div class="container-blue d-flex justify-content-center " *ngIf="!artworks">
     <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
-      </div>
+    </div>
 </div>
 <div class="container-blue" *ngIf="artworks">
     <div class="container">
+        <div class="alert alert-danger" *ngIf="!userProfile.hasPaid && unpaidArtworksNumber > 0">
+            <p> Twoje konto nie zostało opłacone, więc prace nie zostaną zaakceptowane przez moderatora. Po opłaceniu będą widoczne na stronie głównej (knickknacks.pl) w ciągu kilku godzin. Liczba nieopłaconych prac: {{unpaidArtworksNumber}} <br>
+                <br>
+            Cena za pakiet 100 prac: <strong>4,99 PLN</strong> <br></p>
+            
+            <button class="btn btn-primary" (click)="checkout()"
+                id="checkout-button-price_1H9XA3BihCZuV5pkz5bIcMAS">Zapłać</button>
+        </div>
+        <div class="alert alert-success" *ngIf="userProfile.hasPaid">
+           Mamy dla Ciebie prezent! W ramach opłaty za dodanie prac, przysługuje Ci możliwość darmowej sesji zdjęciowej dla Twoich prac. Jeśli jesteś zainteresowany lub zainteresowana, skorzystaj z czata, aby dać nam znać.
+        </div>
         <h3>
             {{artworks.length ? 'Zarządzaj dodanymi pracami' : 'Nie dodałeś jeszcze żadnych prac'}}
         </h3>

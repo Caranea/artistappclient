@@ -17,6 +17,7 @@ export class AdminPanelComponent implements OnInit {
   users = []
   selectedArtworks = []
   resultString;
+  resultString2;
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService, private adminService: AdminService, private alertService: AlertService) { }
 
@@ -70,5 +71,22 @@ export class AdminPanelComponent implements OnInit {
       }
     })
     this.modalRef = this.modalService.show(template);
+  }
+  getEmailList(template2: TemplateRef<any>) {
+    let accepted = []
+    let notAccepted = []
+    this.selectedArtworks.forEach(el => {
+      let author: any = this.users.filter(el2 => {
+        return el2._id === el.userId[0]
+      })[0]
+      if (el.price) {
+       el.email = author.email;
+      }
+      if(accepted.filter(el2 => el2.email == el.email).length ==0)
+      accepted.push({email: el.email})
+      console.log(accepted)
+      this.resultString2 = JSON.stringify(accepted)
+    })
+    this.modalRef = this.modalService.show(template2);
   }
 }

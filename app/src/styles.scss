@@ -571,7 +571,15 @@ slide {
 .modal-dialog {
   margin-top: 100px;
 }
-.info {
+@media (max-width: 750px) {
+  .modal-dialog {
+    margin-top: 0;
+  }
+  .modal-dialog .modal-content{
+    background-color: transparent;
+  }
+}
+.info-popup {
   position: fixed;
   bottom: 10px;
   right: 10px;
