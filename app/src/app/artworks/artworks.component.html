@@ -6,15 +6,42 @@
 <div class="container-blue" *ngIf="artworks">
     <div class="container">
         <div class="alert alert-danger" *ngIf="!userProfile.hasPaid && unpaidArtworksNumber > 0">
-            <p> Twoje konto nie zostało opłacone, więc prace nie zostaną zaakceptowane przez moderatora. Po opłaceniu będą widoczne na stronie głównej (knickknacks.pl) w ciągu kilku godzin. Liczba nieopłaconych prac: {{unpaidArtworksNumber}} <br>
+            <p> Twoje konto nie zostało opłacone, więc prace nie zostaną zaakceptowane przez moderatora. Po opłaceniu
+                będą widoczne na stronie głównej (knickknacks.pl) w ciągu kilku godzin. Liczba nieopłaconych prac:
+                {{unpaidArtworksNumber}} <br>
                 <br>
-            Cena za pakiet 100 prac: <strong>4,99 PLN</strong> <br></p>
-            
+                Cena za pakiet 100 prac: <strong>4,99 PLN</strong>
+                 <br><br>
+                 <strong> Co dostaniesz w zamian?</strong>
+                <span>
+                    <ul>
+                        <li>
+                            Wyświetlenie na stronie głównej serwisu
+                        </li>
+                        <li>
+                            Promocja w reklamach produktowych Google
+                        </li>
+                        <li>
+                            Promocja w sieci reklamowej Google
+                        </li>
+                        <li>
+                            Promocja w Facebook Ads
+                        </li>
+                        <li>
+                            Promocja na Instagramie
+                        </li>
+                        <li>
+                            Promocja w płatnych wyróżnieniach na serwisach sprzedażowych
+                        </li>
+                    </ul>
+                </span>
+            </p>
             <button class="btn btn-primary" (click)="checkout()"
                 id="checkout-button-price_1H9XA3BihCZuV5pkz5bIcMAS">Zapłać</button>
         </div>
         <div class="alert alert-success" *ngIf="userProfile.hasPaid">
-           Mamy dla Ciebie prezent! W ramach opłaty za dodanie prac, przysługuje Ci możliwość darmowej sesji zdjęciowej dla Twoich prac. Jeśli jesteś zainteresowany lub zainteresowana, skorzystaj z czata, aby dać nam znać.
+            Mamy dla Ciebie prezent! W ramach opłaty za dodanie prac, przysługuje Ci możliwość darmowej sesji zdjęciowej
+            dla Twoich prac. Jeśli jesteś zainteresowany lub zainteresowana, skorzystaj z czata, aby dać nam znać.
         </div>
         <h3>
             {{artworks.length ? 'Zarządzaj dodanymi pracami' : 'Nie dodałeś jeszcze żadnych prac'}}
@@ -53,9 +80,9 @@
                             <h5 class="card-title">Status</h5>
                             <p class="card-text">
                                 {{!artwork.forSale ? 'Nie na sprzedaż' : 'W sprzedaży'}} </p>
-                            <p *ngIf="!artwork.accepted" class="card-text text-muted">
+                            <!-- <p *ngIf="!artwork.accepted" class="card-text text-muted">
                                 <fa-icon class="mr-2" [icon]="faHourglassHalf"></fa-icon>Oczekuje na zatwierdzenie
-                            </p>
+                            </p> -->
                         </div>
                     </div>
                 </div>

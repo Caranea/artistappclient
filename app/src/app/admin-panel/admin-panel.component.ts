@@ -30,8 +30,16 @@ export class AdminPanelComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.artworks = data.artworks
+          console.log(this.artworks)
+
           this.users = data.users
           console.log(this.users)
+          this.artworks = this.artworks.filter((el) => {
+            let userId = el.userId[0];
+            console.log(userId)
+            let userHasPaid = this.users.find(el => el._id === userId).hasPaid
+            return userHasPaid === true
+          })
         },
         error => {
           this.alertService.error(error);
@@ -80,10 +88,10 @@ export class AdminPanelComponent implements OnInit {
         return el2._id === el.userId[0]
       })[0]
       if (el.price) {
-       el.email = author.email;
+        el.email = author.email;
       }
-      if(accepted.filter(el2 => el2.email == el.email).length ==0)
-      accepted.push({email: el.email})
+      if (accepted.filter(el2 => el2.email == el.email).length == 0)
+        accepted.push({ email: el.email })
       console.log(accepted)
       this.resultString2 = JSON.stringify(accepted)
     })
